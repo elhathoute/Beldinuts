@@ -97,19 +97,19 @@
             <div class="mb-8">
                 <div class="max-w-4xl mx-auto">
                     <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-4 text-center">Type de Vente</h3>
+                        <h3 class="text-xl font-bold text-warm-brown mb-4 text-center" data-translate="sale_type_title">Type de Vente</h3>
                         <div class="grid md:grid-cols-2 gap-4">
                             <button id="retail-btn" onclick="setSaleType('retail')" 
                                     class="sale-type-btn bg-light-gold text-white py-4 px-6 rounded-full font-semibold transition-all duration-300 hover:bg-yellow-600 active">
                                 <i class="fas fa-shopping-cart mr-2"></i>
-                                Vente Particulière
-                                <div class="text-sm opacity-90">Prix par gramme</div>
+                                <span data-translate="retail_sale">Vente Particulière</span>
+                                <div class="text-sm opacity-90" data-translate="retail_desc">Prix par gramme</div>
                             </button>
                             <button id="wholesale-btn" onclick="setSaleType('wholesale')" 
                                     class="sale-type-btn bg-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold transition-all duration-300 hover:bg-gray-300">
                                 <i class="fas fa-boxes mr-2"></i>
-                                Vente en Gros
-                                <div class="text-sm opacity-90">Prix par pièce</div>
+                                <span data-translate="wholesale_sale">Vente en Gros</span>
+                                <div class="text-sm opacity-90" data-translate="wholesale_desc">Prix par pièce</div>
                             </button>
                         </div>
                     </div>
@@ -165,8 +165,8 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Amandes du Maroc</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="amandes_name">Amandes du Maroc</h3>
+                        <p class="text-gray-600 mb-4" data-translate="amandes_desc">
                             Amandes premium, riches en protéines et vitamines E.
                         </p>
                         <div class="flex justify-between items-center mb-4">
@@ -195,8 +195,8 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Grenoble</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="noix_name">Noix de Grenoble</h3>
+                        <p class="text-gray-600 mb-4" data-translate="noix_desc">
                             Noix fraîches et croquantes, riches en oméga-3.
                         </p>
                         <div class="flex justify-between items-center mb-4">
@@ -225,8 +225,8 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609501676725-7186f357aabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Dattes Medjool</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="dattes_name">Dattes Medjool</h3>
+                        <p class="text-gray-600 mb-4" data-translate="dattes_desc">
                             Dattes sucrées et moelleuses, source naturelle d'énergie.
                         </p>
                         <div class="flex justify-between items-center mb-4">
@@ -255,8 +255,8 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNVd4yBltrmFEHw8_3POIVnTznXbzjBOQ6BbWewEDXRqVGZfiBMkobsynGN_E0A5x37ytvpAjwfgYdYMTRfsAc3ik02cIO5Y6Hnb8hxg')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Cajou</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="cajou_name">Noix de Cajou</h3>
+                        <p class="text-gray-600 mb-4" data-translate="cajou_desc">
                             Cajous grillés à sec, sans huile ajoutée.
                         </p>
                         <div class="flex justify-between items-center mb-4">
@@ -285,8 +285,8 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('https://www.calconut.com/wp-content/uploads/2021/08/zoom-fotonoticia-371.jpg')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Raisins Secs</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="raisins_name">Raisins Secs</h3>
+                        <p class="text-gray-600 mb-4" data-translate="raisins_desc">
                             Raisins secs sans sulfites, naturellement sucrés.
                         </p>
                         <div class="flex justify-between items-center mb-4">
@@ -315,8 +315,8 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Mélange Premium</h3>
-                        <p class="text-gray-600 mb-4">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="melange_name">Mélange Premium</h3>
+                        <p class="text-gray-600 mb-4" data-translate="melange_desc">
                             Mélange exclusif d'amandes, noix, dattes et raisins.
                         </p>
                         <div class="flex justify-between items-center mb-4">
@@ -537,7 +537,12 @@
                 raisins_name: "Raisins Secs",
                 raisins_desc: "Raisins secs sans sulfites, naturellement sucrés.",
                 melange_name: "Mélange Premium",
-                melange_desc: "Mélange exclusif d'amandes, noix, dattes et raisins."
+                melange_desc: "Mélange exclusif d'amandes, noix, dattes et raisins.",
+                sale_type_title: "Type de Vente",
+                retail_sale: "Vente Particulière",
+                retail_desc: "Prix par gramme",
+                wholesale_sale: "Vente en Gros",
+                wholesale_desc: "Prix par pièce"
             },
             ar: {
                 page_title: "اطلب منتجاتك",
@@ -572,7 +577,12 @@
                 raisins_name: "زبيب",
                 raisins_desc: "زبيب بدون كبريتات، حلو طبيعياً.",
                 melange_name: "خليط ممتاز",
-                melange_desc: "خليط حصري من اللوز والجوز والتمر والزبيب."
+                melange_desc: "خليط حصري من اللوز والجوز والتمر والزبيب.",
+                sale_type_title: "نوع البيع",
+                retail_sale: "بيع بالتجزئة",
+                retail_desc: "سعر بالغرام",
+                wholesale_sale: "بيع بالجملة",
+                wholesale_desc: "سعر بالقطعة"
             },
             en: {
                 page_title: "Order Your Products",
@@ -607,7 +617,12 @@
                 raisins_name: "Dried Grapes",
                 raisins_desc: "Sulfite-free raisins, naturally sweet.",
                 melange_name: "Premium Mix",
-                melange_desc: "Exclusive blend of almonds, walnuts, dates and raisins."
+                melange_desc: "Exclusive blend of almonds, walnuts, dates and raisins.",
+                sale_type_title: "Sale Type",
+                retail_sale: "Retail Sale",
+                retail_desc: "Price per gram",
+                wholesale_sale: "Wholesale Sale",
+                wholesale_desc: "Price per piece"
             }
         };
 
@@ -661,6 +676,7 @@
         
         // Initialiser l'affichage des prix
         updateAllPrices();
+        updateMinOrderText();
 
         // Fonction pour changer la devise
         function changeCurrency(currency) {
@@ -727,6 +743,7 @@
             updateAllProductsDisplay();
             updateOrderSummary();
             updateInstallmentSection();
+            updateMinOrderText(); // Mettre à jour le texte de commande minimum
         }
         
         // Fonction pour mettre à jour la section paiement échelonné
@@ -738,15 +755,13 @@
             if (saleType === 'wholesale') {
                 installmentSection.style.display = 'block';
                 
-                // Calculer le total actuel
+                // Calculer le total actuel avec le prix fixe de 6 DH/pièce
                 let total = 0;
                 Object.keys(cart).forEach(productId => {
                     if (cart[productId] > 0) {
-                        const wholesaleProduct = wholesaleProducts[productId];
-                        if (wholesaleProduct) {
-                            const pricePerPiece = wholesaleProduct.pricePerPiece * exchangeRates[currentCurrency];
-                            total += cart[productId] * pricePerPiece;
-                        }
+                        const basePrice = 6; // Prix fixe 6 DH/pièce
+                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                        total += cart[productId] * pricePerPiece;
                     }
                 });
                 
@@ -977,7 +992,7 @@
             const deliveryAddress = document.getElementById('delivery-address').value;
             const deliveryNotes = document.getElementById('delivery-notes').value;
             
-            let message = "🍯 *Commande Beldinuts*\n\n";
+            let message = "🌰 *Commande BeldiNuts*\n\n";
             message += "Bonjour ! Je souhaite commander les produits suivants :\n\n";
             
             let total = 0;
@@ -987,17 +1002,41 @@
                 if (cart[productId] > 0) {
                     hasItems = true;
                     const product = products[productId];
-                    const basePrice = 2; // Prix de base 2 DH/g
-                    const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                    const subtotal = cart[productId] * pricePerGram;
-                    total += subtotal;
+                    let subtotal = 0;
+                    let quantityText = '';
+
+                    if (saleType === 'wholesale') {
+                        // Vente en gros : prix fixe de 6 DH/pièce
+                        const basePrice = 6; // Prix fixe 6 DH/pièce
+                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                        subtotal = cart[productId] * pricePerPiece;
+                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''}`;
+                    } else {
+                        // Vente particulière : prix par gramme
+                        const basePrice = 2; // Prix de base 2 DH/g
+                        const pricePerGram = basePrice * exchangeRates[currentCurrency];
+                        subtotal = cart[productId] * pricePerGram;
+                        quantityText = `${cart[productId]}g`;
+                    }
                     
-                    message += `• ${product.name}: ${cart[productId]}g (${subtotal.toFixed(2)} ${getCurrencySymbol()})\n`;
+                    total += subtotal;
+                    message += `• ${product.name}: ${quantityText} (${subtotal.toFixed(2)} ${getCurrencySymbol()})\n`;
                 }
             });
             
             if (hasItems) {
                 message += `\n*Total: ${total.toFixed(2)} ${getCurrencySymbol()}*\n\n`;
+                
+                // Ajouter les détails du paiement échelonné si vente en gros
+                if (saleType === 'wholesale') {
+                    const installmentCount = document.getElementById('installment-count').value;
+                    const installmentAmount = document.getElementById('installment-amount').textContent;
+                    
+                    message += "*💳 Paiement Échelonné :*\n";
+                    message += `📊 Nombre d'échéances: ${installmentCount}\n`;
+                    message += `💰 Montant par échéance: ${installmentAmount}\n\n`;
+                }
+                
                 message += "*Informations de livraison :*\n";
                 message += `👤 Nom: ${customerName}\n`;
                 message += `📧 Email: ${customerEmail}\n`;
