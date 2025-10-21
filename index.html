@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beldinuts - Noix Naturelles du Maroc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-brown': '#8B4513',
+                        'beige': '#F5F5DC',
+                        'earth-green': '#8FBC8F',
+                        'light-gold': '#DAA520',
+                        'cream': '#FFF8DC'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(139, 69, 19, 0.6), rgba(139, 69, 19, 0.4)), 
+                        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-warm-brown">Beldinuts</h1>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#accueil" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
+                    <a href="#apropos" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a>
+                    <a href="#produits" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_products">Produits</a>
+                    <a href="#contact" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_contact">Contact</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <select id="language-select" onchange="changeLanguage(this.value)" 
+                                class="bg-transparent border border-warm-brown text-warm-brown px-3 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="ar">🇲🇦 AR</option>
+                            <option value="en">🇺🇸 EN</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-warm-brown">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6" data-translate="hero_title">
+                    100% Naturel, Croquant et Sain
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-cream" data-translate="hero_subtitle">
+                    Directement du Maroc
+                </p>
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto" data-translate="hero_description">
+                    Découvrez nos noix, amandes et fruits secs d'exception, 
+                    cultivés avec passion dans les terres fertiles du Maroc.
+                </p>
+                <a href="#produits" class="inline-block bg-light-gold hover:bg-yellow-600 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg" data-translate="hero_button">
+                    Découvrir nos produits
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6" data-translate="about_title">
+                        Notre Histoire
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-6" data-translate="about_text1">
+                        Beldinuts est née de la passion pour les produits naturels et authentiques du Maroc. 
+                        Depuis notre création, nous nous engageons à vous offrir les meilleures noix, 
+                        amandes et fruits secs, sélectionnés avec soin auprès de producteurs locaux.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-8" data-translate="about_text2">
+                        Notre mission est de promouvoir une alimentation saine en vous proposant des produits 
+                        100% naturels, riches en nutriments et sans additifs, directement de nos terres marocaines.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center text-warm-brown">
+                            <i class="fas fa-leaf text-xl mr-2"></i>
+                            <span class="font-semibold" data-translate="about_natural">100% Naturel</span>
+                        </div>
+                        <div class="flex items-center text-warm-brown">
+                            <i class="fas fa-map-marker-alt text-xl mr-2"></i>
+                            <span class="font-semibold" data-translate="about_origin">Origine Maroc</span>
+                        </div>
+                        <div class="flex items-center text-warm-brown">
+                            <i class="fas fa-heart text-xl mr-2"></i>
+                            <span class="font-semibold" data-translate="about_quality">Qualité Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-in-right">
+                    <div class="bg-white rounded-2xl shadow-xl p-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="bg-warm-brown text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-seedling text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-warm-brown mb-2">Sélection Rigoureuse</h3>
+                                <p class="text-sm text-gray-600">Chaque produit est soigneusement sélectionné</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-earth-green text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-truck text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-warm-brown mb-2">Livraison Rapide</h3>
+                                <p class="text-sm text-gray-600">Expédition sous 24-48h</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-light-gold text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-award text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-warm-brown mb-2">Qualité Certifiée</h3>
+                                <p class="text-sm text-gray-600">Produits certifiés bio</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-warm-brown text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-users text-2xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-warm-brown mb-2">Communauté</h3>
+                                <p class="text-sm text-gray-600">Plus de 10,000 clients satisfaits</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produits" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6" data-translate="products_title">
+                    Nos Produits Phares
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-translate="products_subtitle">
+                    Découvrez notre sélection de noix et fruits secs d'exception, 
+                    cultivés dans les meilleures conditions au Maroc.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Amandes du Maroc</h3>
+                        <p class="text-gray-600 mb-4">
+                            Amandes premium, riches en protéines et vitamines E. 
+                            Parfaites pour une collation saine.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">45€/kg</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Grenoble</h3>
+                        <p class="text-gray-600 mb-4">
+                            Noix fraîches et croquantes, riches en oméga-3. 
+                            Idéales pour vos salades et pâtisseries.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">38€/kg</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609501676725-7186f357aabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Dattes Medjool</h3>
+                        <p class="text-gray-600 mb-4">
+                            Dattes sucrées et moelleuses, source naturelle d'énergie. 
+                            Parfaites pour le sport et les enfants.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">28€/kg</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNVd4yBltrmFEHw8_3POIVnTznXbzjBOQ6BbWewEDXRqVGZfiBMkobsynGN_E0A5x37ytvpAjwfgYdYMTRfsAc3ik02cIO5Y6Hnb8hxg')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Cajou</h3>
+                        <p class="text-gray-600 mb-4">
+                            Cajous grillés à sec, sans huile ajoutée. 
+                            Croquants et délicieux pour l'apéritif.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">42€/kg</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://www.calconut.com/wp-content/uploads/2021/08/zoom-fotonoticia-371.jpg')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Raisins Secs</h3>
+                        <p class="text-gray-600 mb-4">
+                            Raisins secs sans sulfites, naturellement sucrés. 
+                            Excellents pour les sportifs et les enfants.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">22€/kg</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Mélange Premium</h3>
+                        <p class="text-gray-600 mb-4">
+                            Mélange exclusif d'amandes, noix, dattes et raisins. 
+                            L'équilibre parfait pour votre santé.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">35€/kg</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6" data-translate="benefits_title">
+                    Pourquoi Choisir Beldinuts ?
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-warm-brown text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-leaf text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-4" data-translate="benefits_natural">100% Naturel</h3>
+                    <p class="text-gray-600" data-translate="benefits_natural_desc">
+                        Aucun additif, conservateur ou produit chimique. 
+                        Seulement la nature dans sa forme la plus pure.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-earth-green text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-dumbbell text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-4">Riche en Protéines</h3>
+                    <p class="text-gray-600">
+                        Source naturelle de protéines végétales, 
+                        parfaites pour les sportifs et végétariens.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-light-gold text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-4">Sans Additifs</h3>
+                    <p class="text-gray-600">
+                        Produits naturels sans colorants, 
+                        arômes artificiels ou conservateurs.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-warm-brown text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-warm-brown mb-4">Bon pour la Santé</h3>
+                    <p class="text-gray-600">
+                        Riche en vitamines, minéraux et antioxydants 
+                        pour une alimentation équilibrée.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-warm-brown">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-translate="newsletter_title">
+                Restez Informés de Nos Nouvelles Offres
+            </h2>
+            <p class="text-xl text-cream mb-8" data-translate="newsletter_subtitle">
+                Recevez en exclusivité nos promotions et découvrez nos nouveaux produits
+            </p>
+            <form class="max-w-md mx-auto">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input 
+                        type="email" 
+                        placeholder="Votre adresse email" 
+                        class="flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-light-gold"
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-light-gold hover:bg-yellow-600 text-white font-semibold px-8 py-4 rounded-full transition-colors"
+                        data-translate="newsletter_button"
+                    >
+                        S'abonner
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-light-gold mb-4">Beldinuts</h3>
+                    <p class="text-gray-300 mb-4">
+                        Votre partenaire pour une alimentation saine et naturelle. 
+                        Des produits d'exception directement du Maroc.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Produits</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Amandes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Noix</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Dattes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Fruits Secs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Informations</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">À propos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Livraison</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Retours</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-light-gold mr-2"></i>
+                            <span class="text-gray-300">Casablanca, Maroc</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-light-gold mr-2"></i>
+                            <span class="text-gray-300">+212 5XX XXX XXX</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-light-gold mr-2"></i>
+                            <span class="text-gray-300">contact@beldinuts.ma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Beldinuts. Tous droits réservés. | 
+                    <a href="#" class="hover:text-light-gold transition-colors">Mentions légales</a> | 
+                    <a href="#" class="hover:text-light-gold transition-colors">Politique de confidentialité</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Langue actuelle
+        let currentLanguage = 'fr';
+        
+        // Dictionnaire de traductions pour la page principale
+        const translations = {
+            fr: {
+                nav_home: "Accueil",
+                nav_about: "À propos",
+                nav_products: "Produits",
+                nav_contact: "Contact",
+                hero_title: "100% Naturel, Croquant et Sain",
+                hero_subtitle: "Directement du Maroc",
+                hero_description: "Découvrez nos noix, amandes et fruits secs d'exception, cultivés avec passion dans les terres fertiles du Maroc.",
+                hero_button: "Découvrir nos produits",
+                about_title: "Notre Histoire",
+                about_text1: "Beldinuts est née de la passion pour les produits naturels et authentiques du Maroc. Depuis notre création, nous nous engageons à vous offrir les meilleures noix, amandes et fruits secs, sélectionnés avec soin auprès de producteurs locaux.",
+                about_text2: "Notre mission est de promouvoir une alimentation saine en vous proposant des produits 100% naturels, riches en nutriments et sans additifs, directement de nos terres marocaines.",
+                about_natural: "100% Naturel",
+                about_origin: "Origine Maroc",
+                about_quality: "Qualité Premium",
+                about_selection: "Sélection Rigoureuse",
+                about_selection_desc: "Chaque produit est soigneusement sélectionné",
+                about_delivery: "Livraison Rapide",
+                about_delivery_desc: "Expédition sous 24-48h",
+                about_certified: "Qualité Certifiée",
+                about_certified_desc: "Produits certifiés bio",
+                about_community: "Communauté",
+                about_community_desc: "Plus de 10,000 clients satisfaits",
+                products_title: "Nos Produits Phares",
+                products_subtitle: "Découvrez notre sélection de noix et fruits secs d'exception, cultivés dans les meilleures conditions au Maroc.",
+                benefits_title: "Pourquoi Choisir Beldinuts ?",
+                benefits_natural: "100% Naturel",
+                benefits_natural_desc: "Aucun additif, conservateur ou produit chimique. Seulement la nature dans sa forme la plus pure.",
+                benefits_protein: "Riche en Protéines",
+                benefits_protein_desc: "Source naturelle de protéines végétales, parfaites pour les sportifs et végétariens.",
+                benefits_no_additives: "Sans Additifs",
+                benefits_no_additives_desc: "Produits naturels sans colorants, arômes artificiels ou conservateurs.",
+                benefits_health: "Bon pour la Santé",
+                benefits_health_desc: "Riche en vitamines, minéraux et antioxydants pour une alimentation équilibrée.",
+                newsletter_title: "Restez Informés de Nos Nouvelles Offres",
+                newsletter_subtitle: "Recevez en exclusivité nos promotions et découvrez nos nouveaux produits",
+                newsletter_placeholder: "Votre adresse email",
+                newsletter_button: "S'abonner",
+                newsletter_success: "Merci pour votre inscription ! Vous recevrez bientôt nos offres exclusives.",
+                footer_description: "Votre partenaire pour une alimentation saine et naturelle. Des produits d'exception directement du Maroc.",
+                footer_products: "Produits",
+                footer_info: "Informations",
+                footer_contact: "Contact",
+                footer_legal: "Mentions légales",
+                footer_privacy: "Politique de confidentialité",
+                footer_copyright: "© 2024 Beldinuts. Tous droits réservés."
+            },
+            ar: {
+                nav_home: "الرئيسية",
+                nav_about: "من نحن",
+                nav_products: "المنتجات",
+                nav_contact: "اتصل بنا",
+                hero_title: "100% طبيعي، مقرمش وصحي",
+                hero_subtitle: "مباشرة من المغرب",
+                hero_description: "اكتشفوا مكسراتنا ولوزنا وفواكهنا المجففة الاستثنائية، المزروعة بشغف في الأراضي الخصبة للمغرب.",
+                hero_button: "اكتشف منتجاتنا",
+                about_title: "قصتنا",
+                about_text1: "ولدت بيلدي نتس من شغف المنتجات الطبيعية والأصيلة للمغرب. منذ تأسيسنا، نلتزم بتقديم أفضل المكسرات واللوز والفواكه المجففة، مختارة بعناية من المنتجين المحليين.",
+                about_text2: "مهمتنا هي تعزيز التغذية الصحية من خلال تقديم منتجات 100% طبيعية، غنية بالمغذيات وخالية من الإضافات، مباشرة من أراضينا المغربية.",
+                about_natural: "100% طبيعي",
+                about_origin: "أصل مغربي",
+                about_quality: "جودة ممتازة",
+                about_selection: "اختيار دقيق",
+                about_selection_desc: "كل منتج يتم اختياره بعناية",
+                about_delivery: "توصيل سريع",
+                about_delivery_desc: "شحن خلال 24-48 ساعة",
+                about_certified: "جودة معتمدة",
+                about_certified_desc: "منتجات معتمدة عضوية",
+                about_community: "مجتمع",
+                about_community_desc: "أكثر من 10,000 عميل راضٍ",
+                products_title: "منتجاتنا المميزة",
+                products_subtitle: "اكتشفوا مجموعتنا من المكسرات والفواكه المجففة الاستثنائية، المزروعة في أفضل الظروف بالمغرب.",
+                benefits_title: "لماذا تختار بيلدي نتس؟",
+                benefits_natural: "100% طبيعي",
+                benefits_natural_desc: "بدون إضافات أو مواد حافظة أو كيماويات. فقط الطبيعة في أنقى أشكالها.",
+                benefits_protein: "غني بالبروتينات",
+                benefits_protein_desc: "مصدر طبيعي للبروتينات النباتية، مثالي للرياضيين والنباتيين.",
+                benefits_no_additives: "بدون إضافات",
+                benefits_no_additives_desc: "منتجات طبيعية بدون ألوان أو نكهات اصطناعية أو مواد حافظة.",
+                benefits_health: "مفيد للصحة",
+                benefits_health_desc: "غني بالفيتامينات والمعادن ومضادات الأكسدة لتغذية متوازنة.",
+                newsletter_title: "ابقوا على اطلاع بعروضنا الجديدة",
+                newsletter_subtitle: "احصلوا حصرياً على عروضنا واكتشفوا منتجاتنا الجديدة",
+                newsletter_placeholder: "عنوان بريدكم الإلكتروني",
+                newsletter_button: "اشتراك",
+                newsletter_success: "شكراً لاشتراككم! ستحصلون قريباً على عروضنا الحصرية.",
+                footer_description: "شريككم للتغذية الصحية والطبيعية. منتجات استثنائية مباشرة من المغرب.",
+                footer_products: "المنتجات",
+                footer_info: "معلومات",
+                footer_contact: "اتصل بنا",
+                footer_legal: "الشروط القانونية",
+                footer_privacy: "سياسة الخصوصية",
+                footer_copyright: "© 2024 بيلدي نتس. جميع الحقوق محفوظة."
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_products: "Products",
+                nav_contact: "Contact",
+                hero_title: "100% Natural, Crunchy and Healthy",
+                hero_subtitle: "Directly from Morocco",
+                hero_description: "Discover our exceptional nuts, almonds and dried fruits, grown with passion in the fertile lands of Morocco.",
+                hero_button: "Discover our products",
+                about_title: "Our Story",
+                about_text1: "Beldinuts was born from the passion for natural and authentic Moroccan products. Since our creation, we are committed to offering you the best nuts, almonds and dried fruits, carefully selected from local producers.",
+                about_text2: "Our mission is to promote healthy eating by offering you 100% natural products, rich in nutrients and without additives, directly from our Moroccan lands.",
+                about_natural: "100% Natural",
+                about_origin: "Moroccan Origin",
+                about_quality: "Premium Quality",
+                about_selection: "Rigorous Selection",
+                about_selection_desc: "Each product is carefully selected",
+                about_delivery: "Fast Delivery",
+                about_delivery_desc: "Shipping within 24-48h",
+                about_certified: "Certified Quality",
+                about_certified_desc: "Certified organic products",
+                about_community: "Community",
+                about_community_desc: "More than 10,000 satisfied customers",
+                products_title: "Our Featured Products",
+                products_subtitle: "Discover our selection of exceptional nuts and dried fruits, grown in the best conditions in Morocco.",
+                benefits_title: "Why Choose Beldinuts?",
+                benefits_natural: "100% Natural",
+                benefits_natural_desc: "No additives, preservatives or chemicals. Only nature in its purest form.",
+                benefits_protein: "Rich in Proteins",
+                benefits_protein_desc: "Natural source of plant proteins, perfect for athletes and vegetarians.",
+                benefits_no_additives: "No Additives",
+                benefits_no_additives_desc: "Natural products without colors, artificial flavors or preservatives.",
+                benefits_health: "Good for Health",
+                benefits_health_desc: "Rich in vitamins, minerals and antioxidants for a balanced diet.",
+                newsletter_title: "Stay Informed of Our New Offers",
+                newsletter_subtitle: "Receive exclusively our promotions and discover our new products",
+                newsletter_placeholder: "Your email address",
+                newsletter_button: "Subscribe",
+                newsletter_success: "Thank you for your subscription! You will soon receive our exclusive offers.",
+                footer_description: "Your partner for healthy and natural nutrition. Exceptional products directly from Morocco.",
+                footer_products: "Products",
+                footer_info: "Information",
+                footer_contact: "Contact",
+                footer_legal: "Legal Notice",
+                footer_privacy: "Privacy Policy",
+                footer_copyright: "© 2024 Beldinuts. All rights reserved."
+            }
+        };
+
+        // Fonction pour changer la langue
+        function changeLanguage(language) {
+            currentLanguage = language;
+            document.documentElement.lang = language;
+            
+            // Mettre à jour tous les éléments avec data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[language] && translations[language][key]) {
+                    element.textContent = translations[language][key];
+                }
+            });
+            
+            // Mettre à jour les placeholders
+            const emailInput = document.querySelector('input[type="email"]');
+            if (emailInput && translations[language].newsletter_placeholder) {
+                emailInput.placeholder = translations[language].newsletter_placeholder;
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                const message = translations[currentLanguage].newsletter_success || 'Merci pour votre inscription ! Vous recevrez bientôt nos offres exclusives.';
+                alert(message);
+                this.reset();
+            }
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

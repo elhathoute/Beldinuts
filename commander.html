@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander - Beldinuts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-brown': '#8B4513',
+                        'beige': '#F5F5DC',
+                        'earth-green': '#8FBC8F',
+                        'light-gold': '#DAA520',
+                        'cream': '#FFF8DC'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-warm-brown">Beldinuts</h1>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
+                    <a href="index.html#apropos" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a>
+                    <a href="index.html#produits" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_products">Produits</a>
+                    <a href="index.html#contact" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_contact">Contact</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <select id="language-select" onchange="changeLanguage(this.value)" 
+                                class="bg-transparent border border-warm-brown text-warm-brown px-3 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="ar">🇲🇦 AR</option>
+                            <option value="en">🇺🇸 EN</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-warm-brown">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="bg-gradient-to-r from-warm-brown to-light-gold py-16 pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4" data-translate="page_title">
+                Commander vos Produits
+            </h1>
+            <p class="text-xl text-cream mb-6" data-translate="page_subtitle">
+                Sélectionnez vos produits préférés et commandez directement via WhatsApp
+            </p>
+            
+        </div>
+    </section>
+
+    <!-- Products Selection -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Search Bar with Currency Selector -->
+            <div class="mb-12">
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Search Input -->
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" id="product-search" 
+                                   placeholder="Rechercher un produit (amandes, noix, dattes...)" 
+                                   class="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-full text-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent shadow-lg"
+                                   onkeyup="filterProducts(this.value)">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <button onclick="clearSearch()" id="clear-search" class="text-gray-400 hover:text-warm-brown hidden">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Currency Selector -->
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-coins text-gray-400"></i>
+                            </div>
+                            <select id="currency-select" onchange="changeCurrency(this.value)" 
+                                    class="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-full text-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent shadow-lg bg-white appearance-none cursor-pointer">
+                                <option value="MAD">🇲🇦 DH (Maroc)</option>
+                                <option value="EUR">🇪🇺 EUR (Europe)</option>
+                                <option value="USD">🇺🇸 USD (Amérique)</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2 text-center">
+                        Recherchez un produit et choisissez votre devise
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="amandes du maroc">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Amandes du Maroc</h3>
+                        <p class="text-gray-600 mb-4">
+                            Amandes premium, riches en protéines et vitamines E.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('amandes')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="amandes-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('amandes', this.value)" 
+                                       oninput="updateQuantity('amandes', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('amandes')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="amandes-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="noix de grenoble">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Grenoble</h3>
+                        <p class="text-gray-600 mb-4">
+                            Noix fraîches et croquantes, riches en oméga-3.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('noix')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="noix-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('noix', this.value)" 
+                                       oninput="updateQuantity('noix', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('noix')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="noix-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="dattes medjool">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609501676725-7186f357aabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Dattes Medjool</h3>
+                        <p class="text-gray-600 mb-4">
+                            Dattes sucrées et moelleuses, source naturelle d'énergie.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('dattes')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="dattes-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('dattes', this.value)" 
+                                       oninput="updateQuantity('dattes', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('dattes')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="dattes-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="noix de cajou">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNVd4yBltrmFEHw8_3POIVnTznXbzjBOQ6BbWewEDXRqVGZfiBMkobsynGN_E0A5x37ytvpAjwfgYdYMTRfsAc3ik02cIO5Y6Hnb8hxg')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Cajou</h3>
+                        <p class="text-gray-600 mb-4">
+                            Cajous grillés à sec, sans huile ajoutée.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('cajou')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="cajou-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('cajou', this.value)" 
+                                       oninput="updateQuantity('cajou', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('cajou')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="cajou-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="raisins secs">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://www.calconut.com/wp-content/uploads/2021/08/zoom-fotonoticia-371.jpg')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Raisins Secs</h3>
+                        <p class="text-gray-600 mb-4">
+                            Raisins secs sans sulfites, naturellement sucrés.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('raisins')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="raisins-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('raisins', this.value)" 
+                                       oninput="updateQuantity('raisins', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('raisins')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="raisins-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="mélange premium">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3">Mélange Premium</h3>
+                        <p class="text-gray-600 mb-4">
+                            Mélange exclusif d'amandes, noix, dattes et raisins.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('melange')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="melange-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('melange', this.value)" 
+                                       oninput="updateQuantity('melange', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('melange')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="melange-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Information -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center">Vos Informations</h2>
+                
+                <form id="customer-form" class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="customer-name" class="block text-sm font-medium text-gray-700 mb-2">Nom complet *</label>
+                        <input type="text" id="customer-name" name="name" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label for="customer-email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                        <input type="email" id="customer-email" name="email" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label for="customer-phone" class="block text-sm font-medium text-gray-700 mb-2">Téléphone *</label>
+                        <input type="tel" id="customer-phone" name="phone" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                    </div>
+                    
+                    <div>
+                        <label for="delivery-date" class="block text-sm font-medium text-gray-700 mb-2">Date de livraison souhaitée *</label>
+                        <input type="date" id="delivery-date" name="delivery-date" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label for="delivery-address" class="block text-sm font-medium text-gray-700 mb-2">Adresse de livraison complète *</label>
+                        <textarea id="delivery-address" name="address" rows="3" required 
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent"
+                                  placeholder="Rue, numéro, ville, code postal..."></textarea>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label for="delivery-notes" class="block text-sm font-medium text-gray-700 mb-2">Notes de livraison (optionnel)</label>
+                        <textarea id="delivery-notes" name="notes" rows="2" 
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent"
+                                  placeholder="Instructions spéciales, horaires préférés..."></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Summary -->
+    <section class="py-16 bg-beige">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center">Résumé de votre commande</h2>
+                
+                <div id="order-summary" class="space-y-4 mb-8">
+                    <!-- Order items will be populated here -->
+                </div>
+                
+                <div class="border-t pt-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xl font-bold text-warm-brown">Total:</span>
+                        <span id="grand-total" class="text-2xl font-bold text-warm-brown">0€</span>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="whatsapp-order" onclick="sendToWhatsApp()" 
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled>
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Commander via WhatsApp
+                        </button>
+                        <p class="text-sm text-gray-600 mt-2">
+                            Vous serez redirigé vers WhatsApp pour finaliser votre commande
+                        </p>
+                        <p class="text-sm text-warm-brown mt-1 font-semibold" id="min-order-text">
+                            Commande minimum : 100 DH (50g minimum)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-bold text-light-gold mb-4">Beldinuts</h3>
+            <p class="text-gray-300 mb-4">
+                Votre partenaire pour une alimentation saine et naturelle
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="index.html" class="text-gray-300 hover:text-light-gold transition-colors">Accueil</a>
+                <a href="index.html#produits" class="text-gray-300 hover:text-light-gold transition-colors">Produits</a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-light-gold transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data - Prix de base en DH par gramme (2 DH/g)
+        const products = {
+            amandes: { name: 'Amandes du Maroc', basePrice: 2 },
+            noix: { name: 'Noix de Grenoble', basePrice: 2 },
+            dattes: { name: 'Dattes Medjool', basePrice: 2 },
+            cajou: { name: 'Noix de Cajou', basePrice: 2 },
+            raisins: { name: 'Raisins Secs', basePrice: 2 },
+            melange: { name: 'Mélange Premium', basePrice: 2 }
+        };
+
+        // Taux de change (approximatifs)
+        const exchangeRates = {
+            MAD: 1,      // Dirham marocain (devise de base)
+            EUR: 0.09,   // 1 DH = 0.09 EUR
+            USD: 0.10    // 1 DH = 0.10 USD
+        };
+
+        // Devise actuelle
+        let currentCurrency = 'MAD';
+        
+        // Langue actuelle
+        let currentLanguage = 'fr';
+        
+        // Dictionnaire de traductions
+        const translations = {
+            fr: {
+                page_title: "Commander vos Produits",
+                page_subtitle: "Sélectionnez vos produits préférés et commandez directement via WhatsApp",
+                search_placeholder: "Rechercher un produit (amandes, noix, dattes...)",
+                search_help: "Recherchez un produit et choisissez votre devise",
+                customer_info_title: "Vos Informations",
+                name_label: "Nom complet",
+                email_label: "Email",
+                phone_label: "Téléphone",
+                delivery_date_label: "Date de livraison souhaitée",
+                address_label: "Adresse de livraison complète",
+                address_placeholder: "Rue, numéro, ville, code postal...",
+                notes_label: "Notes de livraison (optionnel)",
+                notes_placeholder: "Instructions spéciales, horaires préférés...",
+                order_summary_title: "Résumé de votre commande",
+                total_label: "Total:",
+                whatsapp_button: "Commander via WhatsApp",
+                whatsapp_help: "Vous serez redirigé vers WhatsApp pour finaliser votre commande",
+                min_order: "Commande minimum : 100 DH (50g minimum)",
+                no_products: "Aucun produit sélectionné",
+                no_results_title: "Aucun produit trouvé",
+                no_results_text: "Essayez avec d'autres mots-clés comme \"amandes\", \"noix\", \"dattes\"...",
+                amandes_name: "Amandes du Maroc",
+                amandes_desc: "Amandes premium, riches en protéines et vitamines E.",
+                noix_name: "Noix de Grenoble",
+                noix_desc: "Noix fraîches et croquantes, riches en oméga-3.",
+                dattes_name: "Dattes Medjool",
+                dattes_desc: "Dattes sucrées et moelleuses, source naturelle d'énergie.",
+                cajou_name: "Noix de Cajou",
+                cajou_desc: "Cajous grillés à sec, sans huile ajoutée.",
+                raisins_name: "Raisins Secs",
+                raisins_desc: "Raisins secs sans sulfites, naturellement sucrés.",
+                melange_name: "Mélange Premium",
+                melange_desc: "Mélange exclusif d'amandes, noix, dattes et raisins."
+            },
+            ar: {
+                page_title: "اطلب منتجاتك",
+                page_subtitle: "اختر منتجاتك المفضلة واطلب مباشرة عبر واتساب",
+                search_placeholder: "البحث عن منتج (لوز، جوز، تمر...)",
+                search_help: "ابحث عن منتج واختر عملتك",
+                customer_info_title: "معلوماتك",
+                name_label: "الاسم الكامل",
+                email_label: "البريد الإلكتروني",
+                phone_label: "الهاتف",
+                delivery_date_label: "تاريخ التسليم المطلوب",
+                address_label: "عنوان التسليم الكامل",
+                address_placeholder: "الشارع، الرقم، المدينة، الرمز البريدي...",
+                notes_label: "ملاحظات التسليم (اختياري)",
+                notes_placeholder: "تعليمات خاصة، أوقات مفضلة...",
+                order_summary_title: "ملخص طلبك",
+                total_label: "المجموع:",
+                whatsapp_button: "اطلب عبر واتساب",
+                whatsapp_help: "سيتم توجيهك إلى واتساب لإتمام طلبك",
+                min_order: "الحد الأدنى للطلب: 100 درهم (50 جرام على الأقل)",
+                no_products: "لم يتم اختيار أي منتج",
+                no_results_title: "لم يتم العثور على منتجات",
+                no_results_text: "جرب كلمات مفتاحية أخرى مثل \"لوز\"، \"جوز\"، \"تمر\"...",
+                amandes_name: "لوز المغرب",
+                amandes_desc: "لوز ممتاز، غني بالبروتينات وفيتامين E.",
+                noix_name: "جوز غرينوبل",
+                noix_desc: "جوز طازج ومقرمش، غني بأوميغا 3.",
+                dattes_name: "تمر مجهول",
+                dattes_desc: "تمر حلو وطري، مصدر طبيعي للطاقة.",
+                cajou_name: "كاجو",
+                cajou_desc: "كاجو محمص جاف، بدون زيت مضاف.",
+                raisins_name: "زبيب",
+                raisins_desc: "زبيب بدون كبريتات، حلو طبيعياً.",
+                melange_name: "خليط ممتاز",
+                melange_desc: "خليط حصري من اللوز والجوز والتمر والزبيب."
+            },
+            en: {
+                page_title: "Order Your Products",
+                page_subtitle: "Select your favorite products and order directly via WhatsApp",
+                search_placeholder: "Search for a product (almonds, nuts, dates...)",
+                search_help: "Search for a product and choose your currency",
+                customer_info_title: "Your Information",
+                name_label: "Full Name",
+                email_label: "Email",
+                phone_label: "Phone",
+                delivery_date_label: "Preferred delivery date",
+                address_label: "Complete delivery address",
+                address_placeholder: "Street, number, city, postal code...",
+                notes_label: "Delivery notes (optional)",
+                notes_placeholder: "Special instructions, preferred times...",
+                order_summary_title: "Order Summary",
+                total_label: "Total:",
+                whatsapp_button: "Order via WhatsApp",
+                whatsapp_help: "You will be redirected to WhatsApp to finalize your order",
+                min_order: "Minimum order: 100 DH (50g minimum)",
+                no_products: "No products selected",
+                no_results_title: "No products found",
+                no_results_text: "Try other keywords like \"almonds\", \"nuts\", \"dates\"...",
+                amandes_name: "Moroccan Almonds",
+                amandes_desc: "Premium almonds, rich in proteins and vitamin E.",
+                noix_name: "Grenoble Walnuts",
+                noix_desc: "Fresh and crunchy walnuts, rich in omega-3.",
+                dattes_name: "Medjool Dates",
+                dattes_desc: "Sweet and soft dates, natural source of energy.",
+                cajou_name: "Cashew Nuts",
+                cajou_desc: "Dry roasted cashews, without added oil.",
+                raisins_name: "Dried Grapes",
+                raisins_desc: "Sulfite-free raisins, naturally sweet.",
+                melange_name: "Premium Mix",
+                melange_desc: "Exclusive blend of almonds, walnuts, dates and raisins."
+            }
+        };
+
+        // Cart state
+        let cart = {};
+
+        // Initialize cart
+        Object.keys(products).forEach(productId => {
+            cart[productId] = 0;
+        });
+
+        // Fonction pour changer la devise
+        function changeCurrency(currency) {
+            console.log('Changement de devise vers:', currency);
+            currentCurrency = currency;
+            updateAllPrices();
+            // Mettre à jour tous les totaux des produits sélectionnés
+            Object.keys(cart).forEach(productId => {
+                if (cart[productId] > 0) {
+                    console.log('Mise à jour produit:', productId, 'Quantité:', cart[productId]);
+                    updateProductDisplay(productId);
+                }
+            });
+            console.log('Appel updateOrderSummary');
+            updateOrderSummary();
+            updateMinOrderText();
+        }
+        
+        // Fonction pour changer la langue
+        function changeLanguage(language) {
+            currentLanguage = language;
+            document.documentElement.lang = language;
+            
+            // Mettre à jour tous les éléments avec data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[language] && translations[language][key]) {
+                    element.textContent = translations[language][key];
+                }
+            });
+            
+            // Mettre à jour les placeholders
+            const searchInput = document.getElementById('product-search');
+            if (searchInput && translations[language].search_placeholder) {
+                searchInput.placeholder = translations[language].search_placeholder;
+            }
+        }
+
+        // Fonction pour mettre à jour le texte de minimum de commande
+        function updateMinOrderText() {
+            const minOrderElement = document.getElementById('min-order-text');
+            if (minOrderElement) {
+                const minOrderAmount = 100 * exchangeRates[currentCurrency];
+                const minOrderText = `Commande minimum : ${minOrderAmount.toFixed(2)} ${getCurrencySymbol()} (50g minimum)`;
+                minOrderElement.textContent = minOrderText;
+            }
+        }
+
+        // Fonction pour obtenir le prix dans la devise actuelle
+        function getPrice(productId) {
+            const basePrice = products[productId].basePrice;
+            return basePrice * exchangeRates[currentCurrency];
+        }
+
+        // Fonction pour obtenir le symbole de la devise
+        function getCurrencySymbol() {
+            const symbols = {
+                MAD: 'DH',
+                EUR: '€',
+                USD: '$'
+            };
+            return symbols[currentCurrency];
+        }
+
+        // Fonction pour mettre à jour tous les prix affichés
+        function updateAllPrices() {
+            const priceElements = document.querySelectorAll('.price-display');
+            priceElements.forEach(element => {
+                const basePrice = 2; // Prix de base 2 DH/g
+                const convertedPrice = basePrice * exchangeRates[currentCurrency];
+                element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/g`;
+            });
+        }
+
+        function increaseQuantity(productId) {
+            cart[productId] += 10; // Incrémenter par 10g
+            updateProductDisplay(productId);
+            updateOrderSummary();
+        }
+
+        function decreaseQuantity(productId) {
+            if (cart[productId] >= 10) {
+                cart[productId] -= 10; // Décrémenter par 10g
+                updateProductDisplay(productId);
+                updateOrderSummary();
+            }
+        }
+
+        function updateQuantity(productId, value) {
+            const quantity = parseInt(value) || 0;
+            cart[productId] = Math.max(0, quantity);
+            updateProductDisplay(productId);
+            updateOrderSummary();
+        }
+
+        function updateProductDisplay(productId) {
+            const qtyElement = document.getElementById(`${productId}-qty`);
+            const totalElement = document.getElementById(`${productId}-total`);
+            
+            qtyElement.value = cart[productId];
+            const basePrice = 2; // Prix de base 2 DH/g
+            const pricePerGram = basePrice * exchangeRates[currentCurrency];
+            const total = cart[productId] * pricePerGram;
+            totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
+        }
+
+        function updateOrderSummary() {
+            const orderSummary = document.getElementById('order-summary');
+            const grandTotalElement = document.getElementById('grand-total');
+            const whatsappButton = document.getElementById('whatsapp-order');
+            
+            let total = 0;
+            let hasItems = false;
+            
+            orderSummary.innerHTML = '';
+            
+            Object.keys(cart).forEach(productId => {
+                if (cart[productId] > 0) {
+                    hasItems = true;
+                    const product = products[productId];
+                    const basePrice = 2; // Prix de base 2 DH/g
+                    const pricePerGram = basePrice * exchangeRates[currentCurrency];
+                    const subtotal = cart[productId] * pricePerGram;
+                    total += subtotal;
+                    
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'flex justify-between items-center py-2 border-b border-gray-200';
+                    itemDiv.innerHTML = `
+                        <div>
+                            <span class="font-semibold">${product.name}</span>
+                            <span class="text-gray-600 ml-2">x${cart[productId]}g</span>
+                        </div>
+                        <span class="font-bold text-warm-brown">${subtotal.toFixed(2)} ${getCurrencySymbol()}</span>
+                    `;
+                    orderSummary.appendChild(itemDiv);
+                }
+            });
+            
+            if (!hasItems) {
+                orderSummary.innerHTML = '<p class="text-gray-500 text-center py-4">Aucun produit sélectionné</p>';
+            }
+            
+            grandTotalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
+            
+            // Debug: forcer la mise à jour du total général
+            console.log('Total calculé:', total, 'Devise:', currentCurrency, 'Symbole:', getCurrencySymbol());
+            
+            // Vérifier si le formulaire est valide
+            const form = document.getElementById('customer-form');
+            const isFormValid = form.checkValidity();
+            
+            const minOrderAmount = 100 * exchangeRates[currentCurrency];
+            whatsappButton.disabled = !hasItems || total < minOrderAmount || !isFormValid;
+        }
+
+        function sendToWhatsApp() {
+            // Vérifier que le formulaire est valide
+            const form = document.getElementById('customer-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            // Récupérer les informations du client
+            const customerName = document.getElementById('customer-name').value;
+            const customerEmail = document.getElementById('customer-email').value;
+            const customerPhone = document.getElementById('customer-phone').value;
+            const deliveryDate = document.getElementById('delivery-date').value;
+            const deliveryAddress = document.getElementById('delivery-address').value;
+            const deliveryNotes = document.getElementById('delivery-notes').value;
+            
+            let message = "🍯 *Commande Beldinuts*\n\n";
+            message += "Bonjour ! Je souhaite commander les produits suivants :\n\n";
+            
+            let total = 0;
+            let hasItems = false;
+            
+            Object.keys(cart).forEach(productId => {
+                if (cart[productId] > 0) {
+                    hasItems = true;
+                    const product = products[productId];
+                    const basePrice = 2; // Prix de base 2 DH/g
+                    const pricePerGram = basePrice * exchangeRates[currentCurrency];
+                    const subtotal = cart[productId] * pricePerGram;
+                    total += subtotal;
+                    
+                    message += `• ${product.name}: ${cart[productId]}g (${subtotal.toFixed(2)} ${getCurrencySymbol()})\n`;
+                }
+            });
+            
+            if (hasItems) {
+                message += `\n*Total: ${total.toFixed(2)} ${getCurrencySymbol()}*\n\n`;
+                message += "*Informations de livraison :*\n";
+                message += `👤 Nom: ${customerName}\n`;
+                message += `📧 Email: ${customerEmail}\n`;
+                message += `📱 Téléphone: ${customerPhone}\n`;
+                message += `📅 Date souhaitée: ${deliveryDate}\n`;
+                message += `📍 Adresse: ${deliveryAddress}\n`;
+                if (deliveryNotes.trim()) {
+                    message += `📝 Notes: ${deliveryNotes}\n`;
+                }
+                message += `\nMerci de me confirmer la disponibilité et les modalités de livraison.`;
+                
+                const phoneNumber = "212615919437";
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        }
+
+        // Fonction pour filtrer les produits
+        function filterProducts(searchTerm) {
+            const products = document.querySelectorAll('.product-card');
+            const searchTermLower = searchTerm.toLowerCase().trim();
+            const clearButton = document.getElementById('clear-search');
+            
+            // Afficher/masquer le bouton de suppression
+            if (searchTermLower.length > 0) {
+                clearButton.classList.remove('hidden');
+            } else {
+                clearButton.classList.add('hidden');
+            }
+            
+            let visibleCount = 0;
+            
+            products.forEach(product => {
+                const productName = product.getAttribute('data-product-name').toLowerCase();
+                const productTitle = product.querySelector('h3').textContent.toLowerCase();
+                
+                if (productName.includes(searchTermLower) || productTitle.includes(searchTermLower)) {
+                    product.style.display = 'block';
+                    product.style.animation = 'fadeIn 0.3s ease-in';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            // Afficher un message si aucun produit trouvé
+            showNoResultsMessage(visibleCount === 0 && searchTermLower.length > 0);
+        }
+        
+        // Fonction pour effacer la recherche
+        function clearSearch() {
+            const searchInput = document.getElementById('product-search');
+            searchInput.value = '';
+            filterProducts('');
+        }
+        
+        // Fonction pour afficher le message "aucun résultat"
+        function showNoResultsMessage(show) {
+            let noResultsMsg = document.getElementById('no-results-message');
+            
+            if (show && !noResultsMsg) {
+                noResultsMsg = document.createElement('div');
+                noResultsMsg.id = 'no-results-message';
+                noResultsMsg.className = 'col-span-full text-center py-12';
+                noResultsMsg.innerHTML = `
+                    <div class="text-gray-500">
+                        <i class="fas fa-search text-4xl mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Aucun produit trouvé</h3>
+                        <p>Essayez avec d'autres mots-clés comme "amandes", "noix", "dattes"...</p>
+                    </div>
+                `;
+                document.getElementById('products-grid').appendChild(noResultsMsg);
+            } else if (!show && noResultsMsg) {
+                noResultsMsg.remove();
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateOrderSummary();
+            
+            // Définir la date minimum pour la livraison (aujourd'hui)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('delivery-date').min = today;
+            
+            // Ajouter des écouteurs d'événements pour le formulaire
+            const form = document.getElementById('customer-form');
+            form.addEventListener('input', updateOrderSummary);
+            form.addEventListener('change', updateOrderSummary);
+        });
+    </script>
+</body>
+</html>
