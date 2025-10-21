@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commander - Beldinuts</title>
+    <title>Commander - BeldiNuts</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -47,7 +47,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-warm-brown">Beldinuts</h1>
+                    <div class="flex items-center">
+                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 mr-3">
+                        <h1 class="text-2xl font-bold text-warm-brown">BeldiNuts</h1>
+                    </div>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
@@ -90,6 +93,29 @@
     <!-- Products Selection -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Sale Type Selector -->
+            <div class="mb-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-4 text-center">Type de Vente</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <button id="retail-btn" onclick="setSaleType('retail')" 
+                                    class="sale-type-btn bg-light-gold text-white py-4 px-6 rounded-full font-semibold transition-all duration-300 hover:bg-yellow-600 active">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                Vente Particulière
+                                <div class="text-sm opacity-90">Prix par gramme</div>
+                            </button>
+                            <button id="wholesale-btn" onclick="setSaleType('wholesale')" 
+                                    class="sale-type-btn bg-gray-200 text-gray-700 py-4 px-6 rounded-full font-semibold transition-all duration-300 hover:bg-gray-300">
+                                <i class="fas fa-boxes mr-2"></i>
+                                Vente en Gros
+                                <div class="text-sm opacity-90">Prix par pièce</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Search Bar with Currency Selector -->
             <div class="mb-12">
                 <div class="max-w-4xl mx-auto">
@@ -382,6 +408,39 @@
                         <span id="grand-total" class="text-2xl font-bold text-warm-brown">0€</span>
                     </div>
                     
+                    <!-- Paiement échelonné (uniquement pour vente en gros) -->
+                    <div id="installment-section" class="mb-6 p-4 bg-blue-50 rounded-lg" style="display: none;">
+                        <h4 class="text-lg font-semibold text-blue-800 mb-3">
+                            <i class="fas fa-credit-card mr-2"></i>
+                            Paiement Échelonné
+                        </h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Nombre d'échéances
+                                </label>
+                                <select id="installment-count" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="1">Paiement unique</option>
+                                    <option value="2">2 échéances</option>
+                                    <option value="3">3 échéances</option>
+                                    <option value="6">6 échéances</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Montant par échéance
+                                </label>
+                                <div id="installment-amount" class="text-lg font-bold text-blue-600">
+                                    -- DH
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-2">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Le paiement échelonné est disponible uniquement pour les commandes en gros (minimum 500 DH)
+                        </p>
+                    </div>
+
                     <div class="text-center">
                         <button id="whatsapp-order" onclick="sendToWhatsApp()" 
                                 class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
@@ -439,6 +498,9 @@
         
         // Langue actuelle
         let currentLanguage = 'fr';
+        
+        // Type de vente actuel
+        let saleType = 'retail'; // 'retail' ou 'wholesale'
         
         // Dictionnaire de traductions
         const translations = {
@@ -549,6 +611,46 @@
             }
         };
 
+        // Données de vente en gros
+        const wholesaleProducts = {
+            amandes: {
+                name: "Amandes du Maroc",
+                pricePerPiece: 600, // DH par pièce
+                weightPerPiece: 5, // kg par pièce
+                packaging: "Sac de 5 kg"
+            },
+            noix: {
+                name: "Noix de Grenoble", 
+                pricePerPiece: 500,
+                weightPerPiece: 5,
+                packaging: "Sac de 5 kg"
+            },
+            dattes: {
+                name: "Dattes Medjool",
+                pricePerPiece: 400,
+                weightPerPiece: 5,
+                packaging: "Sac de 5 kg"
+            },
+            cajou: {
+                name: "Noix de Cajou",
+                pricePerPiece: 600,
+                weightPerPiece: 5,
+                packaging: "Sac de 5 kg"
+            },
+            raisins: {
+                name: "Raisins Secs",
+                pricePerPiece: 300,
+                weightPerPiece: 5,
+                packaging: "Sac de 5 kg"
+            },
+            melange: {
+                name: "Mélange Premium",
+                pricePerPiece: 550,
+                weightPerPiece: 5,
+                packaging: "Sac de 5 kg"
+            }
+        };
+
         // Cart state
         let cart = {};
 
@@ -556,12 +658,15 @@
         Object.keys(products).forEach(productId => {
             cart[productId] = 0;
         });
+        
+        // Initialiser l'affichage des prix
+        updateAllPrices();
 
         // Fonction pour changer la devise
         function changeCurrency(currency) {
             console.log('Changement de devise vers:', currency);
             currentCurrency = currency;
-            updateAllPrices();
+            updateAllPrices(); // Mettre à jour les prix affichés
             // Mettre à jour tous les totaux des produits sélectionnés
             Object.keys(cart).forEach(productId => {
                 if (cart[productId] > 0) {
@@ -593,21 +698,104 @@
                 searchInput.placeholder = translations[language].search_placeholder;
             }
         }
+        
+        // Fonction pour changer le type de vente
+        function setSaleType(type) {
+            saleType = type;
+            
+            // Mettre à jour les boutons
+            document.querySelectorAll('.sale-type-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-light-gold', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            if (type === 'retail') {
+                document.getElementById('retail-btn').classList.add('active', 'bg-light-gold', 'text-white');
+                document.getElementById('retail-btn').classList.remove('bg-gray-200', 'text-gray-700');
+            } else {
+                document.getElementById('wholesale-btn').classList.add('active', 'bg-light-gold', 'text-white');
+                document.getElementById('wholesale-btn').classList.remove('bg-gray-200', 'text-gray-700');
+            }
+            
+            // Réinitialiser le panier
+            Object.keys(cart).forEach(productId => {
+                cart[productId] = 0;
+            });
+            
+            // Mettre à jour l'affichage des produits
+            updateAllPrices(); // Mettre à jour les prix affichés
+            updateAllProductsDisplay();
+            updateOrderSummary();
+            updateInstallmentSection();
+        }
+        
+        // Fonction pour mettre à jour la section paiement échelonné
+        function updateInstallmentSection() {
+            const installmentSection = document.getElementById('installment-section');
+            const installmentCount = document.getElementById('installment-count');
+            const installmentAmount = document.getElementById('installment-amount');
+            
+            if (saleType === 'wholesale') {
+                installmentSection.style.display = 'block';
+                
+                // Calculer le total actuel
+                let total = 0;
+                Object.keys(cart).forEach(productId => {
+                    if (cart[productId] > 0) {
+                        const wholesaleProduct = wholesaleProducts[productId];
+                        if (wholesaleProduct) {
+                            const pricePerPiece = wholesaleProduct.pricePerPiece * exchangeRates[currentCurrency];
+                            total += cart[productId] * pricePerPiece;
+                        }
+                    }
+                });
+                
+                // Mettre à jour le montant par échéance
+                const count = parseInt(installmentCount.value) || 1;
+                const amountPerInstallment = total / count;
+                installmentAmount.textContent = `${amountPerInstallment.toFixed(2)} ${getCurrencySymbol()}`;
+                
+                // Écouter les changements du nombre d'échéances
+                installmentCount.onchange = function() {
+                    const newCount = parseInt(this.value) || 1;
+                    const newAmount = total / newCount;
+                    installmentAmount.textContent = `${newAmount.toFixed(2)} ${getCurrencySymbol()}`;
+                };
+            } else {
+                installmentSection.style.display = 'none';
+            }
+        }
 
         // Fonction pour mettre à jour le texte de minimum de commande
         function updateMinOrderText() {
             const minOrderElement = document.getElementById('min-order-text');
             if (minOrderElement) {
-                const minOrderAmount = 100 * exchangeRates[currentCurrency];
-                const minOrderText = `Commande minimum : ${minOrderAmount.toFixed(2)} ${getCurrencySymbol()} (50g minimum)`;
+                let minOrderAmount;
+                let minOrderText;
+                
+                if (saleType === 'wholesale') {
+                    minOrderAmount = 500 * exchangeRates[currentCurrency];
+                    minOrderText = `Commande minimum : ${minOrderAmount.toFixed(2)} ${getCurrencySymbol()} (vente en gros)`;
+                } else {
+                    minOrderAmount = 100 * exchangeRates[currentCurrency];
+                    minOrderText = `Commande minimum : ${minOrderAmount.toFixed(2)} ${getCurrencySymbol()} (50g minimum)`;
+                }
+                
                 minOrderElement.textContent = minOrderText;
             }
         }
 
         // Fonction pour obtenir le prix dans la devise actuelle
         function getPrice(productId) {
-            const basePrice = products[productId].basePrice;
-            return basePrice * exchangeRates[currentCurrency];
+            if (saleType === 'wholesale') {
+                // Prix fixe de 6 DH/pièce pour la vente en gros
+                const basePrice = 6; // Prix fixe 6 DH/pièce
+                return basePrice * exchangeRates[currentCurrency];
+            } else {
+                // Prix par gramme pour la vente particulière
+                const basePrice = products[productId].basePrice;
+                return basePrice * exchangeRates[currentCurrency];
+            }
         }
 
         // Fonction pour obtenir le symbole de la devise
@@ -624,24 +812,45 @@
         function updateAllPrices() {
             const priceElements = document.querySelectorAll('.price-display');
             priceElements.forEach(element => {
-                const basePrice = 2; // Prix de base 2 DH/g
-                const convertedPrice = basePrice * exchangeRates[currentCurrency];
-                element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/g`;
+                const productId = element.closest('.product-card').getAttribute('data-product-name');
+                if (productId) {
+                    if (saleType === 'wholesale') {
+                        // Prix fixe de 6 DH/pièce pour la vente en gros
+                        const basePrice = 6; // Prix fixe 6 DH/pièce
+                        const convertedPrice = basePrice * exchangeRates[currentCurrency];
+                        element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/pièce`;
+                    } else {
+                        // Prix par gramme pour la vente particulière
+                        const basePrice = 2; // Prix de base 2 DH/g
+                        const convertedPrice = basePrice * exchangeRates[currentCurrency];
+                        element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/g`;
+                    }
+                }
             });
         }
 
         function increaseQuantity(productId) {
-            cart[productId] += 10; // Incrémenter par 10g
+            if (saleType === 'wholesale') {
+                cart[productId] += 1; // Incrémenter par 1 pièce
+            } else {
+                cart[productId] += 10; // Incrémenter par 10g
+            }
             updateProductDisplay(productId);
             updateOrderSummary();
         }
 
         function decreaseQuantity(productId) {
-            if (cart[productId] >= 10) {
-                cart[productId] -= 10; // Décrémenter par 10g
-                updateProductDisplay(productId);
-                updateOrderSummary();
+            if (saleType === 'wholesale') {
+                if (cart[productId] >= 1) {
+                    cart[productId] -= 1; // Décrémenter par 1 pièce
+                }
+            } else {
+                if (cart[productId] >= 10) {
+                    cart[productId] -= 10; // Décrémenter par 10g
+                }
             }
+            updateProductDisplay(productId);
+            updateOrderSummary();
         }
 
         function updateQuantity(productId, value) {
@@ -656,10 +865,27 @@
             const totalElement = document.getElementById(`${productId}-total`);
             
             qtyElement.value = cart[productId];
-            const basePrice = 2; // Prix de base 2 DH/g
-            const pricePerGram = basePrice * exchangeRates[currentCurrency];
-            const total = cart[productId] * pricePerGram;
-            totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
+            
+            if (saleType === 'wholesale') {
+                // Vente en gros : prix fixe de 6 DH/pièce
+                const basePrice = 6; // Prix fixe 6 DH/pièce
+                const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                const total = cart[productId] * pricePerPiece;
+                totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
+            } else {
+                // Vente particulière : prix par gramme
+                const basePrice = 2; // Prix de base 2 DH/g
+                const pricePerGram = basePrice * exchangeRates[currentCurrency];
+                const total = cart[productId] * pricePerGram;
+                totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
+            }
+        }
+        
+        // Fonction pour mettre à jour l'affichage de tous les produits
+        function updateAllProductsDisplay() {
+            Object.keys(products).forEach(productId => {
+                updateProductDisplay(productId);
+            });
         }
 
         function updateOrderSummary() {
@@ -676,17 +902,31 @@
                 if (cart[productId] > 0) {
                     hasItems = true;
                     const product = products[productId];
-                    const basePrice = 2; // Prix de base 2 DH/g
-                    const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                    const subtotal = cart[productId] * pricePerGram;
-                    total += subtotal;
+                    let subtotal = 0;
+                    let quantityText = '';
+
+                    if (saleType === 'wholesale') {
+                        // Vente en gros : prix fixe de 6 DH/pièce
+                        const basePrice = 6; // Prix fixe 6 DH/pièce
+                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                        subtotal = cart[productId] * pricePerPiece;
+                        quantityText = `x${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''}`;
+                    } else {
+                        // Vente particulière : prix par gramme
+                        const basePrice = 2; // Prix de base 2 DH/g
+                        const pricePerGram = basePrice * exchangeRates[currentCurrency];
+                        subtotal = cart[productId] * pricePerGram;
+                        quantityText = `x${cart[productId]}g`;
+                    }
                     
+                    total += subtotal;
+
                     const itemDiv = document.createElement('div');
                     itemDiv.className = 'flex justify-between items-center py-2 border-b border-gray-200';
                     itemDiv.innerHTML = `
                         <div>
                             <span class="font-semibold">${product.name}</span>
-                            <span class="text-gray-600 ml-2">x${cart[productId]}g</span>
+                            <span class="text-gray-600 ml-2">${quantityText}</span>
                         </div>
                         <span class="font-bold text-warm-brown">${subtotal.toFixed(2)} ${getCurrencySymbol()}</span>
                     `;
@@ -707,8 +947,18 @@
             const form = document.getElementById('customer-form');
             const isFormValid = form.checkValidity();
             
-            const minOrderAmount = 100 * exchangeRates[currentCurrency];
+            // Seuils différents selon le type de vente
+            let minOrderAmount;
+            if (saleType === 'wholesale') {
+                minOrderAmount = 500 * exchangeRates[currentCurrency]; // 500 DH pour vente en gros
+            } else {
+                minOrderAmount = 100 * exchangeRates[currentCurrency]; // 100 DH pour vente particulière
+            }
+            
             whatsappButton.disabled = !hasItems || total < minOrderAmount || !isFormValid;
+            
+            // Mettre à jour la section paiement échelonné
+            updateInstallmentSection();
         }
 
         function sendToWhatsApp() {

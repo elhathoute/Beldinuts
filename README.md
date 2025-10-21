@@ -1,12 +1,12 @@
-# 🌰 Beldinuts - Noix Naturelles du Maroc
+# 🌰 BeldiNuts - Noix Naturelles du Maroc
 
-![Beldinuts Logo](https://img.shields.io/badge/Beldinuts-Naturel%20Marocain-green)
+![BeldiNuts Logo](https://img.shields.io/badge/BeldiNuts-Naturel%20Marocain-green)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Languages](https://img.shields.io/badge/langues-3-orange)
 
 ## 📖 Description
 
-Beldinuts est une marque marocaine spécialisée dans la vente de noix, amandes et fruits secs naturels de qualité premium. Notre site web offre une expérience d'achat moderne avec un système de commande intégré via WhatsApp.
+BeldiNuts est une marque marocaine spécialisée dans la vente de noix, amandes et fruits secs naturels de qualité premium. Notre site web offre une expérience d'achat moderne avec un système de commande intégré via WhatsApp.
 
 ## ✨ Fonctionnalités
 
@@ -39,7 +39,7 @@ Beldinuts est une marque marocaine spécialisée dans la vente de noix, amandes 
 ## 📁 Structure du Projet
 
 ```
-beldiNuts/
+BeldiNuts/
 ├── index.html          # Page d'accueil
 ├── commander.html       # Page de commande
 ├── README.md           # Documentation
@@ -93,8 +93,8 @@ beldiNuts/
 ### Installation
 1. **Cloner le repository**
    ```bash
-   git clone https://github.com/elhathoute/Beldinuts.git
-   cd Beldinuts
+   git clone https://github.com/elhathoute/BeldiNuts.git
+   cd BeldiNuts
    ```
 
 2. **Ouvrir dans un navigateur**
@@ -148,7 +148,7 @@ Le site est entièrement responsive et optimisé pour :
 
 ## 📄 Licence
 
-© 2024 Beldinuts. Tous droits réservés.
+© 2024 BeldiNuts. Tous droits réservés.
 
 ---
 
