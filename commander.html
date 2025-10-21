@@ -56,6 +56,7 @@
                     <a href="index.html" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
                     <a href="index.html#apropos" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a>
                     <a href="index.html#produits" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_products">Produits</a>
+                    <a href="commander.html" class="text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full" data-translate="nav_order">Commander</a>
                     <a href="index.html#contact" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_contact">Contact</a>
                     
                     <!-- Language Selector -->
@@ -347,42 +348,42 @@
     <section class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-2xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center">Vos Informations</h2>
+                <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center" data-translate="customer_info_title">Vos Informations</h2>
                 
                 <form id="customer-form" class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label for="customer-name" class="block text-sm font-medium text-gray-700 mb-2">Nom complet *</label>
+                        <label for="customer-name" class="block text-sm font-medium text-gray-700 mb-2" data-translate="name_label">Nom complet *</label>
                         <input type="text" id="customer-name" name="name" required 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
                     </div>
                     
                     <div>
-                        <label for="customer-email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                        <label for="customer-email" class="block text-sm font-medium text-gray-700 mb-2" data-translate="email_label">Email *</label>
                         <input type="email" id="customer-email" name="email" required 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
                     </div>
                     
                     <div>
-                        <label for="customer-phone" class="block text-sm font-medium text-gray-700 mb-2">Téléphone *</label>
+                        <label for="customer-phone" class="block text-sm font-medium text-gray-700 mb-2" data-translate="phone_label">Téléphone *</label>
                         <input type="tel" id="customer-phone" name="phone" required 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
                     </div>
                     
                     <div>
-                        <label for="delivery-date" class="block text-sm font-medium text-gray-700 mb-2">Date de livraison souhaitée *</label>
+                        <label for="delivery-date" class="block text-sm font-medium text-gray-700 mb-2" data-translate="delivery_date_label">Date de livraison souhaitée *</label>
                         <input type="date" id="delivery-date" name="delivery-date" required 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent">
                     </div>
                     
                     <div class="md:col-span-2">
-                        <label for="delivery-address" class="block text-sm font-medium text-gray-700 mb-2">Adresse de livraison complète *</label>
+                        <label for="delivery-address" class="block text-sm font-medium text-gray-700 mb-2" data-translate="address_label">Adresse de livraison complète *</label>
                         <textarea id="delivery-address" name="address" rows="3" required 
                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent"
                                   placeholder="Rue, numéro, ville, code postal..."></textarea>
                     </div>
                     
                     <div class="md:col-span-2">
-                        <label for="delivery-notes" class="block text-sm font-medium text-gray-700 mb-2">Notes de livraison (optionnel)</label>
+                        <label for="delivery-notes" class="block text-sm font-medium text-gray-700 mb-2" data-translate="notes_label">Notes de livraison (optionnel)</label>
                         <textarea id="delivery-notes" name="notes" rows="2" 
                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-brown focus:border-transparent"
                                   placeholder="Instructions spéciales, horaires préférés..."></textarea>
@@ -396,7 +397,7 @@
     <section class="py-16 bg-beige">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-2xl shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center">Résumé de votre commande</h2>
+                <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center" data-translate="order_summary_title">Résumé de votre commande</h2>
                 
                 <div id="order-summary" class="space-y-4 mb-8">
                     <!-- Order items will be populated here -->
@@ -404,7 +405,7 @@
                 
                 <div class="border-t pt-6">
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-xl font-bold text-warm-brown">Total:</span>
+                        <span class="text-xl font-bold text-warm-brown" data-translate="total_label">Total:</span>
                         <span id="grand-total" class="text-2xl font-bold text-warm-brown">0€</span>
                     </div>
                     
@@ -412,7 +413,7 @@
                     <div id="installment-section" class="mb-6 p-4 bg-blue-50 rounded-lg" style="display: none;">
                         <h4 class="text-lg font-semibold text-blue-800 mb-3">
                             <i class="fas fa-credit-card mr-2"></i>
-                            Paiement Échelonné
+                            <span data-translate="installment_title">Paiement Échelonné</span>
                         </h4>
                         <div class="grid md:grid-cols-2 gap-4">
                             <div>
@@ -505,6 +506,11 @@
         // Dictionnaire de traductions
         const translations = {
             fr: {
+                nav_home: "Accueil",
+                nav_about: "À propos",
+                nav_products: "Produits",
+                nav_order: "Commander",
+                nav_contact: "Contact",
                 page_title: "Commander vos Produits",
                 page_subtitle: "Sélectionnez vos produits préférés et commandez directement via WhatsApp",
                 search_placeholder: "Rechercher un produit (amandes, noix, dattes...)",
@@ -542,9 +548,15 @@
                 retail_sale: "Vente Particulière",
                 retail_desc: "Prix par gramme",
                 wholesale_sale: "Vente en Gros",
-                wholesale_desc: "Prix par pièce"
+                wholesale_desc: "Prix par pièce",
+                installment_title: "Paiement Échelonné"
             },
             ar: {
+                nav_home: "الرئيسية",
+                nav_about: "من نحن",
+                nav_products: "المنتجات",
+                nav_order: "اطلب",
+                nav_contact: "اتصل بنا",
                 page_title: "اطلب منتجاتك",
                 page_subtitle: "اختر منتجاتك المفضلة واطلب مباشرة عبر واتساب",
                 search_placeholder: "البحث عن منتج (لوز، جوز، تمر...)",
@@ -582,9 +594,15 @@
                 retail_sale: "بيع بالتجزئة",
                 retail_desc: "سعر بالغرام",
                 wholesale_sale: "بيع بالجملة",
-                wholesale_desc: "سعر بالقطعة"
+                wholesale_desc: "سعر بالقطعة",
+                installment_title: "الدفع على أقساط"
             },
             en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_products: "Products",
+                nav_order: "Order",
+                nav_contact: "Contact",
                 page_title: "Order Your Products",
                 page_subtitle: "Select your favorite products and order directly via WhatsApp",
                 search_placeholder: "Search for a product (almonds, nuts, dates...)",
@@ -622,7 +640,8 @@
                 retail_sale: "Retail Sale",
                 retail_desc: "Price per gram",
                 wholesale_sale: "Wholesale Sale",
-                wholesale_desc: "Price per piece"
+                wholesale_desc: "Price per piece",
+                installment_title: "Installment Payment"
             }
         };
 
@@ -1128,5 +1147,80 @@
             form.addEventListener('change', updateOrderSummary);
         });
     </script>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 mr-3">
+                        <h3 class="text-2xl font-bold text-light-gold">BeldiNuts</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Votre partenaire pour une alimentation saine et naturelle. 
+                        Des produits d'exception directement du Maroc.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Produits</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Amandes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Noix</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Dattes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Fruits Secs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Informations</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">À propos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Livraison</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Retours</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-light-gold mr-2"></i>
+                            <span class="text-gray-300">Casablanca, Maroc</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-light-gold mr-2"></i>
+                            <span class="text-gray-300">+212 5XX XXX XXX</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-light-gold mr-2"></i>
+                            <span class="text-gray-300">contact@beldinuts.ma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 BeldiNuts. Tous droits réservés. | 
+                    <a href="#" class="hover:text-light-gold transition-colors">Mentions légales</a> | 
+                    <a href="#" class="hover:text-light-gold transition-colors">Politique de confidentialité</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
