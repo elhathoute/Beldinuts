@@ -3,7 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeldiNuts - Noix Naturelles du Maroc</title>
+    <title>BeldiNuts - Noix et Fruits Secs du Maroc | Qualité Premium</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="beldi-nuts-logo.png">
+    <link rel="apple-touch-icon" href="beldi-nuts-logo.png">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Découvrez BeldiNuts, votre partenaire pour une alimentation saine et naturelle. Amandes, noix, dattes, cajous et raisins secs de qualité premium directement du Maroc. Livraison rapide et prix compétitifs.">
+    <meta name="keywords" content="noix maroc, fruits secs, amandes, dattes, cajous, raisins secs, alimentation saine, produits naturels, livraison maroc, beldinuts">
+    <meta name="author" content="BeldiNuts">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="fr">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="BeldiNuts - Noix et Fruits Secs du Maroc | Qualité Premium">
+    <meta property="og:description" content="Découvrez BeldiNuts, votre partenaire pour une alimentation saine et naturelle. Amandes, noix, dattes, cajous et raisins secs de qualité premium directement du Maroc.">
+    <meta property="og:image" content="beldi-nuts-logo.png">
+    <meta property="og:url" content="https://beldinuts.ma">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BeldiNuts">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BeldiNuts - Noix et Fruits Secs du Maroc | Qualité Premium">
+    <meta name="twitter:description" content="Découvrez BeldiNuts, votre partenaire pour une alimentation saine et naturelle. Amandes, noix, dattes, cajous et raisins secs de qualité premium directement du Maroc.">
+    <meta name="twitter:image" content="beldi-nuts-logo.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -40,6 +67,26 @@
         
         .fade-in {
             animation: fadeIn 1s ease-in;
+        }
+        
+        /* Packs Scrollable Styles */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .pack-card {
+            min-width: 280px;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .pack-card {
+                min-width: 250px;
+            }
         }
         
         @keyframes fadeIn {
@@ -84,6 +131,12 @@
                     <a href="commander.html" class="text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full" data-translate="nav_order">Commander</a>
                     <a href="#contact" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_contact">Contact</a>
                     
+                    <!-- Cart Icon -->
+                    <button onclick="toggleCartModal()" class="relative text-warm-brown hover:text-light-gold transition-colors">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-light-gold text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
+                    </button>
+                    
                     <!-- Language Selector -->
                     <div class="relative">
                         <select id="language-select" onchange="changeLanguage(this.value)" 
@@ -109,6 +162,13 @@
                     <a href="#produits" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_products">Produits</a>
                     <a href="commander.html" class="block text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full text-center" data-translate="nav_order">Commander</a>
                     <a href="#contact" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_contact">Contact</a>
+                    
+                    <!-- Cart Button for Mobile -->
+                    <button onclick="toggleCartModal()" class="w-full flex items-center justify-center text-warm-brown hover:text-light-gold transition-colors py-2">
+                        <i class="fas fa-shopping-cart text-xl mr-2"></i>
+                        <span data-translate="cart">Panier</span>
+                        <span id="cart-count-mobile" class="ml-2 bg-light-gold text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
+                    </button>
                     
                     <!-- Language Selector for Mobile -->
                     <div class="pt-2">
@@ -231,7 +291,12 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Product 1 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="openProductModal('amandes')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                                <i class="fas fa-eye text-xl"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-warm-brown mb-3">Amandes du Maroc</h3>
@@ -339,6 +404,203 @@
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
                                 Commander
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packs Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6">
+                    Packs Recommandés
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Économisez avec nos packs de produits sélectionnés
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div class="overflow-x-auto scrollbar-hide">
+                    <div class="flex space-x-6 pb-4" style="width: max-content;">
+                        <!-- Pack 1: Pack Sport -->
+                        <div class="bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-dumbbell text-3xl mb-2"></i>
+                                <h4 class="text-lg font-bold">Pack Sport</h4>
+                                <p class="text-sm opacity-90">Énergie pour les sportifs</p>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>100g Amandes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>100g Dattes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>100g Raisins</span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold mb-2">
+                                    <span>300 DH</span>
+                                    <span class="text-sm opacity-75 line-through ml-2">360 DH</span>
+                                </div>
+                                <button onclick="addPackToCart('sport')" class="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-plus mr-1"></i>
+                                    Ajouter Pack
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pack 2: Pack Famille -->
+                        <div class="bg-gradient-to-br from-green-600 to-green-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-users text-3xl mb-2"></i>
+                                <h4 class="text-lg font-bold">Pack Famille</h4>
+                                <p class="text-sm opacity-90">Idéal pour toute la famille</p>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>150g Amandes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>150g Noix</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>100g Dattes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>100g Cajous</span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold mb-2">
+                                    <span>500 DH</span>
+                                    <span class="text-sm opacity-75 line-through ml-2">600 DH</span>
+                                </div>
+                                <button onclick="addPackToCart('famille')" class="bg-white text-green-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-plus mr-1"></i>
+                                    Ajouter Pack
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pack 3: Pack Collèges -->
+                        <div class="bg-gradient-to-br from-purple-600 to-purple-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-graduation-cap text-3xl mb-2"></i>
+                                <h4 class="text-lg font-bold">Pack Collèges</h4>
+                                <p class="text-sm opacity-90">Étudiants et collèges</p>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>200g Amandes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>200g Dattes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>200g Raisins</span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold mb-2">
+                                    <span>400 DH</span>
+                                    <span class="text-sm opacity-75 line-through ml-2">480 DH</span>
+                                </div>
+                                <button onclick="addPackToCart('colleges')" class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-plus mr-1"></i>
+                                    Ajouter Pack
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pack 4: Pack Découverte -->
+                        <div class="bg-gradient-to-br from-orange-600 to-orange-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-gift text-3xl mb-2"></i>
+                                <h4 class="text-lg font-bold">Pack Découverte</h4>
+                                <p class="text-sm opacity-90">Parfait pour commencer</p>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>50g Amandes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>50g Noix</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>50g Dattes</span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold mb-2">
+                                    <span>150 DH</span>
+                                    <span class="text-sm opacity-75 line-through ml-2">180 DH</span>
+                                </div>
+                                <button onclick="addPackToCart('decouverte')" class="bg-white text-orange-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-plus mr-1"></i>
+                                    Ajouter Pack
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pack 5: Pack Premium -->
+                        <div class="bg-gradient-to-br from-yellow-600 to-yellow-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-crown text-3xl mb-2"></i>
+                                <h4 class="text-lg font-bold">Pack Premium</h4>
+                                <p class="text-sm opacity-90">Notre sélection d'exception</p>
+                            </div>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>300g Amandes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>300g Noix</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>300g Dattes</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>300g Cajous</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check mr-2"></i>
+                                    <span>300g Raisins</span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold mb-2">
+                                    <span>1,500 DH</span>
+                                    <span class="text-sm opacity-75 line-through ml-2">1,800 DH</span>
+                                </div>
+                                <button onclick="addPackToCart('premium')" class="bg-white text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-plus mr-1"></i>
+                                    Ajouter Pack
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -759,6 +1021,295 @@
                 });
             }
         });
+
+        // Cart functionality
+        let cart = {};
+
+        // Pack data
+        const packs = {
+            sport: {
+                name: 'Pack Sport',
+                price: 300,
+                originalPrice: 360,
+                products: {
+                    amandes: 100,
+                    dattes: 100,
+                    raisins: 100
+                }
+            },
+            famille: {
+                name: 'Pack Famille',
+                price: 500,
+                originalPrice: 600,
+                products: {
+                    amandes: 150,
+                    noix: 150,
+                    dattes: 100,
+                    cajou: 100
+                }
+            },
+            colleges: {
+                name: 'Pack Collèges',
+                price: 400,
+                originalPrice: 480,
+                products: {
+                    amandes: 200,
+                    dattes: 200,
+                    raisins: 200
+                }
+            },
+            decouverte: {
+                name: 'Pack Découverte',
+                price: 150,
+                originalPrice: 180,
+                products: {
+                    amandes: 50,
+                    noix: 50,
+                    dattes: 50
+                }
+            },
+            premium: {
+                name: 'Pack Premium',
+                price: 1500,
+                originalPrice: 1800,
+                products: {
+                    amandes: 300,
+                    noix: 300,
+                    dattes: 300,
+                    cajou: 300,
+                    raisins: 300
+                }
+            }
+        };
+
+        // Initialize cart
+        function initializeCart() {
+            const products = ['amandes', 'noix', 'dattes', 'cajou', 'raisins', 'melange'];
+            products.forEach(product => {
+                cart[product] = 0;
+            });
+        }
+
+        // Toggle cart modal
+        function toggleCartModal() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal.classList.contains('hidden')) {
+                openCartModal();
+            } else {
+                closeCartModal();
+            }
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            const cartModal = document.getElementById('cart-modal');
+            updateCartDisplay();
+            cartModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close cart modal
+        function closeCartModal() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartCountElement = document.getElementById('cart-count');
+            const cartCountMobileElement = document.getElementById('cart-count-mobile');
+            
+            let total = 0;
+            let itemCount = 0;
+            let hasItems = false;
+            
+            cartItemsContainer.innerHTML = '';
+            
+            // Display cart items
+            Object.keys(cart).forEach(productId => {
+                if (cart[productId] > 0) {
+                    hasItems = true;
+                    const product = getProductInfo(productId);
+                    const subtotal = cart[productId] * product.price;
+                    total += subtotal;
+                    itemCount += cart[productId];
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'flex justify-between items-center py-3 border-b border-gray-200';
+                    itemDiv.innerHTML = `
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-warm-brown">${product.name}</h4>
+                            <p class="text-sm text-gray-600">${cart[productId]}g</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-bold text-warm-brown">${subtotal.toFixed(2)} DH</span>
+                            <button onclick="removeFromCart('${productId}')" class="text-red-500 hover:text-red-700 p-1">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemDiv);
+                }
+            });
+            
+            if (!hasItems) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500 text-lg" data-translate="empty_cart">Votre panier est vide</p>
+                        <p class="text-gray-400" data-translate="add_items">Ajoutez des produits pour commencer</p>
+                    </div>
+                `;
+            }
+            
+            cartTotalElement.textContent = `${total.toFixed(2)} DH`;
+            cartCountElement.textContent = itemCount;
+            if (cartCountMobileElement) {
+                cartCountMobileElement.textContent = itemCount;
+            }
+        }
+
+        // Get product info
+        function getProductInfo(productId) {
+            const products = {
+                amandes: { name: 'Amandes du Maroc', price: 45 },
+                noix: { name: 'Noix de Grenoble', price: 38 },
+                dattes: { name: 'Dattes Medjool', price: 28 },
+                cajou: { name: 'Noix de Cajou', price: 42 },
+                raisins: { name: 'Raisins Secs', price: 22 },
+                melange: { name: 'Mélange Premium', price: 35 }
+            };
+            return products[productId] || { name: 'Produit', price: 0 };
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart[productId] = 0;
+            updateCartDisplay();
+        }
+
+        // Order via WhatsApp
+        function orderViaWhatsApp() {
+            let hasItems = false;
+            Object.keys(cart).forEach(productId => {
+                if (cart[productId] > 0) {
+                    hasItems = true;
+                }
+            });
+            
+            if (!hasItems) {
+                alert('Votre panier est vide. Ajoutez des produits avant de commander.');
+                return;
+            }
+            
+            let message = "🛒 *Commande BeldiNuts*\n\n";
+            message += "Bonjour ! Je souhaite commander les produits suivants :\n\n";
+            
+            let total = 0;
+            Object.keys(cart).forEach(productId => {
+                if (cart[productId] > 0) {
+                    const product = getProductInfo(productId);
+                    const subtotal = cart[productId] * product.price;
+                    total += subtotal;
+                    message += `• ${product.name}: ${cart[productId]}g (${subtotal.toFixed(2)} DH)\n`;
+                }
+            });
+            
+            message += `\n*Total: ${total.toFixed(2)} DH*\n\n`;
+            message += `Merci de me confirmer la disponibilité et les modalités de livraison.`;
+            
+            const phoneNumber = "212615919437";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Pack functions
+        function addPackToCart(packId) {
+            const pack = packs[packId];
+            if (!pack) return;
+            
+            // Ajouter chaque produit du pack au panier
+            Object.keys(pack.products).forEach(productId => {
+                cart[productId] += pack.products[productId];
+            });
+            
+            // Mettre à jour l'affichage
+            updateCartDisplay();
+            
+            // Afficher une notification
+            showPackAddedNotification(pack.name);
+        }
+        
+        function showPackAddedNotification(packName) {
+            // Créer une notification temporaire
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Pack "${packName}" ajouté au panier !</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animer l'apparition
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Supprimer après 3 secondes
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCart();
+        });
     </script>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-warm-brown" data-translate="cart_title">Mon Panier</h2>
+                <button onclick="closeCartModal()" class="text-gray-500 hover:text-warm-brown text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="p-6">
+                <div id="cart-items" class="space-y-4 mb-6">
+                    <!-- Cart items will be populated here -->
+                </div>
+                
+                <div class="border-t pt-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xl font-bold text-warm-brown" data-translate="cart_total">Total:</span>
+                        <span id="cart-total" class="text-2xl font-bold text-warm-brown">0 DH</span>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="closeCartModal()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-full transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            <span data-translate="continue_shopping">Continuer les achats</span>
+                        </button>
+                        <button onclick="orderViaWhatsApp()" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full transition-colors">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            <span data-translate="order_whatsapp">Commander via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
