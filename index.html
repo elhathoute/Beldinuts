@@ -95,9 +95,30 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button class="text-warm-brown">
+                    <button id="mobile-menu-toggle" class="text-warm-brown focus:outline-none" onclick="toggleMobileMenu()">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+                <div class="px-4 py-4 space-y-4">
+                    <a href="#accueil" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_home">Accueil</a>
+                    <a href="#apropos" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_about">À propos</a>
+                    <a href="#produits" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_products">Produits</a>
+                    <a href="commander.html" class="block text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full text-center" data-translate="nav_order">Commander</a>
+                    <a href="#contact" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_contact">Contact</a>
+                    
+                    <!-- Language Selector for Mobile -->
+                    <div class="pt-2">
+                        <select id="language-select-mobile" onchange="changeLanguage(this.value)" 
+                                class="w-full bg-transparent border border-warm-brown text-warm-brown px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="ar">🇲🇦 AR</option>
+                            <option value="en">🇺🇸 EN</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -704,6 +725,39 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Fonction pour basculer le menu mobile
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const toggleButton = document.getElementById('mobile-menu-toggle');
+            const icon = toggleButton.querySelector('i');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Synchroniser les sélecteurs de langue
+        document.addEventListener('DOMContentLoaded', function() {
+            const desktopLangSelect = document.getElementById('language-select');
+            const mobileLangSelect = document.getElementById('language-select-mobile');
+            
+            if (desktopLangSelect && mobileLangSelect) {
+                desktopLangSelect.addEventListener('change', function() {
+                    mobileLangSelect.value = this.value;
+                });
+                
+                mobileLangSelect.addEventListener('change', function() {
+                    desktopLangSelect.value = this.value;
+                });
+            }
         });
     </script>
 </body>
