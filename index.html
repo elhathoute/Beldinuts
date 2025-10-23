@@ -128,6 +128,7 @@
                     <a href="#accueil" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
                     <a href="#apropos" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a>
                     <a href="#produits" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_products">Produits</a>
+                    <a href="#faq" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_faq">FAQ</a>
                     <a href="commander.html" class="text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full" data-translate="nav_order">Commander</a>
                     <a href="#contact" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_contact">Contact</a>
                     
@@ -160,6 +161,7 @@
                     <a href="#accueil" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_home">Accueil</a>
                     <a href="#apropos" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_about">À propos</a>
                     <a href="#produits" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_products">Produits</a>
+                    <a href="#faq" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_faq">FAQ</a>
                     <a href="commander.html" class="block text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full text-center" data-translate="nav_order">Commander</a>
                     <a href="#contact" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_contact">Contact</a>
                     
@@ -218,9 +220,14 @@
                         Depuis notre création, nous nous engageons à vous offrir les meilleures noix, 
                         amandes et fruits secs, sélectionnés avec soin auprès de producteurs locaux.
                     </p>
-                    <p class="text-lg text-gray-700 mb-8" data-translate="about_text2">
+                    <p class="text-lg text-gray-700 mb-6" data-translate="about_text2">
                         Notre mission est de promouvoir une alimentation saine en vous proposant des produits 
                         100% naturels, riches en nutriments et sans additifs, directement de nos terres marocaines.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-8" data-translate="about_text3">
+                        Grâce à l'expertise d'Abderahhim et à ses 20 ans d'expérience, nous garantissons la qualité 
+                        exceptionnelle de chaque produit que nous vous proposons, en respectant les traditions 
+                        marocaines et les standards internationaux de qualité.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <div class="flex items-center text-warm-brown">
@@ -694,6 +701,150 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6" data-translate="faq_title">
+                    Questions Fréquentes
+                </h2>
+                <p class="text-lg text-gray-600" data-translate="faq_subtitle">
+                    Trouvez les réponses aux questions les plus courantes
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q1">
+                                Quels sont les délais de livraison ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a1">
+                            Nous livrons dans tout le Maroc sous 24-48h pour Casablanca et Rabat, et 2-3 jours pour les autres villes. 
+                            La livraison est gratuite pour les commandes supérieures à 500 DH.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q2">
+                                Comment commander vos produits ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a2">
+                            C'est très simple ! Ajoutez vos produits au panier, puis cliquez sur "Commander via WhatsApp". 
+                            Vous serez redirigé vers WhatsApp où vous pourrez finaliser votre commande avec nos conseillers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q3">
+                                Vos produits sont-ils vraiment 100% naturels ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a3">
+                            Absolument ! Tous nos produits sont 100% naturels, sans conservateurs, sans additifs chimiques, 
+                            et sans colorants artificiels. Ils sont séchés naturellement et conditionnés dans des emballages hermétiques.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q4">
+                                Quels sont les modes de paiement acceptés ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a4">
+                            Nous acceptons le paiement à la livraison (contre remboursement), le virement bancaire, 
+                            et les paiements via CMI. Vous pouvez choisir votre mode de paiement préféré lors de la commande.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q5">
+                                Comment conserver vos produits ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a5">
+                            Conservez nos produits dans un endroit frais et sec, à l'abri de la lumière directe. 
+                            Une fois ouverts, gardez-les dans leur emballage hermétique ou dans un récipient fermé. 
+                            Ils se conservent plusieurs mois dans de bonnes conditions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q6">
+                                Proposez-vous des remises pour les commandes en gros ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a6">
+                            Oui ! Nous proposons des tarifs préférentiels pour les commandes en gros (à partir de 5kg par produit). 
+                            Contactez-nous directement via WhatsApp pour obtenir un devis personnalisé.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-warm-brown" data-translate="faq_q7">
+                                Que faire si je ne suis pas satisfait de ma commande ?
+                            </h3>
+                            <i class="fas fa-chevron-down text-warm-brown transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600" data-translate="faq_a7">
+                            Votre satisfaction est notre priorité ! Si vous n'êtes pas entièrement satisfait, 
+                            contactez-nous dans les 48h suivant la livraison. Nous vous proposerons un remboursement 
+                            ou un échange selon votre préférence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact" class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -779,6 +930,7 @@
                 nav_home: "Accueil",
                 nav_about: "À propos",
                 nav_products: "Produits",
+                nav_faq: "FAQ",
                 nav_order: "Commander",
                 nav_contact: "Contact",
                 hero_title: "100% Naturel, Croquant et Sain",
@@ -786,8 +938,9 @@
                 hero_description: "Découvrez nos noix, amandes et fruits secs d'exception, cultivés avec passion dans les terres fertiles du Maroc.",
                 hero_button: "Découvrir nos produits",
                 about_title: "Notre Histoire",
-                about_text1: "Beldinuts est née de la passion pour les produits naturels et authentiques du Maroc. Depuis notre création, nous nous engageons à vous offrir les meilleures noix, amandes et fruits secs, sélectionnés avec soin auprès de producteurs locaux.",
+                about_text1: "Beldinuts est née de la passion d'Abderahhim pour les produits naturels et authentiques du Maroc. Avec plus de 20 ans d'expérience dans le domaine des noix et fruits secs, notre fondateur a développé une expertise unique pour sélectionner les meilleures amandes, noix et fruits secs, directement auprès de producteurs locaux de confiance.",
                 about_text2: "Notre mission est de promouvoir une alimentation saine en vous proposant des produits 100% naturels, riches en nutriments et sans additifs, directement de nos terres marocaines.",
+                about_text3: "Grâce à l'expertise d'Abderahhim et à ses 20 ans d'expérience, nous garantissons la qualité exceptionnelle de chaque produit que nous vous proposons, en respectant les traditions marocaines et les standards internationaux de qualité.",
                 about_natural: "100% Naturel",
                 about_origin: "Origine Maroc",
                 about_quality: "Qualité Premium",
@@ -821,12 +974,29 @@
                 footer_contact: "Contact",
                 footer_legal: "Mentions légales",
                 footer_privacy: "Politique de confidentialité",
-                footer_copyright: "© 2024 Beldinuts. Tous droits réservés."
+                footer_copyright: "© 2024 Beldinuts. Tous droits réservés.",
+                faq_title: "Questions Fréquentes",
+                faq_subtitle: "Trouvez les réponses aux questions les plus courantes",
+                faq_q1: "Quels sont les délais de livraison ?",
+                faq_a1: "Nous livrons dans tout le Maroc sous 24-48h pour Casablanca et Rabat, et 2-3 jours pour les autres villes. La livraison est gratuite pour les commandes supérieures à 500 DH.",
+                faq_q2: "Comment commander vos produits ?",
+                faq_a2: "C'est très simple ! Ajoutez vos produits au panier, puis cliquez sur \"Commander via WhatsApp\". Vous serez redirigé vers WhatsApp où vous pourrez finaliser votre commande avec nos conseillers.",
+                faq_q3: "Vos produits sont-ils vraiment 100% naturels ?",
+                faq_a3: "Absolument ! Tous nos produits sont 100% naturels, sans conservateurs, sans additifs chimiques, et sans colorants artificiels. Ils sont séchés naturellement et conditionnés dans des emballages hermétiques.",
+                faq_q4: "Quels sont les modes de paiement acceptés ?",
+                faq_a4: "Nous acceptons le paiement à la livraison (contre remboursement), le virement bancaire, et les paiements via CMI. Vous pouvez choisir votre mode de paiement préféré lors de la commande.",
+                faq_q5: "Comment conserver vos produits ?",
+                faq_a5: "Conservez nos produits dans un endroit frais et sec, à l'abri de la lumière directe. Une fois ouverts, gardez-les dans leur emballage hermétique ou dans un récipient fermé. Ils se conservent plusieurs mois dans de bonnes conditions.",
+                faq_q6: "Proposez-vous des remises pour les commandes en gros ?",
+                faq_a6: "Oui ! Nous proposons des tarifs préférentiels pour les commandes en gros (à partir de 5kg par produit). Contactez-nous directement via WhatsApp pour obtenir un devis personnalisé.",
+                faq_q7: "Que faire si je ne suis pas satisfait de ma commande ?",
+                faq_a7: "Votre satisfaction est notre priorité ! Si vous n'êtes pas entièrement satisfait, contactez-nous dans les 48h suivant la livraison. Nous vous proposerons un remboursement ou un échange selon votre préférence."
             },
             ar: {
                 nav_home: "الرئيسية",
                 nav_about: "من نحن",
                 nav_products: "المنتجات",
+                nav_faq: "الأسئلة الشائعة",
                 nav_order: "اطلب",
                 nav_contact: "اتصل بنا",
                 hero_title: "100% طبيعي، مقرمش وصحي",
@@ -834,8 +1004,9 @@
                 hero_description: "اكتشفوا مكسراتنا ولوزنا وفواكهنا المجففة الاستثنائية، المزروعة بشغف في الأراضي الخصبة للمغرب.",
                 hero_button: "اكتشف منتجاتنا",
                 about_title: "قصتنا",
-                about_text1: "ولدت بيلدي نتس من شغف المنتجات الطبيعية والأصيلة للمغرب. منذ تأسيسنا، نلتزم بتقديم أفضل المكسرات واللوز والفواكه المجففة، مختارة بعناية من المنتجين المحليين.",
+                about_text1: "ولدت بيلدي نتس من شغف عبد الرحيم للمنتجات الطبيعية والأصيلة للمغرب. مع أكثر من 20 عاماً من الخبرة في مجال المكسرات والفواكه المجففة، طور مؤسسنا خبرة فريدة لاختيار أفضل اللوز والمكسرات والفواكه المجففة، مباشرة من المنتجين المحليين الموثوقين.",
                 about_text2: "مهمتنا هي تعزيز التغذية الصحية من خلال تقديم منتجات 100% طبيعية، غنية بالمغذيات وخالية من الإضافات، مباشرة من أراضينا المغربية.",
+                about_text3: "بفضل خبرة عبد الرحيم وعشرين عاماً من الخبرة، نضمن الجودة الاستثنائية لكل منتج نقدمه لكم، مع احترام التقاليد المغربية والمعايير الدولية للجودة.",
                 about_natural: "100% طبيعي",
                 about_origin: "أصل مغربي",
                 about_quality: "جودة ممتازة",
@@ -869,12 +1040,29 @@
                 footer_contact: "اتصل بنا",
                 footer_legal: "الشروط القانونية",
                 footer_privacy: "سياسة الخصوصية",
-                footer_copyright: "© 2024 بيلدي نتس. جميع الحقوق محفوظة."
+                footer_copyright: "© 2024 بيلدي نتس. جميع الحقوق محفوظة.",
+                faq_title: "الأسئلة الشائعة",
+                faq_subtitle: "اعثر على إجابات للأسئلة الأكثر شيوعاً",
+                faq_q1: "ما هي أوقات التسليم؟",
+                faq_a1: "نحن نقدم التوصيل في جميع أنحاء المغرب خلال 24-48 ساعة للدار البيضاء والرباط، و2-3 أيام للمدن الأخرى. التوصيل مجاني للطلبات التي تزيد عن 500 درهم.",
+                faq_q2: "كيف يمكنني طلب منتجاتكم؟",
+                faq_a2: "الأمر بسيط جداً! أضف منتجاتك إلى السلة، ثم انقر على \"اطلب عبر واتساب\". ستتم إعادة توجيهك إلى واتساب حيث يمكنك إتمام طلبك مع مستشارينا.",
+                faq_q3: "هل منتجاتكم طبيعية 100% حقاً؟",
+                faq_a3: "بالطبع! جميع منتجاتنا طبيعية 100%، بدون مواد حافظة، بدون إضافات كيميائية، وبدون ألوان اصطناعية. يتم تجفيفها طبيعياً وتعبئتها في عبوات محكمة الإغلاق.",
+                faq_q4: "ما هي طرق الدفع المقبولة؟",
+                faq_a4: "نحن نقبل الدفع عند التسليم (الدفع نقداً)، التحويل البنكي، والدفع عبر CMI. يمكنك اختيار طريقة الدفع المفضلة لديك عند الطلب.",
+                faq_q5: "كيف أحفظ منتجاتكم؟",
+                faq_a5: "احفظ منتجاتنا في مكان بارد وجاف، بعيداً عن الضوء المباشر. بمجرد فتحها، احتفظ بها في عبوتها المحكمة أو في وعاء مغلق. تحتفظ بجودتها لعدة أشهر في الظروف المناسبة.",
+                faq_q6: "هل تقدمون خصومات للطلبات بالجملة؟",
+                faq_a6: "نعم! نقدم أسعاراً تفضيلية للطلبات بالجملة (بدءاً من 5 كيلو لكل منتج). اتصل بنا مباشرة عبر واتساب للحصول على عرض سعر مخصص.",
+                faq_q7: "ماذا أفعل إذا لم أكن راضياً عن طلبي؟",
+                faq_a7: "رضاكم هو أولويتنا! إذا لم تكن راضياً تماماً، اتصل بنا خلال 48 ساعة من التسليم. سنقدم لك استرداد أو استبدال حسب تفضيلك."
             },
             en: {
                 nav_home: "Home",
                 nav_about: "About",
                 nav_products: "Products",
+                nav_faq: "FAQ",
                 nav_order: "Order",
                 nav_contact: "Contact",
                 hero_title: "100% Natural, Crunchy and Healthy",
@@ -882,8 +1070,9 @@
                 hero_description: "Discover our exceptional nuts, almonds and dried fruits, grown with passion in the fertile lands of Morocco.",
                 hero_button: "Discover our products",
                 about_title: "Our Story",
-                about_text1: "Beldinuts was born from the passion for natural and authentic Moroccan products. Since our creation, we are committed to offering you the best nuts, almonds and dried fruits, carefully selected from local producers.",
+                about_text1: "Beldinuts was born from Abderahhim's passion for natural and authentic Moroccan products. With over 20 years of experience in the nuts and dried fruits domain, our founder has developed unique expertise in selecting the finest almonds, nuts and dried fruits, directly from trusted local producers.",
                 about_text2: "Our mission is to promote healthy eating by offering you 100% natural products, rich in nutrients and without additives, directly from our Moroccan lands.",
+                about_text3: "Thanks to Abderahhim's expertise and his 20 years of experience, we guarantee the exceptional quality of every product we offer you, respecting Moroccan traditions and international quality standards.",
                 about_natural: "100% Natural",
                 about_origin: "Moroccan Origin",
                 about_quality: "Premium Quality",
@@ -917,7 +1106,23 @@
                 footer_contact: "Contact",
                 footer_legal: "Legal Notice",
                 footer_privacy: "Privacy Policy",
-                footer_copyright: "© 2024 Beldinuts. All rights reserved."
+                footer_copyright: "© 2024 Beldinuts. All rights reserved.",
+                faq_title: "Frequently Asked Questions",
+                faq_subtitle: "Find answers to the most common questions",
+                faq_q1: "What are the delivery times?",
+                faq_a1: "We deliver throughout Morocco within 24-48h for Casablanca and Rabat, and 2-3 days for other cities. Delivery is free for orders over 500 DH.",
+                faq_q2: "How do I order your products?",
+                faq_a2: "It's very simple! Add your products to the cart, then click \"Order via WhatsApp\". You'll be redirected to WhatsApp where you can finalize your order with our advisors.",
+                faq_q3: "Are your products really 100% natural?",
+                faq_a3: "Absolutely! All our products are 100% natural, without preservatives, without chemical additives, and without artificial colors. They are naturally dried and packaged in airtight containers.",
+                faq_q4: "What payment methods are accepted?",
+                faq_a4: "We accept cash on delivery, bank transfer, and payments via CMI. You can choose your preferred payment method when ordering.",
+                faq_q5: "How do I store your products?",
+                faq_a5: "Store our products in a cool, dry place, away from direct light. Once opened, keep them in their airtight packaging or in a closed container. They keep for several months under good conditions.",
+                faq_q6: "Do you offer discounts for bulk orders?",
+                faq_a6: "Yes! We offer preferential rates for bulk orders (starting from 5kg per product). Contact us directly via WhatsApp to get a personalized quote.",
+                faq_q7: "What if I'm not satisfied with my order?",
+                faq_a7: "Your satisfaction is our priority! If you're not entirely satisfied, contact us within 48h of delivery. We'll offer you a refund or exchange according to your preference."
             }
         };
 
@@ -925,6 +1130,9 @@
         function changeLanguage(language) {
             currentLanguage = language;
             document.documentElement.lang = language;
+            
+            // Sauvegarder la langue dans localStorage
+            localStorage.setItem('selectedLanguage', language);
             
             // Mettre à jour tous les éléments avec data-translate
             document.querySelectorAll('[data-translate]').forEach(element => {
@@ -1003,6 +1211,22 @@
                 mobileMenu.classList.add('hidden');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+            }
+        }
+
+        // Fonction pour basculer les FAQ
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
             }
         }
 
@@ -1273,6 +1497,34 @@
         // Initialize cart on page load
         document.addEventListener('DOMContentLoaded', function() {
             initializeCart();
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage');
+            if (savedLanguage && translations[savedLanguage]) {
+                currentLanguage = savedLanguage;
+                document.documentElement.lang = savedLanguage;
+                
+                // Mettre à jour les sélecteurs de langue
+                const desktopLangSelect = document.getElementById('language-select');
+                const mobileLangSelect = document.getElementById('language-select-mobile');
+                
+                if (desktopLangSelect) desktopLangSelect.value = savedLanguage;
+                if (mobileLangSelect) mobileLangSelect.value = savedLanguage;
+                
+                // Appliquer les traductions
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[savedLanguage] && translations[savedLanguage][key]) {
+                        element.textContent = translations[savedLanguage][key];
+                    }
+                });
+                
+                // Mettre à jour les placeholders
+                const emailInput = document.querySelector('input[type="email"]');
+                if (emailInput && translations[savedLanguage].newsletter_placeholder) {
+                    emailInput.placeholder = translations[savedLanguage].newsletter_placeholder;
+                }
+            }
         });
     </script>
 

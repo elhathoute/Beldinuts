@@ -523,6 +523,27 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
                         </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('amandes', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('amandes', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('amandes', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('amandes', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('amandes', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('amandes')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
@@ -537,6 +558,53 @@
                                 </button>
                             </div>
                             <span id="amandes-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.8 (24 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Amina M.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Excellent qualité, très fraîches!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Youssef K.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfait pour mes collations sportives"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -558,6 +626,27 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
                         </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('noix', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('noix', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('noix', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('noix', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('noix', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('noix')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
@@ -572,6 +661,53 @@
                                 </button>
                             </div>
                             <span id="noix-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.9 (18 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Fatima A.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Très croquantes et savoureuses!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Hassan B.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfaites pour mes salades"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -593,6 +729,27 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
                         </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('dattes', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('dattes', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('dattes', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('dattes', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('dattes', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('dattes')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
@@ -607,6 +764,53 @@
                                 </button>
                             </div>
                             <span id="dattes-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.7 (31 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Khadija L.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Très sucrées et naturelles!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Omar R.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfaites pour le sport!"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -628,6 +832,27 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
                         </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('cajou', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cajou', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cajou', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cajou', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cajou', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('cajou')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
@@ -642,6 +867,53 @@
                                 </button>
                             </div>
                             <span id="cajou-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.6 (22 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Aicha S.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Très croquantes et délicieuses!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Mehdi T.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfaites pour l'apéritif"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -663,6 +935,27 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
                         </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('raisins', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('raisins', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('raisins', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('raisins', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('raisins', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('raisins')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
@@ -677,6 +970,53 @@
                                 </button>
                             </div>
                             <span id="raisins-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.5 (19 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Naima H.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Très sucrés et naturels!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Karim Z.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfaits pour les enfants"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -698,6 +1038,27 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
                         </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('melange', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('melange', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('melange', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('melange', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('melange', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('melange')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
@@ -712,6 +1073,53 @@
                                 </button>
                             </div>
                             <span id="melange-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.9 (27 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Laila M.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Mélange parfait, très équilibré!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Rachid F.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Excellent pour toute la famille"</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1085,7 +1493,8 @@
                 pack_premium_item3: "300g Dattes",
                 pack_premium_item4: "300g Cajous",
                 pack_premium_item5: "300g Raisins",
-                add_pack: "Ajouter Pack"
+                add_pack: "Ajouter Pack",
+                suggested_quantities: "Quantités suggérées:"
             },
             ar: {
                 nav_home: "الرئيسية",
@@ -1131,7 +1540,8 @@
                 retail_desc: "سعر بالغرام",
                 wholesale_sale: "بيع بالجملة",
                 wholesale_desc: "سعر بالقطعة",
-                installment_title: "الدفع على أقساط"
+                installment_title: "الدفع على أقساط",
+                suggested_quantities: "الكميات المقترحة:"
             },
             en: {
                 nav_home: "Home",
@@ -1177,7 +1587,8 @@
                 retail_desc: "Price per gram",
                 wholesale_sale: "Wholesale Sale",
                 wholesale_desc: "Price per piece",
-                installment_title: "Installment Payment"
+                installment_title: "Installment Payment",
+                suggested_quantities: "Suggested quantities:"
             }
         };
 
@@ -1327,6 +1738,9 @@
         function changeLanguage(language) {
             currentLanguage = language;
             document.documentElement.lang = language;
+            
+            // Sauvegarder la langue dans localStorage
+            localStorage.setItem('selectedLanguage', language);
             
             // Mettre à jour tous les éléments avec data-translate
             document.querySelectorAll('[data-translate]').forEach(element => {
@@ -1519,6 +1933,13 @@
         function updateQuantity(productId, value) {
             const quantity = parseInt(value) || 0;
             cart[productId] = Math.max(0, quantity);
+            updateProductDisplay(productId);
+            updateOrderSummary();
+        }
+
+        // Function to set suggested quantity
+        function setSuggestedQuantity(productId, quantity) {
+            cart[productId] = quantity;
             updateProductDisplay(productId);
             updateOrderSummary();
         }
@@ -1856,6 +2277,34 @@
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             updateOrderSummary();
+            
+            // Charger la langue sauvegardée
+            const savedLanguage = localStorage.getItem('selectedLanguage');
+            if (savedLanguage && translations[savedLanguage]) {
+                currentLanguage = savedLanguage;
+                document.documentElement.lang = savedLanguage;
+                
+                // Mettre à jour les sélecteurs de langue
+                const desktopLangSelect = document.getElementById('language-select');
+                const mobileLangSelect = document.getElementById('language-select-mobile');
+                
+                if (desktopLangSelect) desktopLangSelect.value = savedLanguage;
+                if (mobileLangSelect) mobileLangSelect.value = savedLanguage;
+                
+                // Appliquer les traductions
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[savedLanguage] && translations[savedLanguage][key]) {
+                        element.textContent = translations[savedLanguage][key];
+                    }
+                });
+                
+                // Mettre à jour les placeholders
+                const searchInput = document.getElementById('product-search');
+                if (searchInput && translations[savedLanguage].search_placeholder) {
+                    searchInput.placeholder = translations[savedLanguage].search_placeholder;
+                }
+            }
             
             // Définir la date minimum pour la livraison (aujourd'hui)
             const today = new Date().toISOString().split('T')[0];
