@@ -89,6 +89,27 @@
             }
         }
         
+        .product-image-carousel {
+            transition: background-image 0.8s ease-in-out;
+            position: relative;
+        }
+        
+        .product-image-carousel::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .product-image-carousel.animating::after {
+            opacity: 1;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -296,119 +317,149 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
+                <!-- Product 1: Graines noires - 1 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="graines-noires" style="background-image: url('https://www.shutterstock.com/image-photo/sunflower-seed-isolated-on-white-600nw-2458579765.jpg')">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                            <button onclick="openProductModal('amandes')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                            <button onclick="openProductModal('graines-noires')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
                                 <i class="fas fa-eye text-xl"></i>
                             </button>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Amandes du Maroc</h3>
-                        <p class="text-gray-600 mb-4">
-                            Amandes premium, riches en protéines et vitamines E. 
-                            Parfaites pour une collation saine.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_graines_noires">Graines noires</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_graines_noires_desc">
+                            Graines noires naturelles et savoureuses, riches en nutriments essentiels.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">45€/kg</span>
-                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                            <span class="text-2xl font-bold text-warm-brown">1 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
+                <!-- Product 2: Cacao normal - 2 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="cacao-normal" style="background-image: url('https://i.ytimg.com/vi/d7qetuMtgAc/maxresdefault.jpg')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Grenoble</h3>
-                        <p class="text-gray-600 mb-4">
-                            Noix fraîches et croquantes, riches en oméga-3. 
-                            Idéales pour vos salades et pâtisseries.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_cacao_normal">Cacao normal</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_cacao_normal_desc">
+                            Cacao de qualité supérieure, naturel et riche en antioxydants.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">38€/kg</span>
-                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                            <span class="text-2xl font-bold text-warm-brown">2 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
+                <!-- Product 3: Cacao fumé - 2 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609501676725-7186f357aabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="cacao-fume" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Dattes Medjool</h3>
-                        <p class="text-gray-600 mb-4">
-                            Dattes sucrées et moelleuses, source naturelle d'énergie. 
-                            Parfaites pour le sport et les enfants.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_cacao_fume">Cacao fumé</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_cacao_fume_desc">
+                            Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">28€/kg</span>
-                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                            <span class="text-2xl font-bold text-warm-brown">2 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
+                <!-- Product 4: Pois chiches - 2 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNVd4yBltrmFEHw8_3POIVnTznXbzjBOQ6BbWewEDXRqVGZfiBMkobsynGN_E0A5x37ytvpAjwfgYdYMTRfsAc3ik02cIO5Y6Hnb8hxg')">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="pois-chiches" style="background-image: url('https://www.goji.ma/cdn/shop/products/pois-chiche-vrac.png?v=1717869605')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Noix de Cajou</h3>
-                        <p class="text-gray-600 mb-4">
-                            Cajous grillés à sec, sans huile ajoutée. 
-                            Croquants et délicieux pour l'apéritif.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_pois_chiches">Pois chiches</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_pois_chiches_desc">
+                            Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">42€/kg</span>
-                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                            <span class="text-2xl font-bold text-warm-brown">2 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 5 -->
+                <!-- Product 5: Graines blanches - 2 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://www.calconut.com/wp-content/uploads/2021/08/zoom-fotonoticia-371.jpg')">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="graines-blanches" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wDFjfmWkbsXwUw8qhipHDn1LE56yKgBpNw&s')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Raisins Secs</h3>
-                        <p class="text-gray-600 mb-4">
-                            Raisins secs sans sulfites, naturellement sucrés. 
-                            Excellents pour les sportifs et les enfants.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_graines_blanches">Graines blanches</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_graines_blanches_desc">
+                            Graines blanches naturelles, excellentes pour la santé et la nutrition.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">22€/kg</span>
-                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                            <span class="text-2xl font-bold text-warm-brown">2 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 6 -->
+                <!-- Product 6: Amandes - 5 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="amandes" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L7oGhxWbpwalFyid9U_mWWzpKGIRotWrNg&s')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3">Mélange Premium</h3>
-                        <p class="text-gray-600 mb-4">
-                            Mélange exclusif d'amandes, noix, dattes et raisins. 
-                            L'équilibre parfait pour votre santé.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_amandes">Amandes</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_amandes_desc">
+                            Amandes premium du Maroc, riches en protéines et vitamines E. Parfaites pour une collation saine.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">35€/kg</span>
-                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors">
+                            <span class="text-2xl font-bold text-warm-brown">5 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: Pistaches - 6 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="pistaches" style="background-image: url('https://observatoire-des-aliments.fr/wp-content/uploads/2021/11/pistaches-696x393.jpg')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_pistaches">Pistaches</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_pistaches_desc">
+                            Pistaches grillées naturellement, croquantes et savoureuses. Un délice pour l'apéritif.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">6 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
+                                Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: Noix de cajou - 6 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-48 bg-cover bg-center product-image-carousel" data-product="noix-cajou" style="background-image: url('https://images.prismic.io/la-fourche/a2e39df0-fe56-4854-81c0-d98cb2622740_noix+de+cajou+.jpg?auto=compress,format')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_noix_cajou">Noix de cajou</h3>
+                        <p class="text-gray-600 mb-4" data-translate="product_noix_cajou_desc">
+                            Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-warm-brown">6 DH</span>
+                            <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
                         </div>
@@ -859,14 +910,8 @@
                         Des produits d'exception directement du Maroc.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
+                        <a href="https://www.instagram.com/beldinutsmorroco/" target="_blank" class="text-gray-300 hover:text-light-gold transition-colors">
                             <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-light-gold transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -894,17 +939,22 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Contact</h4>
                     <div class="space-y-2">
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-light-gold mr-2"></i>
-                            <span class="text-gray-300">Casablanca, Maroc</span>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-light-gold mr-2 mt-1"></i>
+                            <span class="text-gray-300">Dar bouaza nouacer, Casablanca, Maroc</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone text-light-gold mr-2"></i>
-                            <span class="text-gray-300">+212 5XX XXX XXX</span>
+                        <div class="flex flex-col space-y-1">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-light-gold mr-2"></i>
+                                <a href="tel:+212615919437" class="text-gray-300 hover:text-light-gold transition-colors">+212 615919437</a>
+                            </div>
+                            <div class="flex items-center ml-7">
+                                <a href="tel:+212694147354" class="text-gray-300 hover:text-light-gold transition-colors">+212 694-147354</a>
+                            </div>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope text-light-gold mr-2"></i>
-                            <span class="text-gray-300">contact@beldinuts.ma</span>
+                            <a href="mailto:beldinuts@gmail.com" class="text-gray-300 hover:text-light-gold transition-colors">beldinuts@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -990,7 +1040,24 @@
                 faq_q6: "Proposez-vous des remises pour les commandes en gros ?",
                 faq_a6: "Oui ! Nous proposons des tarifs préférentiels pour les commandes en gros (à partir de 5kg par produit). Contactez-nous directement via WhatsApp pour obtenir un devis personnalisé.",
                 faq_q7: "Que faire si je ne suis pas satisfait de ma commande ?",
-                faq_a7: "Votre satisfaction est notre priorité ! Si vous n'êtes pas entièrement satisfait, contactez-nous dans les 48h suivant la livraison. Nous vous proposerons un remboursement ou un échange selon votre préférence."
+                faq_a7: "Votre satisfaction est notre priorité ! Si vous n'êtes pas entièrement satisfait, contactez-nous dans les 48h suivant la livraison. Nous vous proposerons un remboursement ou un échange selon votre préférence.",
+                order_btn: "Commander",
+                product_graines_noires: "Graines noires",
+                product_graines_noires_desc: "Graines noires naturelles et savoureuses, riches en nutriments essentiels.",
+                product_cacao_normal: "Cacao normal",
+                product_cacao_normal_desc: "Cacao de qualité supérieure, naturel et riche en antioxydants.",
+                product_cacao_fume: "Cacao fumé",
+                product_cacao_fume_desc: "Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.",
+                product_pois_chiches: "Pois chiches",
+                product_pois_chiches_desc: "Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.",
+                product_graines_blanches: "Graines blanches",
+                product_graines_blanches_desc: "Graines blanches naturelles, excellentes pour la santé et la nutrition.",
+                product_amandes: "Amandes",
+                product_amandes_desc: "Amandes premium du Maroc, riches en protéines et vitamines E. Parfaites pour une collation saine.",
+                product_pistaches: "Pistaches",
+                product_pistaches_desc: "Pistaches grillées naturellement, croquantes et savoureuses. Un délice pour l'apéritif.",
+                product_noix_cajou: "Noix de cajou",
+                product_noix_cajou_desc: "Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses."
             },
             ar: {
                 nav_home: "الرئيسية",
@@ -1056,7 +1123,24 @@
                 faq_q6: "هل تقدمون خصومات للطلبات بالجملة؟",
                 faq_a6: "نعم! نقدم أسعاراً تفضيلية للطلبات بالجملة (بدءاً من 5 كيلو لكل منتج). اتصل بنا مباشرة عبر واتساب للحصول على عرض سعر مخصص.",
                 faq_q7: "ماذا أفعل إذا لم أكن راضياً عن طلبي؟",
-                faq_a7: "رضاكم هو أولويتنا! إذا لم تكن راضياً تماماً، اتصل بنا خلال 48 ساعة من التسليم. سنقدم لك استرداد أو استبدال حسب تفضيلك."
+                faq_a7: "رضاكم هو أولويتنا! إذا لم تكن راضياً تماماً، اتصل بنا خلال 48 ساعة من التسليم. سنقدم لك استرداد أو استبدال حسب تفضيلك.",
+                order_btn: "اطلب",
+                product_graines_noires: "بذور سوداء",
+                product_graines_noires_desc: "بذور سوداء طبيعية ولذيذة، غنية بالعناصر الغذائية الأساسية.",
+                product_cacao_normal: "كاكاو عادي",
+                product_cacao_normal_desc: "كاكاو عالي الجودة، طبيعي وغني بمضادات الأكسدة.",
+                product_cacao_fume: "كاكاو مدخن",
+                product_cacao_fume_desc: "كاكاو بنكهة مدخنة فريدة، مثالي لعشاق الأذواق القوية.",
+                product_pois_chiches: "حمص",
+                product_pois_chiches_desc: "حمص مجفف، غني بالبروتينات النباتية والألياف. مثالي لوصفاتك.",
+                product_graines_blanches: "بذور بيضاء",
+                product_graines_blanches_desc: "بذور بيضاء طبيعية، ممتازة للصحة والتغذية.",
+                product_amandes: "لوز",
+                product_amandes_desc: "لوز ممتاز من المغرب، غني بالبروتينات وفيتامين E. مثالي لوجبة خفيفة صحية.",
+                product_pistaches: "فستق",
+                product_pistaches_desc: "فستق محمص طبيعياً، مقرمش ولذيذ. متعة للمقبلات.",
+                product_noix_cajou: "كاجو",
+                product_noix_cajou_desc: "كاجو محمص جافاً، بدون زيت مضاف. مقرمش ولذيذ."
             },
             en: {
                 nav_home: "Home",
@@ -1122,7 +1206,24 @@
                 faq_q6: "Do you offer discounts for bulk orders?",
                 faq_a6: "Yes! We offer preferential rates for bulk orders (starting from 5kg per product). Contact us directly via WhatsApp to get a personalized quote.",
                 faq_q7: "What if I'm not satisfied with my order?",
-                faq_a7: "Your satisfaction is our priority! If you're not entirely satisfied, contact us within 48h of delivery. We'll offer you a refund or exchange according to your preference."
+                faq_a7: "Your satisfaction is our priority! If you're not entirely satisfied, contact us within 48h of delivery. We'll offer you a refund or exchange according to your preference.",
+                order_btn: "Order",
+                product_graines_noires: "Black seeds",
+                product_graines_noires_desc: "Natural and flavorful black seeds, rich in essential nutrients.",
+                product_cacao_normal: "Normal cocoa",
+                product_cacao_normal_desc: "Premium quality cocoa, natural and rich in antioxidants.",
+                product_cacao_fume: "Smoked cocoa",
+                product_cacao_fume_desc: "Cocoa with a unique smoky flavor, perfect for those who love intense tastes.",
+                product_pois_chiches: "Chickpeas",
+                product_pois_chiches_desc: "Dried chickpeas, rich in plant proteins and fiber. Perfect for your recipes.",
+                product_graines_blanches: "White seeds",
+                product_graines_blanches_desc: "Natural white seeds, excellent for health and nutrition.",
+                product_amandes: "Almonds",
+                product_amandes_desc: "Premium almonds from Morocco, rich in proteins and vitamin E. Perfect for a healthy snack.",
+                product_pistaches: "Pistachios",
+                product_pistaches_desc: "Naturally roasted pistachios, crunchy and flavorful. A delight for appetizers.",
+                product_noix_cajou: "Cashew nuts",
+                product_noix_cajou_desc: "Dry roasted cashew nuts, without added oil. Crunchy and delicious."
             }
         };
 
@@ -1308,7 +1409,7 @@
 
         // Initialize cart
         function initializeCart() {
-            const products = ['amandes', 'noix', 'dattes', 'cajou', 'raisins', 'melange'];
+            const products = ['graines-noires', 'cacao-normal', 'cacao-fume', 'pois-chiches', 'graines-blanches', 'amandes', 'pistaches', 'noix-cajou'];
             products.forEach(product => {
                 cart[product] = 0;
             });
@@ -1399,12 +1500,14 @@
         // Get product info
         function getProductInfo(productId) {
             const products = {
-                amandes: { name: 'Amandes du Maroc', price: 45 },
-                noix: { name: 'Noix de Grenoble', price: 38 },
-                dattes: { name: 'Dattes Medjool', price: 28 },
-                cajou: { name: 'Noix de Cajou', price: 42 },
-                raisins: { name: 'Raisins Secs', price: 22 },
-                melange: { name: 'Mélange Premium', price: 35 }
+                'graines-noires': { name: 'Graines noires', price: 1 },
+                'cacao-normal': { name: 'Cacao normal', price: 2 },
+                'cacao-fume': { name: 'Cacao fumé', price: 2 },
+                'pois-chiches': { name: 'Pois chiches', price: 2 },
+                'graines-blanches': { name: 'Graines blanches', price: 2 },
+                'amandes': { name: 'Amandes', price: 5 },
+                'pistaches': { name: 'Pistaches', price: 6 },
+                'noix-cajou': { name: 'Noix de cajou', price: 6 }
             };
             return products[productId] || { name: 'Produit', price: 0 };
         }
@@ -1494,9 +1597,99 @@
             }, 3000);
         }
 
+        // Product images data for carousel
+        const productImages = {
+            'graines-noires': [
+                'https://www.shutterstock.com/image-photo/sunflower-seed-isolated-on-white-600nw-2458579765.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu98NHVkXGMD3PhWHzshQTNaXlSkrBV3-u9A&s',
+                'https://toppng.com/uploads/preview/sunflower-seeds-has-great-demand-in-foreign-markets-sunflower-seed-11563167725dy168k8izy.png'
+            ],
+            'cacao-normal': [
+                'https://i.ytimg.com/vi/d7qetuMtgAc/maxresdefault.jpg',
+                'https://img-global.cpcdn.com/recipes/69eef4ecb5630368/680x781cq80/%D8%A7%D9%84%D8%B5%D9%88%D8%B1%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9-%D9%84%D9%88%D8%B5%D9%81%D8%A9%D9%83%D8%A7%D9%88%D9%83%D8%A7%D9%88-%D8%A8%D8%A7%D9%84%D9%85%D9%84%D8%AD-%D9%85%D9%82%D9%84%D9%8A.jpg'
+            ],
+            'cacao-fume': [
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s',
+                'https://i.ytimg.com/vi/9iNywbLtCFc/maxresdefault.jpg'
+            ],
+            'pois-chiches': [
+                'https://www.goji.ma/cdn/shop/products/pois-chiche-vrac.png?v=1717869605',
+                'https://aswandir.com/wp-content/uploads/2025/01/%D8%AD%D9%85%D8%B52.jpg'
+            ],
+            'graines-blanches': [
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wDFjfmWkbsXwUw8qhipHDn1LE56yKgBpNw&s',
+                'https://www.mymarket.ma/cdn/shop/products/7009.jpg?v=1590780999'
+            ],
+            'amandes': [
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L7oGhxWbpwalFyid9U_mWWzpKGIRotWrNg&s',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQNWcfXax2IRgumTE2oc2epOOli3IOD-_E-g&s'
+            ],
+            'pistaches': [
+                'https://observatoire-des-aliments.fr/wp-content/uploads/2021/11/pistaches-696x393.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNMvGhhnVX5Y2nmvSD6wRT3KMo_eAReV5cblspohS2KD4XB59dHy5oI4JIShfgVQa_hUs&usqp=CAU'
+            ],
+            'noix-cajou': [
+                'https://images.prismic.io/la-fourche/a2e39df0-fe56-4854-81c0-d98cb2622740_noix+de+cajou+.jpg?auto=compress,format',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXwlxR3H70y7dHNOGejGkt-4_ZSqE39Ghi-AmcgG3A9VsP82AkB93gmONz7O1Nf9tj_k&usqp=CAU'
+            ]
+        };
+
+        // Auto-scroll product images
+        function initProductImageCarousel() {
+            const carousels = document.querySelectorAll('.product-image-carousel');
+            
+            carousels.forEach(carousel => {
+                const productId = carousel.getAttribute('data-product');
+                const images = productImages[productId];
+                
+                if (!images || images.length <= 1) return;
+                
+                let currentIndex = 0;
+                let isHovered = false;
+                let isPaused = false;
+                
+                // Pause on hover
+                carousel.parentElement.addEventListener('mouseenter', () => {
+                    isHovered = true;
+                });
+                
+                carousel.parentElement.addEventListener('mouseleave', () => {
+                    isHovered = false;
+                });
+                
+                // Start carousel after 2 seconds
+                setTimeout(() => {
+                    if (isPaused) return;
+                    
+                    function changeImage() {
+                        if (isHovered || isPaused) {
+                            setTimeout(changeImage, 500);
+                            return;
+                        }
+                        
+                        currentIndex = (currentIndex + 1) % images.length;
+                        carousel.classList.add('animating');
+                        carousel.style.backgroundImage = `url('${images[currentIndex]}')`;
+                        
+                        setTimeout(() => {
+                            carousel.classList.remove('animating');
+                        }, 800);
+                        
+                        // Continue changing every 2 seconds
+                        setTimeout(changeImage, 2000);
+                    }
+                    
+                    changeImage();
+                }, 2000);
+            });
+        }
+
         // Initialize cart on page load
         document.addEventListener('DOMContentLoaded', function() {
             initializeCart();
+            
+            // Initialize product image carousel
+            initProductImageCarousel();
             
             // Charger la langue sauvegardée
             const savedLanguage = localStorage.getItem('selectedLanguage');

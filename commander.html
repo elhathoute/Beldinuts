@@ -86,6 +86,27 @@
                 min-width: 250px;
             }
         }
+        
+        .product-image-carousel {
+            transition: background-image 0.8s ease-in-out;
+            position: relative;
+        }
+        
+        .product-image-carousel::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .product-image-carousel.animating::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50">
@@ -506,9 +527,524 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-grid">
-                <!-- Product 1 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="amandes du maroc">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                <!-- Product 1: Graines noires - 1 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="graines noires">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="graines-noires" style="background-image: url('https://www.shutterstock.com/image-photo/sunflower-seed-isolated-on-white-600nw-2458579765.jpg')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="openProductModal('graines-noires')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                                <i class="fas fa-eye text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="graines_noires_name">Graines noires</h3>
+                        <p class="text-gray-600 mb-4" data-translate="graines_noires_desc">
+                            Graines noires naturelles et savoureuses, riches en nutriments essentiels.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">1.00 DH/g</span>
+                        </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('graines-noires', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-noires', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-noires', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-noires', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-noires', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('graines-noires')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="graines-noires-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('graines-noires', this.value)" 
+                                       oninput="updateQuantity('graines-noires', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('graines-noires')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="graines-noires-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.8 (24 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Amina M.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Excellent qualité, très fraîches!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Youssef K.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfait pour mes collations sportives"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Cacao normal - 2 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="cacao normal">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="cacao-normal" style="background-image: url('https://i.ytimg.com/vi/d7qetuMtgAc/maxresdefault.jpg')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="openProductModal('cacao-normal')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                                <i class="fas fa-eye text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="cacao_normal_name">Cacao normal</h3>
+                        <p class="text-gray-600 mb-4" data-translate="cacao_normal_desc">
+                            Cacao de qualité supérieure, naturel et riche en antioxydants.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('cacao-normal', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-normal', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-normal', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-normal', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-normal', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('cacao-normal')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="cacao-normal-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('cacao-normal', this.value)" 
+                                       oninput="updateQuantity('cacao-normal', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('cacao-normal')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="cacao-normal-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.8 (20 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Aicha B.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Excellent cacao de qualité!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Youssef M.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Très bon goût naturel"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Cacao fumé - 2 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="cacao fumé">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="cacao-fume" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="openProductModal('cacao-fume')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                                <i class="fas fa-eye text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="cacao_fume_name">Cacao fumé</h3>
+                        <p class="text-gray-600 mb-4" data-translate="cacao_fume_desc">
+                            Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('cacao-fume', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-fume', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-fume', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-fume', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('cacao-fume', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('cacao-fume')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="cacao-fume-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('cacao-fume', this.value)" 
+                                       oninput="updateQuantity('cacao-fume', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('cacao-fume')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="cacao-fume-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.7 (15 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Rachid K.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Saveur fumée exceptionnelle!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Fatima R.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Unique et délicieux"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Pois chiches - 2 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="pois chiches">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="pois-chiches" style="background-image: url('https://www.goji.ma/cdn/shop/products/pois-chiche-vrac.png?v=1717869605')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="openProductModal('pois-chiches')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                                <i class="fas fa-eye text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="pois_chiches_name">Pois chiches</h3>
+                        <p class="text-gray-600 mb-4" data-translate="pois_chiches_desc">
+                            Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('pois-chiches', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('pois-chiches', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('pois-chiches', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('pois-chiches', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('pois-chiches', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('pois-chiches')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="pois-chiches-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('pois-chiches', this.value)" 
+                                       oninput="updateQuantity('pois-chiches', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('pois-chiches')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="pois-chiches-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.6 (18 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Said H.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfaits pour mes recettes!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Nadia F.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Excellent qualité"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Graines blanches - 2 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="graines blanches">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="graines-blanches" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wDFjfmWkbsXwUw8qhipHDn1LE56yKgBpNw&s')">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <button onclick="openProductModal('graines-blanches')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                                <i class="fas fa-eye text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="graines_blanches_name">Graines blanches</h3>
+                        <p class="text-gray-600 mb-4" data-translate="graines_blanches_desc">
+                            Graines blanches naturelles, excellentes pour la santé et la nutrition.
+                        </p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                        </div>
+                        <!-- Suggested Quantities -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedQuantity('graines-blanches', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-blanches', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    200g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-blanches', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    250g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-blanches', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    500g
+                                </button>
+                                <button onclick="setSuggestedQuantity('graines-blanches', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    1000g
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="decreaseQuantity('graines-blanches')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <input type="number" id="graines-blanches-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('graines-blanches', this.value)" 
+                                       oninput="updateQuantity('graines-blanches', this.value)"
+                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <button onclick="increaseQuantity('graines-blanches')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                            <span id="graines-blanches-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                        </div>
+                        
+                        <!-- Reviews Section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-sm text-gray-600 ml-2">4.7 (16 avis)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Reviews -->
+                            <div class="space-y-2">
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Khadija M.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Très bonnes pour la santé!"</p>
+                                </div>
+                                
+                                <div class="text-sm">
+                                    <div class="flex items-center justify-between">
+                                        <span class="font-semibold text-gray-800">Ahmed L.</span>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-xs mt-1">"Qualité exceptionnelle"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Amandes - 5 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="amandes">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="amandes" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L7oGhxWbpwalFyid9U_mWWzpKGIRotWrNg&s')">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <button onclick="openProductModal('amandes')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
                                 <i class="fas fa-eye text-xl"></i>
@@ -516,12 +1052,12 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="amandes_name">Amandes du Maroc</h3>
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="amandes_name">Amandes</h3>
                         <p class="text-gray-600 mb-4" data-translate="amandes_desc">
-                            Amandes premium, riches en protéines et vitamines E.
+                            Amandes premium du Maroc, riches en protéines et vitamines E. Parfaites pour une collation saine.
                         </p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                            <span class="text-2xl font-bold text-warm-brown price-display">5.00 DH/g</span>
                         </div>
                         <!-- Suggested Quantities -->
                         <div class="mb-4">
@@ -593,7 +1129,7 @@
                                 
                                 <div class="text-sm">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Youssef K.</span>
+                                        <span class="font-semibold text-gray-800">Rachid F.</span>
                                         <div class="flex text-yellow-400 text-xs">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -602,65 +1138,65 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Parfait pour mes collations sportives"</p>
+                                    <p class="text-gray-600 text-xs mt-1">"Excellent pour toute la famille"</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="noix de grenoble">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
+                <!-- Product 7: Pistaches - 6 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="pistaches">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="pistaches" style="background-image: url('https://observatoire-des-aliments.fr/wp-content/uploads/2021/11/pistaches-696x393.jpg')">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                            <button onclick="openProductModal('noix')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                            <button onclick="openProductModal('pistaches')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
                                 <i class="fas fa-eye text-xl"></i>
                             </button>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="noix_name">Noix de Grenoble</h3>
-                        <p class="text-gray-600 mb-4" data-translate="noix_desc">
-                            Noix fraîches et croquantes, riches en oméga-3.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="pistaches_name">Pistaches</h3>
+                        <p class="text-gray-600 mb-4" data-translate="pistaches_desc">
+                            Pistaches premium, croquantes et savoureuses. Excellente source de protéines et de bons gras.
                         </p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                            <span class="text-2xl font-bold text-warm-brown price-display">6.00 DH/g</span>
                         </div>
                         <!-- Suggested Quantities -->
                         <div class="mb-4">
                             <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
                             <div class="flex flex-wrap gap-2">
-                                <button onclick="setSuggestedQuantity('noix', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('pistaches', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     100g
                                 </button>
-                                <button onclick="setSuggestedQuantity('noix', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('pistaches', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     200g
                                 </button>
-                                <button onclick="setSuggestedQuantity('noix', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('pistaches', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     250g
                                 </button>
-                                <button onclick="setSuggestedQuantity('noix', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('pistaches', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     500g
                                 </button>
-                                <button onclick="setSuggestedQuantity('noix', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('pistaches', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     1000g
                                 </button>
                             </div>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
-                                <button onclick="decreaseQuantity('noix')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                <button onclick="decreaseQuantity('pistaches')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="noix-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('noix', this.value)" 
-                                       oninput="updateQuantity('noix', this.value)"
+                                <input type="number" id="pistaches-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('pistaches', this.value)" 
+                                       oninput="updateQuantity('pistaches', this.value)"
                                        class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
-                                <button onclick="increaseQuantity('noix')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                <button onclick="increaseQuantity('pistaches')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
                             </div>
-                            <span id="noix-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                            <span id="pistaches-total" class="text-lg font-bold text-warm-brown">0 DH</span>
                         </div>
                         
                         <!-- Reviews Section -->
@@ -674,7 +1210,7 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <span class="text-sm text-gray-600 ml-2">4.9 (18 avis)</span>
+                                    <span class="text-sm text-gray-600 ml-2">4.9 (28 avis)</span>
                                 </div>
                             </div>
                             
@@ -682,7 +1218,7 @@
                             <div class="space-y-2">
                                 <div class="text-sm">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Fatima A.</span>
+                                        <span class="font-semibold text-gray-800">Samira K.</span>
                                         <div class="flex text-yellow-400 text-xs">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -691,12 +1227,12 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Très croquantes et savoureuses!"</p>
+                                    <p class="text-gray-600 text-xs mt-1">"Les meilleures pistaches que j'ai goûtées!"</p>
                                 </div>
                                 
                                 <div class="text-sm">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Hassan B.</span>
+                                        <span class="font-semibold text-gray-800">Hassan M.</span>
                                         <div class="flex text-yellow-400 text-xs">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -705,168 +1241,65 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Parfaites pour mes salades"</p>
+                                    <p class="text-gray-600 text-xs mt-1">"Parfaites pour l'apéritif"</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="dattes medjool">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://images.unsplash.com/photo-1609501676725-7186f357aabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                            <button onclick="openProductModal('dattes')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
-                                <i class="fas fa-eye text-xl"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="dattes_name">Dattes Medjool</h3>
-                        <p class="text-gray-600 mb-4" data-translate="dattes_desc">
-                            Dattes sucrées et moelleuses, source naturelle d'énergie.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
-                        </div>
-                        <!-- Suggested Quantities -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="setSuggestedQuantity('dattes', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    100g
-                                </button>
-                                <button onclick="setSuggestedQuantity('dattes', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    200g
-                                </button>
-                                <button onclick="setSuggestedQuantity('dattes', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    250g
-                                </button>
-                                <button onclick="setSuggestedQuantity('dattes', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    500g
-                                </button>
-                                <button onclick="setSuggestedQuantity('dattes', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    1000g
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2">
-                                <button onclick="decreaseQuantity('dattes')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-minus text-sm"></i>
-                                </button>
-                                <input type="number" id="dattes-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('dattes', this.value)" 
-                                       oninput="updateQuantity('dattes', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
-                                <button onclick="increaseQuantity('dattes')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-plus text-sm"></i>
-                                </button>
-                            </div>
-                            <span id="dattes-total" class="text-lg font-bold text-warm-brown">0 DH</span>
-                        </div>
-                        
-                        <!-- Reviews Section -->
-                        <div class="mt-4 pt-4 border-t border-gray-200">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center">
-                                    <div class="flex text-yellow-400">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="text-sm text-gray-600 ml-2">4.7 (31 avis)</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Recent Reviews -->
-                            <div class="space-y-2">
-                                <div class="text-sm">
-                                    <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Khadija L.</span>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Très sucrées et naturelles!"</p>
-                                </div>
-                                
-                                <div class="text-sm">
-                                    <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Omar R.</span>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Parfaites pour le sport!"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
+                <!-- Product 8: Noix de cajou - 6 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="noix de cajou">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNVd4yBltrmFEHw8_3POIVnTznXbzjBOQ6BbWewEDXRqVGZfiBMkobsynGN_E0A5x37ytvpAjwfgYdYMTRfsAc3ik02cIO5Y6Hnb8hxg')">
+                    <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="noix-cajou" style="background-image: url('https://images.prismic.io/la-fourche/a2e39df0-fe56-4854-81c0-d98cb2622740_noix+de+cajou+.jpg?auto=compress,format')">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                            <button onclick="openProductModal('cajou')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
+                            <button onclick="openProductModal('noix-cajou')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
                                 <i class="fas fa-eye text-xl"></i>
                             </button>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="cajou_name">Noix de Cajou</h3>
-                        <p class="text-gray-600 mb-4" data-translate="cajou_desc">
-                            Cajous grillés à sec, sans huile ajoutée.
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="noix_cajou_name">Noix de cajou</h3>
+                        <p class="text-gray-600 mb-4" data-translate="noix_cajou_desc">
+                            Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses, riches en minéraux essentiels.
                         </p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
+                            <span class="text-2xl font-bold text-warm-brown price-display">6.00 DH/g</span>
                         </div>
                         <!-- Suggested Quantities -->
                         <div class="mb-4">
                             <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
                             <div class="flex flex-wrap gap-2">
-                                <button onclick="setSuggestedQuantity('cajou', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('noix-cajou', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     100g
                                 </button>
-                                <button onclick="setSuggestedQuantity('cajou', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('noix-cajou', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     200g
                                 </button>
-                                <button onclick="setSuggestedQuantity('cajou', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('noix-cajou', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     250g
                                 </button>
-                                <button onclick="setSuggestedQuantity('cajou', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('noix-cajou', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     500g
                                 </button>
-                                <button onclick="setSuggestedQuantity('cajou', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                <button onclick="setSuggestedQuantity('noix-cajou', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
                                     1000g
                                 </button>
                             </div>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
-                                <button onclick="decreaseQuantity('cajou')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                <button onclick="decreaseQuantity('noix-cajou')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="cajou-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('cajou', this.value)" 
-                                       oninput="updateQuantity('cajou', this.value)"
+                                <input type="number" id="noix-cajou-qty" value="0" min="0" step="10" 
+                                       onchange="updateQuantity('noix-cajou', this.value)" 
+                                       oninput="updateQuantity('noix-cajou', this.value)"
                                        class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
-                                <button onclick="increaseQuantity('cajou')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
+                                <button onclick="increaseQuantity('noix-cajou')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
                             </div>
-                            <span id="cajou-total" class="text-lg font-bold text-warm-brown">0 DH</span>
+                            <span id="noix-cajou-total" class="text-lg font-bold text-warm-brown">0 DH</span>
                         </div>
                         
                         <!-- Reviews Section -->
@@ -912,212 +1345,6 @@
                                         </div>
                                     </div>
                                     <p class="text-gray-600 text-xs mt-1">"Parfaites pour l'apéritif"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="raisins secs">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://www.calconut.com/wp-content/uploads/2021/08/zoom-fotonoticia-371.jpg')">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                            <button onclick="openProductModal('raisins')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
-                                <i class="fas fa-eye text-xl"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="raisins_name">Raisins Secs</h3>
-                        <p class="text-gray-600 mb-4" data-translate="raisins_desc">
-                            Raisins secs sans sulfites, naturellement sucrés.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
-                        </div>
-                        <!-- Suggested Quantities -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="setSuggestedQuantity('raisins', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    100g
-                                </button>
-                                <button onclick="setSuggestedQuantity('raisins', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    200g
-                                </button>
-                                <button onclick="setSuggestedQuantity('raisins', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    250g
-                                </button>
-                                <button onclick="setSuggestedQuantity('raisins', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    500g
-                                </button>
-                                <button onclick="setSuggestedQuantity('raisins', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    1000g
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2">
-                                <button onclick="decreaseQuantity('raisins')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-minus text-sm"></i>
-                                </button>
-                                <input type="number" id="raisins-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('raisins', this.value)" 
-                                       oninput="updateQuantity('raisins', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
-                                <button onclick="increaseQuantity('raisins')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-plus text-sm"></i>
-                                </button>
-                            </div>
-                            <span id="raisins-total" class="text-lg font-bold text-warm-brown">0 DH</span>
-                        </div>
-                        
-                        <!-- Reviews Section -->
-                        <div class="mt-4 pt-4 border-t border-gray-200">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center">
-                                    <div class="flex text-yellow-400">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="text-sm text-gray-600 ml-2">4.5 (19 avis)</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Recent Reviews -->
-                            <div class="space-y-2">
-                                <div class="text-sm">
-                                    <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Naima H.</span>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Très sucrés et naturels!"</p>
-                                </div>
-                                
-                                <div class="text-sm">
-                                    <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Karim Z.</span>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Parfaits pour les enfants"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="mélange premium">
-                    <div class="h-48 bg-cover bg-center relative group" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                            <button onclick="openProductModal('melange')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
-                                <i class="fas fa-eye text-xl"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="melange_name">Mélange Premium</h3>
-                        <p class="text-gray-600 mb-4" data-translate="melange_desc">
-                            Mélange exclusif d'amandes, noix, dattes et raisins.
-                        </p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
-                        </div>
-                        <!-- Suggested Quantities -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="setSuggestedQuantity('melange', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    100g
-                                </button>
-                                <button onclick="setSuggestedQuantity('melange', 200)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    200g
-                                </button>
-                                <button onclick="setSuggestedQuantity('melange', 250)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    250g
-                                </button>
-                                <button onclick="setSuggestedQuantity('melange', 500)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    500g
-                                </button>
-                                <button onclick="setSuggestedQuantity('melange', 1000)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
-                                    1000g
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2">
-                                <button onclick="decreaseQuantity('melange')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-minus text-sm"></i>
-                                </button>
-                                <input type="number" id="melange-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('melange', this.value)" 
-                                       oninput="updateQuantity('melange', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
-                                <button onclick="increaseQuantity('melange')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-plus text-sm"></i>
-                                </button>
-                            </div>
-                            <span id="melange-total" class="text-lg font-bold text-warm-brown">0 DH</span>
-                        </div>
-                        
-                        <!-- Reviews Section -->
-                        <div class="mt-4 pt-4 border-t border-gray-200">
-                            <div class="flex items-center justify-between mb-2">
-                                <div class="flex items-center">
-                                    <div class="flex text-yellow-400">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span class="text-sm text-gray-600 ml-2">4.9 (27 avis)</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Recent Reviews -->
-                            <div class="space-y-2">
-                                <div class="text-sm">
-                                    <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Laila M.</span>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Mélange parfait, très équilibré!"</p>
-                                </div>
-                                
-                                <div class="text-sm">
-                                    <div class="flex items-center justify-between">
-                                        <span class="font-semibold text-gray-800">Rachid F.</span>
-                                        <div class="flex text-yellow-400 text-xs">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600 text-xs mt-1">"Excellent pour toute la famille"</p>
                                 </div>
                             </div>
                         </div>
@@ -1260,143 +1487,187 @@
     </footer>
 
     <script>
-        // Product data - Prix de base en DH par gramme (2 DH/g)
+        // Product data - Prix de base en DH par gramme
         const products = {
-            amandes: { name: 'Amandes du Maroc', basePrice: 2 },
-            noix: { name: 'Noix de Grenoble', basePrice: 2 },
-            dattes: { name: 'Dattes Medjool', basePrice: 2 },
-            cajou: { name: 'Noix de Cajou', basePrice: 2 },
-            raisins: { name: 'Raisins Secs', basePrice: 2 },
-            melange: { name: 'Mélange Premium', basePrice: 2 }
+            'graines-noires': { name: 'Graines noires', basePrice: 1 },
+            'cacao-normal': { name: 'Cacao normal', basePrice: 2 },
+            'cacao-fume': { name: 'Cacao fumé', basePrice: 2 },
+            'pois-chiches': { name: 'Pois chiches', basePrice: 2 },
+            'graines-blanches': { name: 'Graines blanches', basePrice: 2 },
+            'amandes': { name: 'Amandes', basePrice: 5 },
+            'pistaches': { name: 'Pistaches', basePrice: 6 },
+            'noix-cajou': { name: 'Noix de cajou', basePrice: 6 }
         };
 
         // Detailed product information for modal
         const productDetails = {
-            amandes: {
-                name: 'Amandes du Maroc',
-                description: 'Amandes premium sélectionnées dans les meilleures régions du Maroc. Riches en protéines, vitamines E et magnésium, elles sont parfaites pour une alimentation saine et équilibrée.',
-                image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
+            'graines-noires': {
+                name: 'Graines noires',
+                description: 'Graines noires naturelles et savoureuses, riches en nutriments essentiels. Parfaites pour une alimentation saine et équilibrée.',
+                image: 'https://www.shutterstock.com/image-photo/sunflower-seed-isolated-on-white-600nw-2458579765.jpg',
+                benefits: [
+                    'Riches en protéines végétales',
+                    'Excellente source de fibres',
+                    'Contiennent des vitamines essentielles',
+                    'Riches en minéraux',
+                    'Aident à maintenir une bonne santé',
+                    'Source naturelle d\'énergie'
+                ],
+                usage: [
+                    'Collation saine',
+                    'Ajout dans les salades',
+                    'Ingrédient dans les plats',
+                    'Mélange avec d\'autres graines',
+                    'Consommation quotidienne'
+                ],
+                storage: 'Conserver dans un endroit frais et sec, à l\'abri de la lumière.'
+            },
+            'cacao-normal': {
+                name: 'Cacao normal',
+                description: 'Cacao de qualité supérieure, naturel et riche en antioxydants. Parfait pour les amateurs de cacao authentique.',
+                image: 'https://i.ytimg.com/vi/d7qetuMtgAc/maxresdefault.jpg',
+                benefits: [
+                    'Riche en antioxydants',
+                    'Améliore l\'humeur',
+                    'Source de magnésium',
+                    'Contient des flavonoïdes',
+                    'Aide à réduire le stress',
+                    'Bénéfique pour le cœur'
+                ],
+                usage: [
+                    'Boisson chaude ou froide',
+                    'Pâtisseries et desserts',
+                    'Smoothies',
+                    'Recettes culinaires',
+                    'Consommation directe'
+                ],
+                storage: 'Conserver dans un endroit frais et sec, à l\'abri de l\'humidité.'
+            },
+            'cacao-fume': {
+                name: 'Cacao fumé',
+                description: 'Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses et authentiques.',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s',
+                benefits: [
+                    'Saveur fumée unique',
+                    'Riche en antioxydants',
+                    'Source de magnésium',
+                    'Contient des flavonoïdes',
+                    'Aide à réduire le stress',
+                    'Bénéfique pour la santé'
+                ],
+                usage: [
+                    'Boisson chaude',
+                    'Pâtisseries spéciales',
+                    'Recettes traditionnelles',
+                    'Consommation comme snack',
+                    'Mélange avec d\'autres ingrédients'
+                ],
+                storage: 'Conserver dans un endroit frais et sec, à l\'abri de l\'humidité.'
+            },
+            'pois-chiches': {
+                name: 'Pois chiches',
+                description: 'Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes et votre alimentation.',
+                image: 'https://www.goji.ma/cdn/shop/products/pois-chiche-vrac.png?v=1717869605',
+                benefits: [
+                    'Riches en protéines végétales',
+                    'Excellente source de fibres',
+                    'Contiennent du fer et du zinc',
+                    'Faible en gras',
+                    'Aident à la digestion',
+                    'Source d\'énergie'
+                ],
+                usage: [
+                    'Plats traditionnels',
+                    'Salades et houmous',
+                    'Soupes et ragoûts',
+                    'Recettes végétariennes',
+                    'Snacks grillés'
+                ],
+                storage: 'Conserver dans un endroit frais et sec. Tremper avant cuisson.'
+            },
+            'graines-blanches': {
+                name: 'Graines blanches',
+                description: 'Graines blanches naturelles, excellentes pour la santé et la nutrition. Parfaites pour une alimentation équilibrée.',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wDFjfmWkbsXwUw8qhipHDn1LE56yKgBpNw&s',
+                benefits: [
+                    'Riches en protéines',
+                    'Excellente source de fibres',
+                    'Contiennent des vitamines',
+                    'Riches en minéraux',
+                    'Aident à maintenir la santé',
+                    'Source naturelle d\'énergie'
+                ],
+                usage: [
+                    'Collation saine',
+                    'Ajout dans les plats',
+                    'Salades',
+                    'Mélange avec autres graines',
+                    'Consommation quotidienne'
+                ],
+                storage: 'Conserver dans un endroit frais et sec, à l\'abri de la lumière.'
+            },
+            'amandes': {
+                name: 'Amandes',
+                description: 'Amandes premium du Maroc, riches en protéines et vitamines E. Parfaites pour une collation saine.',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L7oGhxWbpwalFyid9U_mWWzpKGIRotWrNg&s',
                 benefits: [
                     'Riches en protéines végétales (21g/100g)',
-                    'Excellente source de vitamine E (antioxydant)',
-                    'Contiennent du magnésium pour la santé cardiaque',
-                    'Riches en fibres pour une bonne digestion',
+                    'Excellente source de vitamine E',
+                    'Contiennent du magnésium',
+                    'Riches en fibres',
                     'Aident à réduire le cholestérol',
-                    'Parfaites pour les sportifs et végétariens'
-                ],
-                usage: [
-                    'Collation saine entre les repas',
-                    'Ajout dans les salades et yaourts',
-                    'Ingrédient pour pâtisseries et desserts',
-                    'Mélange avec d\'autres fruits secs',
-                    'Consommation avant ou après le sport'
-                ],
-                storage: 'Conserver dans un endroit frais et sec, à l\'abri de la lumière. Peuvent être conservées jusqu\'à 12 mois dans un récipient hermétique.'
-            },
-            noix: {
-                name: 'Noix de Grenoble',
-                description: 'Noix fraîches et croquantes de Grenoble, réputées pour leur qualité exceptionnelle. Riches en oméga-3, elles contribuent à la santé cardiovasculaire et cérébrale.',
-                image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-                benefits: [
-                    'Riches en oméga-3 (acides gras essentiels)',
-                    'Améliorent la santé cardiovasculaire',
-                    'Bénéfiques pour le cerveau et la mémoire',
-                    'Contiennent des antioxydants puissants',
-                    'Riches en protéines et fibres',
-                    'Aident à réduire l\'inflammation'
-                ],
-                usage: [
-                    'Ajout dans les salades vertes',
-                    'Ingrédient pour pâtisseries et gâteaux',
-                    'Consommation avec du fromage',
-                    'Mélange dans les céréales du matin',
-                    'Snack sain pour l\'apéritif'
-                ],
-                storage: 'Conserver au réfrigérateur dans un récipient hermétique pour préserver leur fraîcheur. Peuvent être congelées pour une conservation plus longue.'
-            },
-            dattes: {
-                name: 'Dattes Medjool',
-                description: 'Dattes Medjool, les "rois des dattes", sont réputées pour leur goût sucré naturel et leur texture moelleuse. Source naturelle d\'énergie, elles sont parfaites pour les sportifs.',
-                image: 'https://images.unsplash.com/photo-1609501676725-7186f357aabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-                benefits: [
-                    'Source naturelle d\'énergie rapide',
-                    'Riches en potassium et magnésium',
-                    'Contiennent des fibres pour la digestion',
-                    'Riches en antioxydants',
-                    'Aident à réguler la glycémie',
                     'Parfaites pour les sportifs'
                 ],
                 usage: [
-                    'Collation énergétique naturelle',
-                    'Remplacement du sucre dans les desserts',
-                    'Ingrédient dans les smoothies',
-                    'Consommation avant l\'effort physique',
-                    'Mélange avec des noix pour un snack équilibré'
+                    'Collation saine',
+                    'Ajout dans les salades',
+                    'Pâtisseries et desserts',
+                    'Mélange avec autres fruits secs',
+                    'Consommation avant ou après sport'
                 ],
-                storage: 'Conserver dans un endroit frais et sec. Peuvent être conservées plusieurs mois. Pour une fraîcheur optimale, conserver au réfrigérateur.'
+                storage: 'Conserver dans un endroit frais et sec, à l\'abri de la lumière.'
             },
-            cajou: {
-                name: 'Noix de Cajou',
-                description: 'Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses, elles sont riches en protéines et minéraux essentiels pour une alimentation équilibrée.',
-                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNVd4yBltrmFEHw8_3POIVnTznXbzjBOQ6BbWewEDXRqVGZfiBMkobsynGN_E0A5x37ytvpAjwfgYdYMTRfsAc3ik02cIO5Y6Hnb8hxg',
+            'pistaches': {
+                name: 'Pistaches',
+                description: 'Pistaches premium, croquantes et savoureuses. Excellente source de protéines et de bons gras.',
+                image: 'https://observatoire-des-aliments.fr/wp-content/uploads/2021/11/pistaches-696x393.jpg',
+                benefits: [
+                    'Riches en protéines',
+                    'Excellente source de bons gras',
+                    'Contiennent des antioxydants',
+                    'Riches en vitamines B',
+                    'Aident à la santé cardiaque',
+                    'Parfaites pour l\'apéritif'
+                ],
+                usage: [
+                    'Snack pour l\'apéritif',
+                    'Ajout dans les plats',
+                    'Pâtisseries',
+                    'Salades',
+                    'Consommation comme collation'
+                ],
+                storage: 'Conserver dans un endroit frais et sec, à l\'abri de l\'humidité.'
+            },
+            'noix-cajou': {
+                name: 'Noix de cajou',
+                description: 'Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses, riches en minéraux essentiels.',
+                image: 'https://images.prismic.io/la-fourche/a2e39df0-fe56-4854-81c0-d98cb2622740_noix+de+cajou+.jpg?auto=compress,format',
                 benefits: [
                     'Riches en protéines végétales (18g/100g)',
                     'Excellente source de magnésium',
-                    'Contiennent du zinc pour l\'immunité',
+                    'Contiennent du zinc',
                     'Riches en cuivre et phosphore',
                     'Aident à maintenir la santé osseuse',
                     'Contiennent des graisses monoinsaturées'
                 ],
                 usage: [
-                    'Snack parfait pour l\'apéritif',
+                    'Snack pour l\'apéritif',
                     'Ajout dans les plats asiatiques',
-                    'Ingrédient dans les salades',
-                    'Mélange avec d\'autres fruits secs',
-                    'Consommation comme collation saine'
+                    'Salades',
+                    'Mélange avec autres fruits secs',
+                    'Consommation comme collation'
                 ],
-                storage: 'Conserver dans un récipient hermétique à l\'abri de la lumière et de l\'humidité. Peuvent être conservées jusqu\'à 6 mois dans de bonnes conditions.'
-            },
-            raisins: {
-                name: 'Raisins Secs',
-                description: 'Raisins secs sans sulfites, naturellement sucrés. Excellente source d\'énergie et de fibres, ils sont parfaits pour les sportifs et les enfants.',
-                image: 'https://www.calconut.com/wp-content/uploads/2021/08/zoom-fotonoticia-371.jpg',
-                benefits: [
-                    'Source naturelle d\'énergie',
-                    'Riches en fibres pour la digestion',
-                    'Contiennent des antioxydants',
-                    'Riches en potassium et fer',
-                    'Aident à maintenir l\'énergie',
-                    'Sans sulfites ajoutés'
-                ],
-                usage: [
-                    'Collation énergétique',
-                    'Ajout dans les céréales',
-                    'Ingrédient dans les pâtisseries',
-                    'Mélange dans les salades',
-                    'Consommation pendant le sport'
-                ],
-                storage: 'Conserver dans un endroit frais et sec, à l\'abri de la lumière. Peuvent être conservés plusieurs mois dans un récipient hermétique.'
-            },
-            melange: {
-                name: 'Mélange Premium',
-                description: 'Mélange exclusif d\'amandes, noix, dattes et raisins secs. L\'équilibre parfait entre saveurs et nutriments pour une alimentation saine et variée.',
-                image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
-                benefits: [
-                    'Combinaison équilibrée de nutriments',
-                    'Riches en protéines et fibres',
-                    'Source d\'énergie naturelle',
-                    'Contiennent des vitamines et minéraux',
-                    'Antioxydants variés',
-                    'Parfait pour une alimentation équilibrée'
-                ],
-                usage: [
-                    'Collation complète et équilibrée',
-                    'En-cas pour le sport',
-                    'Mélange pour petit-déjeuner',
-                    'Snack pour les enfants',
-                    'Ingrédient dans les desserts'
-                ],
-                storage: 'Conserver dans un endroit frais et sec. Mélange optimal de conservation pour tous les ingrédients. Conserver dans un récipient hermétique.'
+                storage: 'Conserver dans un récipient hermétique à l\'abri de la lumière et de l\'humidité.'
             }
         };
 
@@ -1445,18 +1716,22 @@
                 no_products: "Aucun produit sélectionné",
                 no_results_title: "Aucun produit trouvé",
                 no_results_text: "Essayez avec d'autres mots-clés comme \"amandes\", \"noix\", \"dattes\"...",
-                amandes_name: "Amandes du Maroc",
-                amandes_desc: "Amandes premium, riches en protéines et vitamines E.",
-                noix_name: "Noix de Grenoble",
-                noix_desc: "Noix fraîches et croquantes, riches en oméga-3.",
-                dattes_name: "Dattes Medjool",
-                dattes_desc: "Dattes sucrées et moelleuses, source naturelle d'énergie.",
-                cajou_name: "Noix de Cajou",
-                cajou_desc: "Cajous grillés à sec, sans huile ajoutée.",
-                raisins_name: "Raisins Secs",
-                raisins_desc: "Raisins secs sans sulfites, naturellement sucrés.",
-                melange_name: "Mélange Premium",
-                melange_desc: "Mélange exclusif d'amandes, noix, dattes et raisins.",
+                graines_noires_name: "Graines noires",
+                graines_noires_desc: "Graines noires naturelles et savoureuses, riches en nutriments essentiels.",
+                cacao_normal_name: "Cacao normal",
+                cacao_normal_desc: "Cacao de qualité supérieure, naturel et riche en antioxydants.",
+                cacao_fume_name: "Cacao fumé",
+                cacao_fume_desc: "Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.",
+                pois_chiches_name: "Pois chiches",
+                pois_chiches_desc: "Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.",
+                graines_blanches_name: "Graines blanches",
+                graines_blanches_desc: "Graines blanches naturelles, excellentes pour la santé et la nutrition.",
+                amandes_name: "Amandes",
+                amandes_desc: "Amandes premium du Maroc, riches en protéines et vitamines E. Parfaites pour une collation saine.",
+                pistaches_name: "Pistaches",
+                pistaches_desc: "Pistaches premium, croquantes et savoureuses. Excellente source de protéines et de bons gras.",
+                noix_cajou_name: "Noix de cajou",
+                noix_cajou_desc: "Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses, riches en minéraux essentiels.",
                 sale_type_title: "Type de Vente",
                 retail_sale: "Vente Particulière",
                 retail_desc: "Prix par gramme",
@@ -1523,18 +1798,22 @@
                 no_products: "لم يتم اختيار أي منتج",
                 no_results_title: "لم يتم العثور على منتجات",
                 no_results_text: "جرب كلمات مفتاحية أخرى مثل \"لوز\"، \"جوز\"، \"تمر\"...",
-                amandes_name: "لوز المغرب",
-                amandes_desc: "لوز ممتاز، غني بالبروتينات وفيتامين E.",
-                noix_name: "جوز غرينوبل",
-                noix_desc: "جوز طازج ومقرمش، غني بأوميغا 3.",
-                dattes_name: "تمر مجهول",
-                dattes_desc: "تمر حلو وطري، مصدر طبيعي للطاقة.",
-                cajou_name: "كاجو",
-                cajou_desc: "كاجو محمص جاف، بدون زيت مضاف.",
-                raisins_name: "زبيب",
-                raisins_desc: "زبيب بدون كبريتات، حلو طبيعياً.",
-                melange_name: "خليط ممتاز",
-                melange_desc: "خليط حصري من اللوز والجوز والتمر والزبيب.",
+                graines_noires_name: "بذور سوداء",
+                graines_noires_desc: "بذور سوداء طبيعية ولذيذة، غنية بالعناصر الغذائية الأساسية.",
+                cacao_normal_name: "كاكاو عادي",
+                cacao_normal_desc: "كاكاو عالي الجودة، طبيعي وغني بمضادات الأكسدة.",
+                cacao_fume_name: "كاكاو مدخن",
+                cacao_fume_desc: "كاكاو بنكهة مدخنة فريدة، مثالي لعشاق الأذواق القوية.",
+                pois_chiches_name: "حمص",
+                pois_chiches_desc: "حمص مجفف، غني بالبروتينات النباتية والألياف. مثالي لوصفاتك.",
+                graines_blanches_name: "بذور بيضاء",
+                graines_blanches_desc: "بذور بيضاء طبيعية، ممتازة للصحة والتغذية.",
+                amandes_name: "لوز",
+                amandes_desc: "لوز ممتاز من المغرب، غني بالبروتينات وفيتامين E. مثالي لوجبة خفيفة صحية.",
+                pistaches_name: "فستق",
+                pistaches_desc: "فستق ممتاز، مقرمش ولذيذ. مصدر ممتاز للبروتينات والدهون الجيدة.",
+                noix_cajou_name: "كاجو",
+                noix_cajou_desc: "كاجو محمص جافاً، بدون زيت مضاف. مقرمش ولذيذ، غني بالمعادن الأساسية.",
                 sale_type_title: "نوع البيع",
                 retail_sale: "بيع بالتجزئة",
                 retail_desc: "سعر بالغرام",
@@ -1570,18 +1849,22 @@
                 no_products: "No products selected",
                 no_results_title: "No products found",
                 no_results_text: "Try other keywords like \"almonds\", \"nuts\", \"dates\"...",
-                amandes_name: "Moroccan Almonds",
-                amandes_desc: "Premium almonds, rich in proteins and vitamin E.",
-                noix_name: "Grenoble Walnuts",
-                noix_desc: "Fresh and crunchy walnuts, rich in omega-3.",
-                dattes_name: "Medjool Dates",
-                dattes_desc: "Sweet and soft dates, natural source of energy.",
-                cajou_name: "Cashew Nuts",
-                cajou_desc: "Dry roasted cashews, without added oil.",
-                raisins_name: "Dried Grapes",
-                raisins_desc: "Sulfite-free raisins, naturally sweet.",
-                melange_name: "Premium Mix",
-                melange_desc: "Exclusive blend of almonds, walnuts, dates and raisins.",
+                graines_noires_name: "Black seeds",
+                graines_noires_desc: "Natural and flavorful black seeds, rich in essential nutrients.",
+                cacao_normal_name: "Normal cocoa",
+                cacao_normal_desc: "Premium quality cocoa, natural and rich in antioxidants.",
+                cacao_fume_name: "Smoked cocoa",
+                cacao_fume_desc: "Cocoa with a unique smoky flavor, perfect for those who love intense tastes.",
+                pois_chiches_name: "Chickpeas",
+                pois_chiches_desc: "Dried chickpeas, rich in plant proteins and fiber. Perfect for your recipes.",
+                graines_blanches_name: "White seeds",
+                graines_blanches_desc: "Natural white seeds, excellent for health and nutrition.",
+                amandes_name: "Almonds",
+                amandes_desc: "Premium Moroccan almonds, rich in proteins and vitamin E. Perfect for a healthy snack.",
+                pistaches_name: "Pistachios",
+                pistaches_desc: "Premium pistachios, crunchy and flavorful. Excellent source of proteins and good fats.",
+                noix_cajou_name: "Cashew nuts",
+                noix_cajou_desc: "Dry roasted cashew nuts, without added oil. Crunchy and delicious, rich in essential minerals.",
                 sale_type_title: "Sale Type",
                 retail_sale: "Retail Sale",
                 retail_desc: "Price per gram",
@@ -1692,6 +1975,90 @@
             }
         };
 
+        // Product images data for carousel
+        const productImages = {
+            'graines-noires': [
+                'https://www.shutterstock.com/image-photo/sunflower-seed-isolated-on-white-600nw-2458579765.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu98NHVkXGMD3PhWHzshQTNaXlSkrBV3-u9A&s',
+                'https://toppng.com/uploads/preview/sunflower-seeds-has-great-demand-in-foreign-markets-sunflower-seed-11563167725dy168k8izy.png'
+            ],
+            'cacao-normal': [
+                'https://i.ytimg.com/vi/d7qetuMtgAc/maxresdefault.jpg',
+                'https://img-global.cpcdn.com/recipes/69eef4ecb5630368/680x781cq80/%D8%A7%D9%84%D8%B5%D9%88%D8%B1%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9-%D9%84%D9%88%D8%B5%D9%81%D8%A9%D9%83%D8%A7%D9%88%D9%83%D8%A7%D9%88-%D8%A8%D8%A7%D9%84%D9%85%D9%84%D8%AD-%D9%85%D9%82%D9%84%D9%8A.jpg'
+            ],
+            'cacao-fume': [
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s',
+                'https://i.ytimg.com/vi/9iNywbLtCFc/maxresdefault.jpg'
+            ],
+            'pois-chiches': [
+                'https://www.goji.ma/cdn/shop/products/pois-chiche-vrac.png?v=1717869605',
+                'https://aswandir.com/wp-content/uploads/2025/01/%D8%AD%D9%85%D8%B52.jpg'
+            ],
+            'graines-blanches': [
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0wDFjfmWkbsXwUw8qhipHDn1LE56yKgBpNw&s',
+                'https://www.mymarket.ma/cdn/shop/products/7009.jpg?v=1590780999'
+            ],
+            'amandes': [
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L7oGhxWbpwalFyid9U_mWWzpKGIRotWrNg&s',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQNWcfXax2IRgumTE2oc2epOOli3IOD-_E-g&s'
+            ],
+            'pistaches': [
+                'https://observatoire-des-aliments.fr/wp-content/uploads/2021/11/pistaches-696x393.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNMvGhhnVX5Y2nmvSD6wRT3KMo_eAReV5cblspohS2KD4XB59dHy5oI4JIShfgVQa_hUs&usqp=CAU'
+            ],
+            'noix-cajou': [
+                'https://images.prismic.io/la-fourche/a2e39df0-fe56-4854-81c0-d98cb2622740_noix+de+cajou+.jpg?auto=compress,format',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXwlxR3H70y7dHNOGejGkt-4_ZSqE39Ghi-AmcgG3A9VsP82AkB93gmONz7O1Nf9tj_k&usqp=CAU'
+            ]
+        };
+
+        // Auto-scroll product images
+        function initProductImageCarousel() {
+            const carousels = document.querySelectorAll('.product-image-carousel');
+            
+            carousels.forEach(carousel => {
+                const productId = carousel.getAttribute('data-product');
+                const images = productImages[productId];
+                
+                if (!images || images.length <= 1) return;
+                
+                let currentIndex = 0;
+                let isHovered = false;
+                
+                // Pause on hover
+                carousel.parentElement.addEventListener('mouseenter', () => {
+                    isHovered = true;
+                });
+                
+                carousel.parentElement.addEventListener('mouseleave', () => {
+                    isHovered = false;
+                });
+                
+                // Start carousel after 2 seconds
+                setTimeout(() => {
+                    function changeImage() {
+                        if (isHovered) {
+                            setTimeout(changeImage, 500);
+                            return;
+                        }
+                        
+                        currentIndex = (currentIndex + 1) % images.length;
+                        carousel.classList.add('animating');
+                        carousel.style.backgroundImage = `url('${images[currentIndex]}')`;
+                        
+                        setTimeout(() => {
+                            carousel.classList.remove('animating');
+                        }, 800);
+                        
+                        // Continue changing every 2 seconds
+                        setTimeout(changeImage, 2000);
+                    }
+                    
+                    changeImage();
+                }, 2000);
+            });
+        }
+
         // Initialize cart
         Object.keys(products).forEach(productId => {
             cart[productId] = 0;
@@ -1701,6 +2068,9 @@
             updateAllPrices();
             updateMinOrderText();
             updatePackPrices();
+            
+        // Initialize product image carousel
+        initProductImageCarousel();
 
         // Fonction pour changer la devise
         function changeCurrency(currency) {
