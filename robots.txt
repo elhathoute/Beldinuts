@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://beldinuts.ma/sitemap.xml
+
+# Pages autorisées
+Allow: /index.html
+Allow: /commander.html
+
+# Fichiers et dossiers à ignorer (si existent)
+Disallow: /commander_backup.html
+Disallow: /commander_corrupted.html
+
+# Crawlers spécifiques
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Délai entre les requêtes (en secondes)
+Crawl-delay: 1
+
+

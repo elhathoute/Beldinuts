@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,22 +14,58 @@
     <meta name="keywords" content="noix maroc, fruits secs, amandes, dattes, cajous, raisins secs, alimentation saine, produits naturels, livraison maroc">
     <meta name="author" content="BeldiNuts">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="fr">
+    <meta name="language" content="ar">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="61sct4HjCb20Z0cMzhmEbGoW9YVhuY7Qa8NTYaE1wyY" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://beldinuts.ma/commander.html" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Commander - BeldiNuts | Noix et Fruits Secs du Maroc">
     <meta property="og:description" content="Commandez vos noix et fruits secs préférés directement du Maroc. Amandes, noix, dattes, cajous et raisins secs de qualité premium.">
-    <meta property="og:image" content="beldi-nuts-logo.png">
+    <meta property="og:image" content="https://beldinuts.ma/beldi-nuts-logo.png">
     <meta property="og:url" content="https://beldinuts.ma/commander.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="BeldiNuts">
-    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale" content="ar_MA">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Commander - BeldiNuts | Noix et Fruits Secs du Maroc">
     <meta name="twitter:description" content="Commandez vos noix et fruits secs préférés directement du Maroc. Amandes, noix, dattes, cajous et raisins secs de qualité premium.">
-    <meta name="twitter:image" content="beldi-nuts-logo.png">
+    <meta name="twitter:image" content="https://beldinuts.ma/beldi-nuts-logo.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Commander - BeldiNuts",
+        "description": "Commandez vos noix et fruits secs premium du Maroc. Amandes, noix, dattes, cajous et raisins secs de qualité.",
+        "url": "https://beldinuts.ma/commander.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "BeldiNuts",
+            "url": "https://beldinuts.ma"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "BeldiNuts",
+        "url": "https://beldinuts.ma/commander.html",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "MA",
+            "addressLocality": "Casablanca"
+        }
+    }
+    </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -107,6 +143,36 @@
         .product-image-carousel.animating::after {
             opacity: 1;
         }
+        
+        /* Espacement supplémentaire pour la navigation en arabe */
+        [dir="rtl"] .nav-about-link {
+            margin-right: 2rem !important;
+        }
+        [dir="ltr"] .nav-about-link {
+            margin-left: 2rem !important;
+        }
+        
+        /* Garder le logo à gauche même en RTL */
+        [dir="rtl"] nav .flex.justify-between {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] nav .flex.justify-between > div:first-child {
+            order: 2;
+        }
+        
+        [dir="rtl"] nav .flex.justify-between > div:last-child {
+            order: 1;
+        }
+        
+        /* Forcer le logo à rester visuellement à gauche en RTL */
+        [dir="rtl"] .nav-logo-container {
+            order: 2;
+        }
+        
+        [dir="rtl"] .nav-links-container {
+            order: 1;
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50">
@@ -114,16 +180,17 @@
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
+                <div class="flex items-center nav-logo-container">
                     <div class="flex items-center">
-                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 mr-3">
-                        <h2 class="text-2xl font-bold text-warm-brown">BeldiNuts</h2>
+                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 me-4">
+                        <h1 class="text-2xl font-bold text-warm-brown">BeldiNuts</h1>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
+                <div class="hidden md:flex space-x-12 items-center nav-links-container">
                     <a href="index.html" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
-                    <a href="index.html#apropos" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a>
+                    <a href="index.html#apropos" class="text-warm-brown hover:text-light-gold transition-colors nav-about-link" data-translate="nav_about">À propos</a>
                     <a href="index.html#produits" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_products">Produits</a>
+                    <a href="index.html#faq" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_faq">FAQ</a>
                     <a href="commander.html" class="text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full" data-translate="nav_order">Commander</a>
                     <a href="index.html#contact" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_contact">Contact</a>
                     
@@ -138,7 +205,7 @@
                         <select id="language-select" onchange="changeLanguage(this.value)" 
                                 class="bg-transparent border border-warm-brown text-warm-brown px-3 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
                             <option value="fr">🇫🇷 FR</option>
-                            <option value="ar">🇲🇦 AR</option>
+                            <option value="ar" selected>🇲🇦 AR</option>
                             <option value="en">🇺🇸 EN</option>
                         </select>
                     </div>
@@ -156,6 +223,7 @@
                     <a href="index.html" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_home">Accueil</a>
                     <a href="index.html#apropos" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_about">À propos</a>
                     <a href="index.html#produits" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_products">Produits</a>
+                    <a href="index.html#faq" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_faq">FAQ</a>
                     <a href="commander.html" class="block text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full text-center" data-translate="nav_order">Commander</a>
                     <a href="index.html#contact" class="block text-warm-brown hover:text-light-gold transition-colors py-2" data-translate="nav_contact">Contact</a>
                     
@@ -181,7 +249,7 @@
                         <select id="language-select-mobile" onchange="changeLanguage(this.value)" 
                                 class="w-full bg-transparent border border-warm-brown text-warm-brown px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
                             <option value="fr">🇫🇷 FR</option>
-                            <option value="ar">🇲🇦 AR</option>
+                            <option value="ar" selected>🇲🇦 AR</option>
                             <option value="en">🇺🇸 EN</option>
                         </select>
                     </div>
@@ -224,260 +292,6 @@
                                 <span data-translate="wholesale_sale">Vente en Gros</span>
                                 <div class="text-sm opacity-90" data-translate="wholesale_desc">Prix par pièce</div>
                             </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Packs Section -->
-            <div class="mb-12">
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-2xl shadow-lg p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-4 text-center" data-translate="packs_title">Packs Recommandés</h3>
-                        <p class="text-gray-600 text-center mb-6" data-translate="packs_subtitle">Économisez avec nos packs de produits sélectionnés</p>
-                        
-                        <div class="relative">
-                            <div class="overflow-x-auto scrollbar-hide">
-                                <div class="flex space-x-6 pb-4" id="packs-grid" style="width: max-content;">
-                                    <!-- Pack 1: Pack Sport -->
-                                    <div class="bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl p-6 text-white pack-card" data-pack-id="sport">
-                                        <div class="text-center mb-4">
-                                            <i class="fas fa-dumbbell text-3xl mb-2"></i>
-                                            <h4 class="text-lg font-bold" data-translate="pack_sport_name">Pack Sport</h4>
-                                            <p class="text-sm opacity-90" data-translate="pack_sport_desc">Énergie pour les sportifs</p>
-                                        </div>
-                                        <div class="space-y-2 mb-4">
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_sport_item1">100g Amandes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_sport_item2">100g Dattes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_sport_item3">100g Raisins</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-2xl font-bold mb-2">
-                                                <span class="pack-price">300 DH</span>
-                                                <span class="text-sm opacity-75 line-through ml-2">360 DH</span>
-                                            </div>
-                                            <button onclick="addPackToCart('sport')" class="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                <i class="fas fa-plus mr-1"></i>
-                                                <span data-translate="add_pack">Ajouter Pack</span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Pack 2: Pack Famille -->
-                                    <div class="bg-gradient-to-br from-green-600 to-green-400 rounded-xl p-6 text-white pack-card" data-pack-id="famille">
-                                        <div class="text-center mb-4">
-                                            <i class="fas fa-users text-3xl mb-2"></i>
-                                            <h4 class="text-lg font-bold" data-translate="pack_famille_name">Pack Famille</h4>
-                                            <p class="text-sm opacity-90" data-translate="pack_famille_desc">Idéal pour toute la famille</p>
-                                        </div>
-                                        <div class="space-y-2 mb-4">
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_famille_item1">150g Amandes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_famille_item2">150g Noix</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_famille_item3">100g Dattes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_famille_item4">100g Cajous</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-2xl font-bold mb-2">
-                                                <span class="pack-price">500 DH</span>
-                                                <span class="text-sm opacity-75 line-through ml-2">600 DH</span>
-                                            </div>
-                                            <button onclick="addPackToCart('famille')" class="bg-white text-green-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                <i class="fas fa-plus mr-1"></i>
-                                                <span data-translate="add_pack">Ajouter Pack</span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Pack 3: Pack Collèges -->
-                                    <div class="bg-gradient-to-br from-purple-600 to-purple-400 rounded-xl p-6 text-white pack-card" data-pack-id="colleges">
-                                        <div class="text-center mb-4">
-                                            <i class="fas fa-graduation-cap text-3xl mb-2"></i>
-                                            <h4 class="text-lg font-bold" data-translate="pack_colleges_name">Pack Collèges</h4>
-                                            <p class="text-sm opacity-90" data-translate="pack_colleges_desc">Étudiants et collèges</p>
-                                        </div>
-                                        <div class="space-y-2 mb-4">
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_colleges_item1">200g Amandes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_colleges_item2">200g Dattes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_colleges_item3">200g Raisins</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-2xl font-bold mb-2">
-                                                <span class="pack-price">400 DH</span>
-                                                <span class="text-sm opacity-75 line-through ml-2">480 DH</span>
-                                            </div>
-                                            <button onclick="addPackToCart('colleges')" class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                <i class="fas fa-plus mr-1"></i>
-                                                <span data-translate="add_pack">Ajouter Pack</span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Pack 4: Pack Découverte -->
-                                    <div class="bg-gradient-to-br from-orange-600 to-orange-400 rounded-xl p-6 text-white pack-card" data-pack-id="decouverte">
-                                        <div class="text-center mb-4">
-                                            <i class="fas fa-gift text-3xl mb-2"></i>
-                                            <h4 class="text-lg font-bold" data-translate="pack_decouverte_name">Pack Découverte</h4>
-                                            <p class="text-sm opacity-90" data-translate="pack_decouverte_desc">Parfait pour commencer</p>
-                                        </div>
-                                        <div class="space-y-2 mb-4">
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_decouverte_item1">50g Amandes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_decouverte_item2">50g Noix</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_decouverte_item3">50g Dattes</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-2xl font-bold mb-2">
-                                                <span class="pack-price">150 DH</span>
-                                                <span class="text-sm opacity-75 line-through ml-2">180 DH</span>
-                                            </div>
-                                            <button onclick="addPackToCart('decouverte')" class="bg-white text-orange-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                <i class="fas fa-plus mr-1"></i>
-                                                <span data-translate="add_pack">Ajouter Pack</span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Pack 5: Pack Premium -->
-                                    <div class="bg-gradient-to-br from-yellow-600 to-yellow-400 rounded-xl p-6 text-white pack-card" data-pack-id="premium">
-                                        <div class="text-center mb-4">
-                                            <i class="fas fa-crown text-3xl mb-2"></i>
-                                            <h4 class="text-lg font-bold" data-translate="pack_premium_name">Pack Premium</h4>
-                                            <p class="text-sm opacity-90" data-translate="pack_premium_desc">Notre sélection d'exception</p>
-                                        </div>
-                                        <div class="space-y-2 mb-4">
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_premium_item1">300g Amandes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_premium_item2">300g Noix</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_premium_item3">300g Dattes</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_premium_item4">300g Cajous</span>
-                                            </div>
-                                            <div class="flex items-center text-sm">
-                                                <i class="fas fa-check mr-2"></i>
-                                                <span data-translate="pack_premium_item5">300g Raisins</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-2xl font-bold mb-2">
-                                                <span class="pack-price">1,500 DH</span>
-                                                <span class="text-sm opacity-75 line-through ml-2">1,800 DH</span>
-                                            </div>
-                                            <button onclick="addPackToCart('premium')" class="bg-white text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                <i class="fas fa-plus mr-1"></i>
-                                                <span data-translate="add_pack">Ajouter Pack</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Informations Produits Section -->
-            <div class="mb-12">
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-2xl shadow-lg p-8">
-                        <h2 class="text-2xl font-bold text-warm-brown mb-6 text-center">Pourquoi Choisir BeldiNuts ?</h2>
-                        
-                        <div class="grid md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h3 class="text-xl font-semibold text-warm-brown mb-4">Qualité Premium Garantie</h3>
-                                <p class="text-gray-700 mb-4">
-                                    Tous nos produits sont soigneusement sélectionnés directement chez les producteurs marocains. 
-                                    Nous privilégions la qualité et la fraîcheur pour vous offrir le meilleur des noix et fruits secs.
-                                </p>
-                                <p class="text-gray-700">
-                                    Nos amandes du Maroc sont récoltées à la main et séchées naturellement au soleil. 
-                                    Elles conservent ainsi toutes leurs propriétés nutritionnelles et leur goût authentique.
-                                </p>
-                            </div>
-                            
-                            <div>
-                                <h3 class="text-xl font-semibold text-warm-brown mb-4">Bienfaits Nutritionnels</h3>
-                                <p class="text-gray-700 mb-4">
-                                    Nos noix et fruits secs sont riches en protéines, vitamines et minéraux essentiels. 
-                                    Ils constituent un excellent complément alimentaire naturel pour une alimentation équilibrée.
-                                </p>
-                                <p class="text-gray-700">
-                                    Les dattes Medjool sont particulièrement recommandées pour les sportifs grâce à leur 
-                                    teneur élevée en potassium et en glucides naturels.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="text-center">
-                                <div class="bg-warm-brown text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-shipping-fast text-2xl"></i>
-                                </div>
-                                <h4 class="font-semibold text-warm-brown mb-2">Livraison Rapide</h4>
-                                <p class="text-sm text-gray-600">Expédition sous 24h dans tout le Maroc</p>
-                            </div>
-                            
-                            <div class="text-center">
-                                <div class="bg-earth-green text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-leaf text-2xl"></i>
-                                </div>
-                                <h4 class="font-semibold text-warm-brown mb-2">100% Naturel</h4>
-                                <p class="text-sm text-gray-600">Aucun conservateur ni additif chimique</p>
-                            </div>
-                            
-                            <div class="text-center">
-                                <div class="bg-light-gold text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-award text-2xl"></i>
-                                </div>
-                                <h4 class="font-semibold text-warm-brown mb-2">Qualité Certifiée</h4>
-                                <p class="text-sm text-gray-600">Contrôle qualité rigoureux à chaque étape</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -544,7 +358,7 @@
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">1.00 DH/g</span>
                         </div>
-                        <!-- Suggested Quantities -->
+                        <!-- Suggested Quantities (grams) -->
                         <div class="mb-4">
                             <p class="text-sm text-gray-600 mb-2" data-translate="suggested_quantities">Quantités suggérées:</p>
                             <div class="flex flex-wrap gap-2">
@@ -565,15 +379,55 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Suggested Pieces -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_pieces">Pièces suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedPieces('graines-noires', 10)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    10
+                                </button>
+                                <button onclick="setSuggestedPieces('graines-noires', 20)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    20
+                                </button>
+                                <button onclick="setSuggestedPieces('graines-noires', 30)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    30
+                                </button>
+                                <button onclick="setSuggestedPieces('graines-noires', 40)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    40
+                                </button>
+                                <button onclick="setSuggestedPieces('graines-noires', 50)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    50
+                                </button>
+                                <button onclick="setSuggestedPieces('graines-noires', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="graines-noires-mode-pieces" onclick="setQuantityMode('graines-noires', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="graines-noires-mode-grams" onclick="setQuantityMode('graines-noires', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('graines-noires')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="graines-noires-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('graines-noires', this.value)" 
-                                       oninput="updateQuantity('graines-noires', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="graines-noires-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('graines-noires', this.value)" 
+                                           oninput="updateQuantity('graines-noires', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="graines-noires-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('graines-noires')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -668,15 +522,55 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Suggested Pieces -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2" data-translate="suggested_pieces">Pièces suggérées:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSuggestedPieces('cacao-normal', 10)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    10
+                                </button>
+                                <button onclick="setSuggestedPieces('cacao-normal', 20)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    20
+                                </button>
+                                <button onclick="setSuggestedPieces('cacao-normal', 30)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    30
+                                </button>
+                                <button onclick="setSuggestedPieces('cacao-normal', 40)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    40
+                                </button>
+                                <button onclick="setSuggestedPieces('cacao-normal', 50)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    50
+                                </button>
+                                <button onclick="setSuggestedPieces('cacao-normal', 100)" class="bg-gray-100 hover:bg-warm-brown hover:text-white text-gray-700 px-3 py-1 rounded-full text-sm transition-colors">
+                                    100
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="cacao-normal-mode-pieces" onclick="setQuantityMode('cacao-normal', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="cacao-normal-mode-grams" onclick="setQuantityMode('cacao-normal', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('cacao-normal')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="cacao-normal-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('cacao-normal', this.value)" 
-                                       oninput="updateQuantity('cacao-normal', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="cacao-normal-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('cacao-normal', this.value)" 
+                                           oninput="updateQuantity('cacao-normal', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="cacao-normal-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('cacao-normal')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -733,8 +627,8 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Cacao fumé - 2 DH -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="cacao fumé">
+                <!-- Product 3: Cacao croquant - 2 DH -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden product-card" data-product-name="cacao croquant">
                     <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="cacao-fume" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s')">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <button onclick="openProductModal('cacao-fume')" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 text-warm-brown p-3 rounded-full shadow-lg transform hover:scale-110 transition-transform">
@@ -743,9 +637,9 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="cacao_fume_name">Cacao fumé</h3>
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="cacao_fume_name">Cacao croquant</h3>
                         <p class="text-gray-600 mb-4" data-translate="cacao_fume_desc">
-                            Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.
+                            Fèves de cacao croquantes, parfaites pour une collation délicieuse et croquante.
                         </p>
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-2xl font-bold text-warm-brown price-display">2.00 DH/g</span>
@@ -771,15 +665,31 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="cacao-fume-mode-pieces" onclick="setQuantityMode('cacao-fume', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="cacao-fume-mode-grams" onclick="setQuantityMode('cacao-fume', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('cacao-fume')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="cacao-fume-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('cacao-fume', this.value)" 
-                                       oninput="updateQuantity('cacao-fume', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="cacao-fume-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('cacao-fume', this.value)" 
+                                           oninput="updateQuantity('cacao-fume', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="cacao-fume-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('cacao-fume')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -874,15 +784,31 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="pois-chiches-mode-pieces" onclick="setQuantityMode('pois-chiches', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="pois-chiches-mode-grams" onclick="setQuantityMode('pois-chiches', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('pois-chiches')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="pois-chiches-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('pois-chiches', this.value)" 
-                                       oninput="updateQuantity('pois-chiches', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="pois-chiches-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('pois-chiches', this.value)" 
+                                           oninput="updateQuantity('pois-chiches', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="pois-chiches-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('pois-chiches')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -977,15 +903,31 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="graines-blanches-mode-pieces" onclick="setQuantityMode('graines-blanches', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="graines-blanches-mode-grams" onclick="setQuantityMode('graines-blanches', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('graines-blanches')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="graines-blanches-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('graines-blanches', this.value)" 
-                                       oninput="updateQuantity('graines-blanches', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="graines-blanches-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('graines-blanches', this.value)" 
+                                           oninput="updateQuantity('graines-blanches', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="graines-blanches-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('graines-blanches')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -1080,15 +1022,31 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="amandes-mode-pieces" onclick="setQuantityMode('amandes', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="amandes-mode-grams" onclick="setQuantityMode('amandes', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('amandes')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="amandes-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('amandes', this.value)" 
-                                       oninput="updateQuantity('amandes', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="amandes-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('amandes', this.value)" 
+                                           oninput="updateQuantity('amandes', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="amandes-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('amandes')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -1183,15 +1141,31 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="pistaches-mode-pieces" onclick="setQuantityMode('pistaches', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="pistaches-mode-grams" onclick="setQuantityMode('pistaches', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('pistaches')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="pistaches-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('pistaches', this.value)" 
-                                       oninput="updateQuantity('pistaches', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="pistaches-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('pistaches', this.value)" 
+                                           oninput="updateQuantity('pistaches', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="pistaches-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('pistaches')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -1286,15 +1260,31 @@
                                 </button>
                             </div>
                         </div>
+                        <!-- Quantity Mode Toggle -->
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1 inline-flex">
+                                <button id="noix-cajou-mode-pieces" onclick="setQuantityMode('noix-cajou', 'pieces')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors bg-warm-brown text-white">
+                                    Par pièce
+                                </button>
+                                <button id="noix-cajou-mode-grams" onclick="setQuantityMode('noix-cajou', 'grams')" 
+                                        class="px-3 py-1 rounded-md text-sm font-medium transition-colors text-gray-700 hover:bg-gray-200">
+                                    Grammes personnalisés
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <button onclick="decreaseQuantity('noix-cajou')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-minus text-sm"></i>
                                 </button>
-                                <input type="number" id="noix-cajou-qty" value="0" min="0" step="10" 
-                                       onchange="updateQuantity('noix-cajou', this.value)" 
-                                       oninput="updateQuantity('noix-cajou', this.value)"
-                                       class="text-lg font-semibold w-16 text-center border border-gray-300 rounded px-2 py-1 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                <div class="relative">
+                                    <input type="number" id="noix-cajou-qty" value="0" min="0" step="1" 
+                                           onchange="updateQuantity('noix-cajou', this.value)" 
+                                           oninput="updateQuantity('noix-cajou', this.value)"
+                                           class="text-lg font-semibold w-24 text-center border border-gray-300 rounded px-2 py-1 pr-12 focus:ring-2 focus:ring-warm-brown focus:border-transparent">
+                                    <span id="noix-cajou-unit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 font-medium">pièces</span>
+                                </div>
                                 <button onclick="increaseQuantity('noix-cajou')" class="bg-warm-brown hover:bg-brown-700 text-white w-8 h-8 rounded-full flex items-center justify-center">
                                     <i class="fas fa-plus text-sm"></i>
                                 </button>
@@ -1472,31 +1462,130 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-2xl font-bold text-light-gold mb-4">À Propos de BeldiNuts</h3>
-            <p class="text-gray-300 mb-4">
-                Votre partenaire pour une alimentation saine et naturelle
-            </p>
-            <div class="flex justify-center space-x-6">
-                <a href="index.html" class="text-gray-300 hover:text-light-gold transition-colors">Accueil</a>
-                <a href="index.html#produits" class="text-gray-300 hover:text-light-gold transition-colors">Produits</a>
-                <a href="index.html#contact" class="text-gray-300 hover:text-light-gold transition-colors">Contact</a>
+    <footer id="contact" class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 me-4">
+                        <h3 class="text-2xl font-bold text-light-gold">BeldiNuts</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4" data-translate="footer_description">
+                        Votre partenaire pour une alimentation saine et naturelle. 
+                        Des produits d'exception directement du Maroc.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/beldinutsmorroco/" target="_blank" class="text-gray-300 hover:text-light-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer_products">Produits</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_amandes">Amandes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_noix">Noix</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_dattes">Dattes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_fruits_secs">Fruits Secs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer_info">Informations</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_delivery">Livraison</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_returns">Retours</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="nav_faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer_contact">Contact</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-light-gold me-2 mt-1"></i>
+                            <span class="text-gray-300">Dar bouaza nouacer, Casablanca, Maroc</span>
+                        </div>
+                        <div class="flex flex-col space-y-1">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-light-gold me-2"></i>
+                                <a href="tel:+212615919437" class="text-gray-300 hover:text-light-gold transition-colors">+212 615919437</a>
+                            </div>
+                            <div class="flex items-center ms-7">
+                                <a href="tel:+212694147354" class="text-gray-300 hover:text-light-gold transition-colors">+212 694-147354</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-light-gold me-2"></i>
+                            <a href="mailto:beldinuts@gmail.com" class="text-gray-300 hover:text-light-gold transition-colors">beldinuts@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    <span data-translate="footer_copyright">© 2024 BeldiNuts. Tous droits réservés.</span> | 
+                    <a href="#" class="hover:text-light-gold transition-colors" data-translate="footer_legal">Mentions légales</a> | 
+                    <a href="#" class="hover:text-light-gold transition-colors" data-translate="footer_privacy">Politique de confidentialité</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Product data - Prix de base en DH par gramme
+        // Product data - Structure avec poids et prix (gros/individuel)
         const products = {
-            'graines-noires': { name: 'Graines noires', basePrice: 1 },
-            'cacao-normal': { name: 'Cacao normal', basePrice: 2 },
-            'cacao-fume': { name: 'Cacao fumé', basePrice: 2 },
-            'pois-chiches': { name: 'Pois chiches', basePrice: 2 },
-            'graines-blanches': { name: 'Graines blanches', basePrice: 2 },
-            'amandes': { name: 'Amandes', basePrice: 5 },
-            'pistaches': { name: 'Pistaches', basePrice: 6 },
-            'noix-cajou': { name: 'Noix de cajou', basePrice: 6 }
+            'graines-noires': { 
+                name: 'Graines noires', 
+                weight: 20, // grammes
+                wholesalePrice: 2, // DH par pièce (gros)
+                retailPrice: 2.5 // DH par pièce (individuel)
+            },
+            'cacao-normal': { 
+                name: 'Cacao normal', 
+                weight: 40,
+                wholesalePrice: 2,
+                retailPrice: 2.5
+            },
+            'cacao-fume': { 
+                name: 'Cacao croquant', 
+                weight: 40,
+                wholesalePrice: 2,
+                retailPrice: 2.5
+            },
+            'pois-chiches': { 
+                name: 'Pois chiches', 
+                weight: 40,
+                wholesalePrice: 2,
+                retailPrice: 2.5
+            },
+            'graines-blanches': { 
+                name: 'Graines blanches', 
+                weight: 40,
+                wholesalePrice: 2,
+                retailPrice: 2.5
+            },
+            'amandes': { 
+                name: 'Amandes', 
+                weight: 35,
+                wholesalePrice: 5,
+                retailPrice: 6
+            },
+            'pistaches': { 
+                name: 'Pistaches', 
+                weight: 36,
+                wholesalePrice: 6,
+                retailPrice: 7
+            },
+            'noix-cajou': { 
+                name: 'Noix de cajou', 
+                weight: 35,
+                wholesalePrice: 6,
+                retailPrice: 7
+            }
         };
 
         // Detailed product information for modal
@@ -1544,8 +1633,8 @@
                 storage: 'Conserver dans un endroit frais et sec, à l\'abri de l\'humidité.'
             },
             'cacao-fume': {
-                name: 'Cacao fumé',
-                description: 'Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses et authentiques.',
+                name: 'Cacao croquant',
+                description: 'Fèves de cacao croquantes, parfaites pour une collation délicieuse et croquante.',
                 image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s',
                 benefits: [
                     'Saveur fumée unique',
@@ -1682,7 +1771,7 @@
         let currentCurrency = 'MAD';
         
         // Langue actuelle
-        let currentLanguage = 'fr';
+        let currentLanguage = 'ar';
         
         // Type de vente actuel
         let saleType = 'retail'; // 'retail' ou 'wholesale'
@@ -1693,6 +1782,7 @@
                 nav_home: "Accueil",
                 nav_about: "À propos",
                 nav_products: "Produits",
+                nav_faq: "FAQ",
                 nav_order: "Commander",
                 nav_contact: "Contact",
                 page_title: "Commander vos Produits",
@@ -1720,8 +1810,8 @@
                 graines_noires_desc: "Graines noires naturelles et savoureuses, riches en nutriments essentiels.",
                 cacao_normal_name: "Cacao normal",
                 cacao_normal_desc: "Cacao de qualité supérieure, naturel et riche en antioxydants.",
-                cacao_fume_name: "Cacao fumé",
-                cacao_fume_desc: "Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.",
+                cacao_fume_name: "Cacao croquant",
+                cacao_fume_desc: "Fèves de cacao croquantes, parfaites pour une collation délicieuse et croquante.",
                 pois_chiches_name: "Pois chiches",
                 pois_chiches_desc: "Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.",
                 graines_blanches_name: "Graines blanches",
@@ -1743,38 +1833,52 @@
                 pack_sport_name: "Pack Sport",
                 pack_sport_desc: "Énergie pour les sportifs",
                 pack_sport_item1: "100g Amandes",
-                pack_sport_item2: "100g Dattes",
-                pack_sport_item3: "100g Raisins",
+                pack_sport_item2: "100g Pistaches",
+                pack_sport_item3: "100g Noix de cajou",
                 pack_famille_name: "Pack Famille",
                 pack_famille_desc: "Idéal pour toute la famille",
                 pack_famille_item1: "150g Amandes",
-                pack_famille_item2: "150g Noix",
-                pack_famille_item3: "100g Dattes",
-                pack_famille_item4: "100g Cajous",
+                pack_famille_item2: "150g Noix de cajou",
+                pack_famille_item3: "100g Pistaches",
+                pack_famille_item4: "100g Graines noires",
                 pack_colleges_name: "Pack Collèges",
                 pack_colleges_desc: "Étudiants et collèges",
                 pack_colleges_item1: "200g Amandes",
-                pack_colleges_item2: "200g Dattes",
-                pack_colleges_item3: "200g Raisins",
+                pack_colleges_item2: "200g Noix de cajou",
+                pack_colleges_item3: "200g Pistaches",
                 pack_decouverte_name: "Pack Découverte",
                 pack_decouverte_desc: "Parfait pour commencer",
                 pack_decouverte_item1: "50g Amandes",
-                pack_decouverte_item2: "50g Noix",
-                pack_decouverte_item3: "50g Dattes",
+                pack_decouverte_item2: "50g Noix de cajou",
+                pack_decouverte_item3: "50g Pistaches",
                 pack_premium_name: "Pack Premium",
                 pack_premium_desc: "Notre sélection d'exception",
                 pack_premium_item1: "300g Amandes",
-                pack_premium_item2: "300g Noix",
-                pack_premium_item3: "300g Dattes",
-                pack_premium_item4: "300g Cajous",
-                pack_premium_item5: "300g Raisins",
+                pack_premium_item2: "300g Noix de cajou",
+                pack_premium_item3: "300g Pistaches",
+                pack_premium_item4: "300g Graines noires",
+                pack_premium_item5: "300g Graines blanches",
                 add_pack: "Ajouter Pack",
-                suggested_quantities: "Quantités suggérées:"
+                suggested_quantities: "Quantités suggérées:",
+                footer_description: "Votre partenaire pour une alimentation saine et naturelle. Des produits d'exception directement du Maroc.",
+                footer_products: "Produits",
+                footer_info: "Informations",
+                footer_contact: "Contact",
+                footer_legal: "Mentions légales",
+                footer_privacy: "Politique de confidentialité",
+                footer_copyright: "© 2024 Beldinuts. Tous droits réservés.",
+                footer_amandes: "Amandes",
+                footer_noix: "Noix",
+                footer_dattes: "Dattes",
+                footer_fruits_secs: "Fruits Secs",
+                footer_delivery: "Livraison",
+                footer_returns: "Retours"
             },
             ar: {
                 nav_home: "الرئيسية",
                 nav_about: "من نحن",
                 nav_products: "المنتجات",
+                nav_faq: "الأسئلة الشائعة",
                 nav_order: "اطلب",
                 nav_contact: "اتصل بنا",
                 page_title: "اطلب منتجاتك",
@@ -1802,8 +1906,8 @@
                 graines_noires_desc: "بذور سوداء طبيعية ولذيذة، غنية بالعناصر الغذائية الأساسية.",
                 cacao_normal_name: "كاكاو عادي",
                 cacao_normal_desc: "كاكاو عالي الجودة، طبيعي وغني بمضادات الأكسدة.",
-                cacao_fume_name: "كاكاو مدخن",
-                cacao_fume_desc: "كاكاو بنكهة مدخنة فريدة، مثالي لعشاق الأذواق القوية.",
+                cacao_fume_name: "كاوكاو مقرمش",
+                cacao_fume_desc: "فاصوليا كاكاو مقرمشة، مثالية لوجبة خفيفة لذيذة ومقرمشة.",
                 pois_chiches_name: "حمص",
                 pois_chiches_desc: "حمص مجفف، غني بالبروتينات النباتية والألياف. مثالي لوصفاتك.",
                 graines_blanches_name: "بذور بيضاء",
@@ -1820,12 +1924,57 @@
                 wholesale_sale: "بيع بالجملة",
                 wholesale_desc: "سعر بالقطعة",
                 installment_title: "الدفع على أقساط",
-                suggested_quantities: "الكميات المقترحة:"
+                packs_title: "الباقات الموصى بها",
+                packs_subtitle: "وفر مع باقات منتجاتنا المختارة",
+                pack_sport_name: "باقة الرياضة",
+                pack_sport_desc: "طاقة للرياضيين",
+                pack_sport_item1: "100 جرام لوز",
+                pack_sport_item2: "100 جرام فستق",
+                pack_sport_item3: "100 جرام كاجو",
+                pack_famille_name: "باقة العائلة",
+                pack_famille_desc: "مثالية للعائلة",
+                pack_famille_item1: "150 جرام لوز",
+                pack_famille_item2: "150 جرام كاجو",
+                pack_famille_item3: "100 جرام فستق",
+                pack_famille_item4: "100 جرام بذور سوداء",
+                pack_colleges_name: "باقة الكليات",
+                pack_colleges_desc: "للطلاب والكليات",
+                pack_colleges_item1: "200 جرام لوز",
+                pack_colleges_item2: "200 جرام كاجو",
+                pack_colleges_item3: "200 جرام فستق",
+                pack_decouverte_name: "باقة الاكتشاف",
+                pack_decouverte_desc: "مثالية للبداية",
+                pack_decouverte_item1: "50 جرام لوز",
+                pack_decouverte_item2: "50 جرام كاجو",
+                pack_decouverte_item3: "50 جرام فستق",
+                pack_premium_name: "الباقة المميزة",
+                pack_premium_desc: "اختيارنا الاستثنائي",
+                pack_premium_item1: "300 جرام لوز",
+                pack_premium_item2: "300 جرام كاجو",
+                pack_premium_item3: "300 جرام فستق",
+                pack_premium_item4: "300 جرام بذور سوداء",
+                pack_premium_item5: "300 جرام بذور بيضاء",
+                add_pack: "إضافة الباقة",
+                suggested_quantities: "الكميات المقترحة:",
+                footer_description: "شريككم للتغذية الصحية والطبيعية. منتجات استثنائية مباشرة من المغرب.",
+                footer_products: "المنتجات",
+                footer_info: "معلومات",
+                footer_contact: "اتصل بنا",
+                footer_legal: "الشروط القانونية",
+                footer_privacy: "سياسة الخصوصية",
+                footer_copyright: "© 2024 بيلدي نتس. جميع الحقوق محفوظة.",
+                footer_amandes: "لوز",
+                footer_noix: "جوز",
+                footer_dattes: "تمر",
+                footer_fruits_secs: "فواكه مجففة",
+                footer_delivery: "التوصيل",
+                footer_returns: "المرتجعات"
             },
             en: {
                 nav_home: "Home",
                 nav_about: "About",
                 nav_products: "Products",
+                nav_faq: "FAQ",
                 nav_order: "Order",
                 nav_contact: "Contact",
                 page_title: "Order Your Products",
@@ -1853,8 +2002,8 @@
                 graines_noires_desc: "Natural and flavorful black seeds, rich in essential nutrients.",
                 cacao_normal_name: "Normal cocoa",
                 cacao_normal_desc: "Premium quality cocoa, natural and rich in antioxidants.",
-                cacao_fume_name: "Smoked cocoa",
-                cacao_fume_desc: "Cocoa with a unique smoky flavor, perfect for those who love intense tastes.",
+                cacao_fume_name: "Crunchy cocoa",
+                cacao_fume_desc: "Crunchy cocoa beans, perfect for a delicious and crunchy snack.",
                 pois_chiches_name: "Chickpeas",
                 pois_chiches_desc: "Dried chickpeas, rich in plant proteins and fiber. Perfect for your recipes.",
                 graines_blanches_name: "White seeds",
@@ -1871,7 +2020,51 @@
                 wholesale_sale: "Wholesale Sale",
                 wholesale_desc: "Price per piece",
                 installment_title: "Installment Payment",
-                suggested_quantities: "Suggested quantities:"
+                packs_title: "Recommended Packs",
+                packs_subtitle: "Save with our selected product packs",
+                pack_sport_name: "Sport Pack",
+                pack_sport_desc: "Energy for athletes",
+                pack_sport_item1: "100g Almonds",
+                pack_sport_item2: "100g Pistachios",
+                pack_sport_item3: "100g Cashew nuts",
+                pack_famille_name: "Family Pack",
+                pack_famille_desc: "Ideal for the whole family",
+                pack_famille_item1: "150g Almonds",
+                pack_famille_item2: "150g Cashew nuts",
+                pack_famille_item3: "100g Pistachios",
+                pack_famille_item4: "100g Black seeds",
+                pack_colleges_name: "Colleges Pack",
+                pack_colleges_desc: "For students and colleges",
+                pack_colleges_item1: "200g Almonds",
+                pack_colleges_item2: "200g Cashew nuts",
+                pack_colleges_item3: "200g Pistachios",
+                pack_decouverte_name: "Discovery Pack",
+                pack_decouverte_desc: "Perfect to start",
+                pack_decouverte_item1: "50g Almonds",
+                pack_decouverte_item2: "50g Cashew nuts",
+                pack_decouverte_item3: "50g Pistachios",
+                pack_premium_name: "Premium Pack",
+                pack_premium_desc: "Our exceptional selection",
+                pack_premium_item1: "300g Almonds",
+                pack_premium_item2: "300g Cashew nuts",
+                pack_premium_item3: "300g Pistachios",
+                pack_premium_item4: "300g Black seeds",
+                pack_premium_item5: "300g White seeds",
+                add_pack: "Add Pack",
+                suggested_quantities: "Suggested quantities:",
+                footer_description: "Your partner for healthy and natural nutrition. Exceptional products directly from Morocco.",
+                footer_products: "Products",
+                footer_info: "Information",
+                footer_contact: "Contact",
+                footer_legal: "Legal Notice",
+                footer_privacy: "Privacy Policy",
+                footer_copyright: "© 2024 Beldinuts. All rights reserved.",
+                footer_amandes: "Almonds",
+                footer_noix: "Walnuts",
+                footer_dattes: "Dates",
+                footer_fruits_secs: "Dried Fruits",
+                footer_delivery: "Delivery",
+                footer_returns: "Returns"
             }
         };
 
@@ -1917,6 +2110,9 @@
 
         // Cart state
         let cart = {};
+        
+        // Product quantity modes: 'pieces' (default) or 'grams'
+        let productModes = {};
 
         // Pack data
         const packs = {
@@ -1926,8 +2122,8 @@
                 originalPrice: 360,
                 products: {
                     amandes: 100,
-                    dattes: 100,
-                    raisins: 100
+                    pistaches: 100,
+                    'noix-cajou': 100
                 }
             },
             famille: {
@@ -1936,9 +2132,9 @@
                 originalPrice: 600,
                 products: {
                     amandes: 150,
-                    noix: 150,
-                    dattes: 100,
-                    cajou: 100
+                    'noix-cajou': 150,
+                    pistaches: 100,
+                    'graines-noires': 100
                 }
             },
             colleges: {
@@ -1947,8 +2143,8 @@
                 originalPrice: 480,
                 products: {
                     amandes: 200,
-                    dattes: 200,
-                    raisins: 200
+                    'noix-cajou': 200,
+                    pistaches: 200
                 }
             },
             decouverte: {
@@ -1957,8 +2153,8 @@
                 originalPrice: 180,
                 products: {
                     amandes: 50,
-                    noix: 50,
-                    dattes: 50
+                    'noix-cajou': 50,
+                    pistaches: 50
                 }
             },
             premium: {
@@ -1967,10 +2163,10 @@
                 originalPrice: 1800,
                 products: {
                     amandes: 300,
-                    noix: 300,
-                    dattes: 300,
-                    cajou: 300,
-                    raisins: 300
+                    'noix-cajou': 300,
+                    pistaches: 300,
+                    'graines-noires': 300,
+                    'graines-blanches': 300
                 }
             }
         };
@@ -2106,11 +2302,29 @@
         
         // Fonction pour changer la langue
         function changeLanguage(language) {
+            if (!language || !translations || !translations[language]) {
+                console.warn('Language not found:', language);
+                language = 'ar'; // Fallback to Arabic
+            }
+            
             currentLanguage = language;
             document.documentElement.lang = language;
             
+            // Appliquer la direction RTL pour l'arabe
+            if (language === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+            
             // Sauvegarder la langue dans localStorage
             localStorage.setItem('selectedLanguage', language);
+            
+            // Mettre à jour les sélecteurs de langue
+            const desktopLangSelect = document.getElementById('language-select');
+            const mobileLangSelect = document.getElementById('language-select-mobile');
+            if (desktopLangSelect) desktopLangSelect.value = language;
+            if (mobileLangSelect) mobileLangSelect.value = language;
             
             // Mettre à jour tous les éléments avec data-translate
             document.querySelectorAll('[data-translate]').forEach(element => {
@@ -2122,10 +2336,35 @@
             
             // Mettre à jour les placeholders
             const searchInput = document.getElementById('product-search');
-            if (searchInput && translations[language].search_placeholder) {
+            if (searchInput && translations[language] && translations[language].search_placeholder) {
                 searchInput.placeholder = translations[language].search_placeholder;
             }
         }
+        
+        // Appliquer la langue par défaut dès que possible
+        (function() {
+            function initLanguage() {
+                let savedLanguage = localStorage.getItem('selectedLanguage');
+                // Si aucune langue n'est sauvegardée ou si la langue sauvegardée n'existe pas, utiliser l'arabe par défaut
+                if (!savedLanguage || !translations || !translations[savedLanguage]) {
+                    savedLanguage = 'ar';
+                    localStorage.setItem('selectedLanguage', 'ar');
+                }
+                
+                // Appliquer la langue
+                if (typeof changeLanguage === 'function') {
+                    changeLanguage(savedLanguage);
+                }
+            }
+            
+            // Si le DOM est déjà chargé, appliquer immédiatement
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setTimeout(initLanguage, 0);
+            } else {
+                // Sinon, attendre DOMContentLoaded
+                document.addEventListener('DOMContentLoaded', initLanguage);
+            }
+        })();
         
         // Fonction pour changer le type de vente
         function setSaleType(type) {
@@ -2170,15 +2409,16 @@
                 // Calculer le total actuel
                 let total = 0;
                 Object.keys(cart).forEach(productId => {
-                    if (cart[productId] > 0) {
+                    if (cart[productId] > 0 && products[productId]) {
+                        const product = products[productId];
                         if (saleType === 'wholesale') {
-                            const basePrice = 6; // Prix fixe 6 DH/pièce
+                            const basePrice = product.wholesalePrice || 0;
                             const pricePerPiece = basePrice * exchangeRates[currentCurrency];
                             total += cart[productId] * pricePerPiece;
                         } else {
-                            const basePrice = products[productId].basePrice;
-                            const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                            total += cart[productId] * pricePerGram;
+                            const basePrice = product.retailPrice || 0;
+                            const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                            total += cart[productId] * pricePerPiece;
                         }
                     }
                 });
@@ -2220,13 +2460,15 @@
 
         // Fonction pour obtenir le prix dans la devise actuelle
         function getPrice(productId) {
+            if (!products[productId]) return 0;
+            
             if (saleType === 'wholesale') {
-                // Prix fixe de 6 DH/pièce pour la vente en gros
-                const basePrice = 6; // Prix fixe 6 DH/pièce
+                // Prix en gros par pièce
+                const basePrice = products[productId].wholesalePrice || 0;
                 return basePrice * exchangeRates[currentCurrency];
             } else {
-                // Prix par gramme pour la vente particulière
-                const basePrice = products[productId].basePrice;
+                // Prix individuel par pièce
+                const basePrice = products[productId].retailPrice || 0;
                 return basePrice * exchangeRates[currentCurrency];
             }
         }
@@ -2250,50 +2492,127 @@
                     const productName = productCard.getAttribute('data-product-name');
                     // Mapper les noms de produits aux IDs
                     let productId = '';
-                    switch(productName) {
-                        case 'amandes du maroc': productId = 'amandes'; break;
-                        case 'noix de grenoble': productId = 'noix'; break;
-                        case 'dattes medjool': productId = 'dattes'; break;
-                        case 'noix de cajou': productId = 'cajou'; break;
-                        case 'raisins secs': productId = 'raisins'; break;
-                        case 'mélange premium': productId = 'melange'; break;
-                    }
+                    // Mapping des noms de produits aux IDs
+                    const nameMap = {
+                        'graines noires': 'graines-noires',
+                        'cacao normal': 'cacao-normal',
+                        'cacao croquant': 'cacao-fume',
+                        'pois chiches': 'pois-chiches',
+                        'graines blanches': 'graines-blanches',
+                        'amandes': 'amandes',
+                        'pistaches': 'pistaches',
+                        'noix de cajou': 'noix-cajou',
+                        'amandes du maroc': 'amandes',
+                        'noix de grenoble': 'noix',
+                        'dattes medjool': 'dattes',
+                        'raisins secs': 'raisins',
+                        'mélange premium': 'melange'
+                    };
+                    productId = nameMap[productName.toLowerCase()] || '';
                     
                     if (productId && products[productId]) {
+                        const product = products[productId];
                         if (saleType === 'wholesale') {
-                            // Prix fixe de 6 DH/pièce pour la vente en gros
-                            const basePrice = 6; // Prix fixe 6 DH/pièce
+                            // Prix en gros par pièce
+                            const basePrice = product.wholesalePrice || 0;
                             const convertedPrice = basePrice * exchangeRates[currentCurrency];
-                            element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/pièce`;
+                            const weight = product.weight || 0;
+                            element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/pièce (${weight}g)`;
                         } else {
-                            // Prix par gramme pour la vente particulière
-                            const basePrice = products[productId].basePrice;
+                            // Prix individuel par pièce
+                            const basePrice = product.retailPrice || 0;
                             const convertedPrice = basePrice * exchangeRates[currentCurrency];
-                            element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/g`;
+                            const weight = product.weight || 0;
+                            element.textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/pièce (${weight}g)`;
                         }
                     }
                 }
             });
         }
 
+        // Initialize product mode (default: pieces)
+        function initializeProductMode(productId) {
+            if (!productModes[productId]) {
+                productModes[productId] = 'pieces';
+            }
+        }
+
+        // Set quantity mode for a product
+        function setQuantityMode(productId, mode) {
+            const product = products[productId];
+            if (!product) return;
+            
+            // Convert current quantity if needed
+            const currentValue = cart[productId] || 0;
+            if (mode === 'pieces' && productModes[productId] === 'grams') {
+                // Convert grams to pieces
+                if (product.weight && product.weight > 0) {
+                    cart[productId] = Math.ceil(currentValue / product.weight);
+                } else {
+                    cart[productId] = currentValue;
+                }
+            } else if (mode === 'grams' && productModes[productId] === 'pieces') {
+                // Convert pieces to grams
+                if (product.weight && product.weight > 0) {
+                    cart[productId] = currentValue * product.weight;
+                } else {
+                    cart[productId] = currentValue;
+                }
+            }
+            
+            productModes[productId] = mode;
+            
+            // Update toggle buttons
+            const piecesBtn = document.getElementById(`${productId}-mode-pieces`);
+            const gramsBtn = document.getElementById(`${productId}-mode-grams`);
+            
+            if (piecesBtn && gramsBtn) {
+                if (mode === 'pieces') {
+                    piecesBtn.classList.add('bg-warm-brown', 'text-white');
+                    piecesBtn.classList.remove('text-gray-700', 'hover:bg-gray-200');
+                    gramsBtn.classList.remove('bg-warm-brown', 'text-white');
+                    gramsBtn.classList.add('text-gray-700', 'hover:bg-gray-200');
+                } else {
+                    gramsBtn.classList.add('bg-warm-brown', 'text-white');
+                    gramsBtn.classList.remove('text-gray-700', 'hover:bg-gray-200');
+                    piecesBtn.classList.remove('bg-warm-brown', 'text-white');
+                    piecesBtn.classList.add('text-gray-700', 'hover:bg-gray-200');
+                }
+            }
+            
+            updateProductDisplay(productId);
+            updateOrderSummary();
+        }
+
         function increaseQuantity(productId) {
-            if (saleType === 'wholesale') {
-                cart[productId] += 1; // Incrémenter par 1 pièce
+            initializeProductMode(productId);
+            const mode = productModes[productId];
+            const product = products[productId];
+            
+            if (mode === 'pieces') {
+                cart[productId] = (cart[productId] || 0) + 1;
             } else {
-                cart[productId] += 10; // Incrémenter par 10g
+                // Increment by product weight (or 10g if no weight defined)
+                const increment = product.weight || 10;
+                cart[productId] = (cart[productId] || 0) + increment;
             }
             updateProductDisplay(productId);
             updateOrderSummary();
         }
 
         function decreaseQuantity(productId) {
-            if (saleType === 'wholesale') {
-                if (cart[productId] >= 1) {
-                    cart[productId] -= 1; // Décrémenter par 1 pièce
-                }
-            } else {
-                if (cart[productId] >= 10) {
-                    cart[productId] -= 10; // Décrémenter par 10g
+            initializeProductMode(productId);
+            const mode = productModes[productId];
+            const product = products[productId];
+            
+            const currentValue = cart[productId] || 0;
+            if (currentValue > 0) {
+                if (mode === 'pieces') {
+                    cart[productId] = currentValue - 1;
+                } else {
+                    // Decrement by product weight (or 10g if no weight defined)
+                    const decrement = product.weight || 10;
+                    cart[productId] = Math.max(0, currentValue - decrement);
                 }
             }
             updateProductDisplay(productId);
@@ -2301,38 +2620,83 @@
         }
 
         function updateQuantity(productId, value) {
-            const quantity = parseInt(value) || 0;
+            initializeProductMode(productId);
+            const quantity = parseFloat(value) || 0;
             cart[productId] = Math.max(0, quantity);
             updateProductDisplay(productId);
             updateOrderSummary();
         }
 
-        // Function to set suggested quantity
-        function setSuggestedQuantity(productId, quantity) {
-            cart[productId] = quantity;
+        // Function to set suggested quantity (convert grams to pieces)
+        function setSuggestedQuantity(productId, quantityInGrams) {
+            initializeProductMode(productId);
+            // Switch to grams mode when using suggested quantities
+            if (productModes[productId] !== 'grams') {
+                setQuantityMode(productId, 'grams');
+            }
+            cart[productId] = quantityInGrams;
+            updateProductDisplay(productId);
+            updateOrderSummary();
+        }
+
+        // Function to set suggested pieces
+        function setSuggestedPieces(productId, numberOfPieces) {
+            initializeProductMode(productId);
+            // Switch to pieces mode when using suggested pieces
+            if (productModes[productId] !== 'pieces') {
+                setQuantityMode(productId, 'pieces');
+            }
+            cart[productId] = numberOfPieces;
             updateProductDisplay(productId);
             updateOrderSummary();
         }
 
         function updateProductDisplay(productId) {
+            initializeProductMode(productId);
             const qtyElement = document.getElementById(`${productId}-qty`);
             const totalElement = document.getElementById(`${productId}-total`);
+            const unitElement = document.getElementById(`${productId}-unit`);
             
-            qtyElement.value = cart[productId];
+            if (!qtyElement || !totalElement || !products[productId]) return;
             
-            if (saleType === 'wholesale') {
-                // Vente en gros : prix fixe de 6 DH/pièce
-                const basePrice = 6; // Prix fixe 6 DH/pièce
-                const pricePerPiece = basePrice * exchangeRates[currentCurrency];
-                const total = cart[productId] * pricePerPiece;
-                totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
-            } else {
-                // Vente particulière : prix par gramme
-                const basePrice = 2; // Prix de base 2 DH/g
-                const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                const total = cart[productId] * pricePerGram;
-                totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
+            const product = products[productId];
+            const mode = productModes[productId];
+            const quantity = cart[productId] || 0;
+            
+            // Update input value and unit display
+            qtyElement.value = quantity;
+            if (unitElement) {
+                unitElement.textContent = mode === 'pieces' ? 'pièces' : 'g';
             }
+            
+            // Calculate price based on mode
+            let total = 0;
+            if (mode === 'pieces') {
+                // Calculate by pieces
+                if (saleType === 'wholesale') {
+                    const basePrice = product.wholesalePrice || 0;
+                    const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                    total = quantity * pricePerPiece;
+                } else {
+                    const basePrice = product.retailPrice || 0;
+                    const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                    total = quantity * pricePerPiece;
+                }
+            } else {
+                // Calculate by grams - convert to price per gram
+                const weight = product.weight || 1;
+                if (saleType === 'wholesale') {
+                    const pricePerPiece = product.wholesalePrice || 0;
+                    const pricePerGram = pricePerPiece / weight;
+                    total = quantity * pricePerGram * exchangeRates[currentCurrency];
+                } else {
+                    const pricePerPiece = product.retailPrice || 0;
+                    const pricePerGram = pricePerPiece / weight;
+                    total = quantity * pricePerGram * exchangeRates[currentCurrency];
+                }
+            }
+            
+            totalElement.textContent = `${total.toFixed(2)} ${getCurrencySymbol()}`;
         }
         
         // Fonction pour mettre à jour l'affichage de tous les produits
@@ -2359,18 +2723,39 @@
                     let subtotal = 0;
                     let quantityText = '';
 
-                    if (saleType === 'wholesale') {
-                        // Vente en gros : prix fixe de 6 DH/pièce
-                        const basePrice = 6; // Prix fixe 6 DH/pièce
-                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
-                        subtotal = cart[productId] * pricePerPiece;
-                        quantityText = `x${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''}`;
+                    initializeProductMode(productId);
+                    const mode = productModes[productId];
+                    const quantity = cart[productId] || 0;
+                    
+                    if (mode === 'pieces') {
+                        // Calculate by pieces
+                        if (saleType === 'wholesale') {
+                            const basePrice = product.wholesalePrice || 0;
+                            const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                            subtotal = quantity * pricePerPiece;
+                            const weight = product.weight || 0;
+                            quantityText = `${quantity} pièce${quantity > 1 ? 's' : ''} (${(quantity * weight)}g)`;
+                        } else {
+                            const basePrice = product.retailPrice || 0;
+                            const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                            subtotal = quantity * pricePerPiece;
+                            const weight = product.weight || 0;
+                            quantityText = `${quantity} pièce${quantity > 1 ? 's' : ''} (${(quantity * weight)}g)`;
+                        }
                     } else {
-                        // Vente particulière : prix par gramme
-                        const basePrice = 2; // Prix de base 2 DH/g
-                        const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                        subtotal = cart[productId] * pricePerGram;
-                        quantityText = `x${cart[productId]}g`;
+                        // Calculate by grams
+                        const weight = product.weight || 1;
+                        if (saleType === 'wholesale') {
+                            const pricePerPiece = product.wholesalePrice || 0;
+                            const pricePerGram = pricePerPiece / weight;
+                            subtotal = quantity * pricePerGram * exchangeRates[currentCurrency];
+                            quantityText = `${quantity}g`;
+                        } else {
+                            const pricePerPiece = product.retailPrice || 0;
+                            const pricePerGram = pricePerPiece / weight;
+                            subtotal = quantity * pricePerGram * exchangeRates[currentCurrency];
+                            quantityText = `${quantity}g`;
+                        }
                     }
                     
                     total += subtotal;
@@ -2444,18 +2829,39 @@
                     let subtotal = 0;
                     let quantityText = '';
 
-                    if (saleType === 'wholesale') {
-                        // Vente en gros : prix fixe de 6 DH/pièce
-                        const basePrice = 6; // Prix fixe 6 DH/pièce
-                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
-                        subtotal = cart[productId] * pricePerPiece;
-                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''}`;
+                    initializeProductMode(productId);
+                    const mode = productModes[productId];
+                    const quantity = cart[productId] || 0;
+                    
+                    if (mode === 'pieces') {
+                        // Calculate by pieces
+                        if (saleType === 'wholesale') {
+                            const basePrice = product.wholesalePrice || 0;
+                            const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                            subtotal = quantity * pricePerPiece;
+                            const weight = product.weight || 0;
+                            quantityText = `${quantity} pièce${quantity > 1 ? 's' : ''} (${(quantity * weight)}g)`;
+                        } else {
+                            const basePrice = product.retailPrice || 0;
+                            const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                            subtotal = quantity * pricePerPiece;
+                            const weight = product.weight || 0;
+                            quantityText = `${quantity} pièce${quantity > 1 ? 's' : ''} (${(quantity * weight)}g)`;
+                        }
                     } else {
-                        // Vente particulière : prix par gramme
-                        const basePrice = 2; // Prix de base 2 DH/g
-                        const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                        subtotal = cart[productId] * pricePerGram;
-                        quantityText = `${cart[productId]}g`;
+                        // Calculate by grams
+                        const weight = product.weight || 1;
+                        if (saleType === 'wholesale') {
+                            const pricePerPiece = product.wholesalePrice || 0;
+                            const pricePerGram = pricePerPiece / weight;
+                            subtotal = quantity * pricePerGram * exchangeRates[currentCurrency];
+                            quantityText = `${quantity}g`;
+                        } else {
+                            const pricePerPiece = product.retailPrice || 0;
+                            const pricePerGram = pricePerPiece / weight;
+                            subtotal = quantity * pricePerGram * exchangeRates[currentCurrency];
+                            quantityText = `${quantity}g`;
+                        }
                     }
                     
                     total += subtotal;
@@ -2584,16 +2990,18 @@
             document.getElementById('modal-image').style.backgroundImage = `url('${product.image}')`;
             
             // Mettre à jour le prix
-            let basePrice, unit;
+            let basePrice, unit, weight;
             if (saleType === 'wholesale') {
-                basePrice = 6; // Prix fixe 6 DH/pièce
+                basePrice = product.wholesalePrice || 0;
                 unit = 'pièce';
+                weight = product.weight || 0;
             } else {
-                basePrice = products[productId].basePrice || 2;
-                unit = 'g';
+                basePrice = product.retailPrice || 0;
+                unit = 'pièce';
+                weight = product.weight || 0;
             }
             const convertedPrice = basePrice * exchangeRates[currentCurrency];
-            document.getElementById('modal-price').textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/${unit}`;
+            document.getElementById('modal-price').textContent = `${convertedPrice.toFixed(2)} ${getCurrencySymbol()}/${unit} (${weight}g)`;
             
             // Mettre à jour les bienfaits
             const benefitsList = document.getElementById('modal-benefits');
@@ -2648,33 +3056,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateOrderSummary();
             
-            // Charger la langue sauvegardée
-            const savedLanguage = localStorage.getItem('selectedLanguage');
-            if (savedLanguage && translations[savedLanguage]) {
-                currentLanguage = savedLanguage;
-                document.documentElement.lang = savedLanguage;
-                
-                // Mettre à jour les sélecteurs de langue
-                const desktopLangSelect = document.getElementById('language-select');
-                const mobileLangSelect = document.getElementById('language-select-mobile');
-                
-                if (desktopLangSelect) desktopLangSelect.value = savedLanguage;
-                if (mobileLangSelect) mobileLangSelect.value = savedLanguage;
-                
-                // Appliquer les traductions
-                document.querySelectorAll('[data-translate]').forEach(element => {
-                    const key = element.getAttribute('data-translate');
-                    if (translations[savedLanguage] && translations[savedLanguage][key]) {
-                        element.textContent = translations[savedLanguage][key];
-                    }
-                });
-                
-                // Mettre à jour les placeholders
-                const searchInput = document.getElementById('product-search');
-                if (searchInput && translations[savedLanguage].search_placeholder) {
-                    searchInput.placeholder = translations[savedLanguage].search_placeholder;
-                }
+            // S'assurer que la langue est appliquée (au cas où elle n'a pas été appliquée avant)
+            let savedLanguage = localStorage.getItem('selectedLanguage');
+            if (!savedLanguage || !translations || !translations[savedLanguage]) {
+                savedLanguage = 'ar';
+                localStorage.setItem('selectedLanguage', 'ar');
             }
+            // Réappliquer la langue pour s'assurer que tout est à jour
+            changeLanguage(savedLanguage);
             
             // Définir la date minimum pour la livraison (aujourd'hui)
             const today = new Date().toISOString().split('T')[0];
@@ -2688,7 +3077,6 @@
             // Synchroniser les sélecteurs de langue
             const desktopLangSelect = document.getElementById('language-select');
             const mobileLangSelect = document.getElementById('language-select-mobile');
-            
             if (desktopLangSelect && mobileLangSelect) {
                 desktopLangSelect.addEventListener('change', function() {
                     mobileLangSelect.value = this.value;
@@ -2762,15 +3150,17 @@
                     let quantityText = '';
 
                     if (saleType === 'wholesale') {
-                        const basePrice = 6;
+                        const basePrice = product.wholesalePrice || 0;
                         const pricePerPiece = basePrice * exchangeRates[currentCurrency];
                         subtotal = cart[productId] * pricePerPiece;
-                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''}`;
+                        const weight = product.weight || 0;
+                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''} (${(cart[productId] * weight)}g)`;
                     } else {
-                        const basePrice = product.basePrice;
-                        const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                        subtotal = cart[productId] * pricePerGram;
-                        quantityText = `${cart[productId]}g`;
+                        const basePrice = product.retailPrice || 0;
+                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                        subtotal = cart[productId] * pricePerPiece;
+                        const weight = product.weight || 0;
+                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''} (${(cart[productId] * weight)}g)`;
                     }
                     
                     total += subtotal;
@@ -2852,15 +3242,17 @@
                     let quantityText = '';
 
                     if (saleType === 'wholesale') {
-                        const basePrice = 6;
+                        const basePrice = product.wholesalePrice || 0;
                         const pricePerPiece = basePrice * exchangeRates[currentCurrency];
                         subtotal = cart[productId] * pricePerPiece;
-                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''}`;
+                        const weight = product.weight || 0;
+                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''} (${(cart[productId] * weight)}g)`;
                     } else {
-                        const basePrice = product.basePrice;
-                        const pricePerGram = basePrice * exchangeRates[currentCurrency];
-                        subtotal = cart[productId] * pricePerGram;
-                        quantityText = `${cart[productId]}g`;
+                        const basePrice = product.retailPrice || 0;
+                        const pricePerPiece = basePrice * exchangeRates[currentCurrency];
+                        subtotal = cart[productId] * pricePerPiece;
+                        const weight = product.weight || 0;
+                        quantityText = `${cart[productId]} pièce${cart[productId] > 1 ? 's' : ''} (${(cart[productId] * weight)}g)`;
                     }
                     
                     total += subtotal;
@@ -2963,84 +3355,6 @@
             });
         }
     </script>
-
-    <!-- Footer -->
-    <footer id="contact" class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 mr-3">
-                        <h3 class="text-2xl font-bold text-light-gold">Notre Marque</h3>
-                    </div>
-                    <p class="text-gray-300 mb-4">
-                        Votre partenaire pour une alimentation saine et naturelle. 
-                        Des produits d'exception directement du Maroc.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://beldinuts.ma/commander.html" target="_blank" class="text-gray-300 hover:text-light-gold transition-colors">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/beldinuts" target="_blank" class="text-gray-300 hover:text-light-gold transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://twitter.com/intent/tweet?url=https://beldinuts.ma/commander.html&text=Commandez vos noix et fruits secs premium du Maroc avec BeldiNuts" target="_blank" class="text-gray-300 hover:text-light-gold transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="https://wa.me/?text=Découvrez BeldiNuts - Noix et fruits secs premium du Maroc: https://beldinuts.ma/commander.html" target="_blank" class="text-gray-300 hover:text-light-gold transition-colors">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Produits</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Amandes</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Noix</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Dattes</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Fruits Secs</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Informations</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">À propos</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Livraison</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Retours</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
-                    <div class="space-y-2">
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-light-gold mr-2"></i>
-                            <span class="text-gray-300">Casablanca, Maroc</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone text-light-gold mr-2"></i>
-                            <span class="text-gray-300">+212 5XX XXX XXX</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope text-light-gold mr-2"></i>
-                            <span class="text-gray-300">contact@beldinuts.ma</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
-                <p class="text-gray-300">
-                    © 2024 BeldiNuts. Tous droits réservés. | 
-                    <a href="#" class="hover:text-light-gold transition-colors">Mentions légales</a> | 
-                    <a href="#" class="hover:text-light-gold transition-colors">Politique de confidentialité</a>
-                </p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Product Details Modal -->
     <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">

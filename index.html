@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +10,69 @@
     <link rel="apple-touch-icon" href="beldi-nuts-logo.png">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Découvrez BeldiNuts, votre partenaire pour une alimentation saine et naturelle. Amandes, noix, dattes, cajous et raisins secs de qualité premium directement du Maroc. Livraison rapide et prix compétitifs.">
+    <meta name="description" content="BeldiNuts - Noix et fruits secs premium du Maroc. Amandes, noix, dattes, cajous et raisins secs 100% naturels. Livraison rapide au Maroc.">
     <meta name="keywords" content="noix maroc, fruits secs, amandes, dattes, cajous, raisins secs, alimentation saine, produits naturels, livraison maroc, beldinuts">
     <meta name="author" content="BeldiNuts">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="fr">
+    <meta name="language" content="ar">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="61sct4HjCb20Z0cMzhmEbGoW9YVhuY7Qa8NTYaE1wyY" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://beldinuts.ma/" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="BeldiNuts - Noix et Fruits Secs du Maroc | Qualité Premium">
     <meta property="og:description" content="Découvrez BeldiNuts, votre partenaire pour une alimentation saine et naturelle. Amandes, noix, dattes, cajous et raisins secs de qualité premium directement du Maroc.">
-    <meta property="og:image" content="beldi-nuts-logo.png">
-    <meta property="og:url" content="https://beldinuts.ma">
+    <meta property="og:image" content="https://beldinuts.ma/beldi-nuts-logo.png">
+    <meta property="og:url" content="https://beldinuts.ma/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="BeldiNuts">
-    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale" content="ar_MA">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BeldiNuts - Noix et Fruits Secs du Maroc | Qualité Premium">
     <meta name="twitter:description" content="Découvrez BeldiNuts, votre partenaire pour une alimentation saine et naturelle. Amandes, noix, dattes, cajous et raisins secs de qualité premium directement du Maroc.">
-    <meta name="twitter:image" content="beldi-nuts-logo.png">
+    <meta name="twitter:image" content="https://beldinuts.ma/beldi-nuts-logo.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BeldiNuts",
+        "url": "https://beldinuts.ma",
+        "logo": "https://beldinuts.ma/beldi-nuts-logo.png",
+        "description": "BeldiNuts - Noix et Fruits Secs du Maroc de qualité premium. Amandes, noix, dattes, cajous et raisins secs 100% naturels.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "MA",
+            "addressLocality": "Casablanca"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+212-615-919-437",
+            "contactType": "customer service",
+            "availableLanguage": ["French", "Arabic", "English"]
+        },
+        "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "BeldiNuts",
+        "url": "https://beldinuts.ma",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://beldinuts.ma/commander.html?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -60,7 +103,7 @@
         
         .hero-bg {
             background: linear-gradient(rgba(139, 69, 19, 0.6), rgba(139, 69, 19, 0.4)), 
-                        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                        url('https://img.freepik.com/premium-photo/background-from-various-nuts-dried-fruits_266870-12179.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -69,24 +112,13 @@
             animation: fadeIn 1s ease-in;
         }
         
-        /* Packs Scrollable Styles */
+        /* Scrollable Styles */
         .scrollbar-hide {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
-        }
-        
-        .pack-card {
-            min-width: 280px;
-            flex-shrink: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .pack-card {
-                min-width: 250px;
-            }
         }
         
         .product-image-carousel {
@@ -132,6 +164,36 @@
             from { opacity: 0; transform: translateX(50px); }
             to { opacity: 1; transform: translateX(0); }
         }
+        
+        /* Espacement supplémentaire pour la navigation en arabe */
+        [dir="rtl"] .nav-about-link {
+            margin-right: 2rem !important;
+        }
+        [dir="ltr"] .nav-about-link {
+            margin-left: 2rem !important;
+        }
+        
+        /* Garder le logo à gauche même en RTL */
+        [dir="rtl"] nav .flex.justify-between {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] nav .flex.justify-between > div:first-child {
+            order: 2;
+        }
+        
+        [dir="rtl"] nav .flex.justify-between > div:last-child {
+            order: 1;
+        }
+        
+        /* Forcer le logo à rester visuellement à gauche en RTL */
+        [dir="rtl"] .nav-logo-container {
+            order: 2;
+        }
+        
+        [dir="rtl"] .nav-links-container {
+            order: 1;
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -139,15 +201,15 @@
     <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
+                <div class="flex items-center nav-logo-container">
                     <div class="flex items-center">
-                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 mr-3">
+                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 me-4">
                         <h1 class="text-2xl font-bold text-warm-brown">BeldiNuts</h1>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
+                <div class="hidden md:flex space-x-12 items-center nav-links-container">
                     <a href="#accueil" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_home">Accueil</a>
-                    <a href="#apropos" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a>
+                    <a href="#apropos" class="text-warm-brown hover:text-light-gold transition-colors nav-about-link" data-translate="nav_about">À propos</a>
                     <a href="#produits" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_products">Produits</a>
                     <a href="#faq" class="text-warm-brown hover:text-light-gold transition-colors" data-translate="nav_faq">FAQ</a>
                     <a href="commander.html" class="text-warm-brown hover:text-light-gold transition-colors bg-light-gold text-white px-4 py-2 rounded-full" data-translate="nav_order">Commander</a>
@@ -164,7 +226,7 @@
                         <select id="language-select" onchange="changeLanguage(this.value)" 
                                 class="bg-transparent border border-warm-brown text-warm-brown px-3 py-1 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
                             <option value="fr">🇫🇷 FR</option>
-                            <option value="ar">🇲🇦 AR</option>
+                            <option value="ar" selected>🇲🇦 AR</option>
                             <option value="en">🇺🇸 EN</option>
                         </select>
                     </div>
@@ -198,7 +260,7 @@
                         <select id="language-select-mobile" onchange="changeLanguage(this.value)" 
                                 class="w-full bg-transparent border border-warm-brown text-warm-brown px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-light-gold">
                             <option value="fr">🇫🇷 FR</option>
-                            <option value="ar">🇲🇦 AR</option>
+                            <option value="ar" selected>🇲🇦 AR</option>
                             <option value="en">🇺🇸 EN</option>
                         </select>
                     </div>
@@ -272,29 +334,29 @@
                                 <div class="bg-warm-brown text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-seedling text-2xl"></i>
                                 </div>
-                                <h3 class="font-semibold text-warm-brown mb-2">Sélection Rigoureuse</h3>
-                                <p class="text-sm text-gray-600">Chaque produit est soigneusement sélectionné</p>
+                                <h3 class="font-semibold text-warm-brown mb-2" data-translate="about_selection">Sélection Rigoureuse</h3>
+                                <p class="text-sm text-gray-600" data-translate="about_selection_desc">Chaque produit est soigneusement sélectionné</p>
                             </div>
                             <div class="text-center">
                                 <div class="bg-earth-green text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-truck text-2xl"></i>
                                 </div>
-                                <h3 class="font-semibold text-warm-brown mb-2">Livraison Rapide</h3>
-                                <p class="text-sm text-gray-600">Expédition sous 24-48h</p>
+                                <h3 class="font-semibold text-warm-brown mb-2" data-translate="about_delivery">Livraison Rapide</h3>
+                                <p class="text-sm text-gray-600" data-translate="about_delivery_desc">Expédition sous 24-48h</p>
                             </div>
                             <div class="text-center">
                                 <div class="bg-light-gold text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-award text-2xl"></i>
                                 </div>
-                                <h3 class="font-semibold text-warm-brown mb-2">Qualité Certifiée</h3>
-                                <p class="text-sm text-gray-600">Produits certifiés bio</p>
+                                <h3 class="font-semibold text-warm-brown mb-2" data-translate="about_certified">Qualité Certifiée</h3>
+                                <p class="text-sm text-gray-600" data-translate="about_certified_desc">Produits certifiés bio</p>
                             </div>
                             <div class="text-center">
                                 <div class="bg-warm-brown text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-users text-2xl"></i>
                                 </div>
-                                <h3 class="font-semibold text-warm-brown mb-2">Communauté</h3>
-                                <p class="text-sm text-gray-600">Plus de 10,000 clients satisfaits</p>
+                                <h3 class="font-semibold text-warm-brown mb-2" data-translate="about_community">Communauté</h3>
+                                <p class="text-sm text-gray-600" data-translate="about_community_desc">Plus de 10,000 clients satisfaits</p>
                             </div>
                         </div>
                     </div>
@@ -317,7 +379,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1: Graines noires - 1 DH -->
+                <!-- Product 1: Graines noires - 2,5 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center relative group product-image-carousel" data-product="graines-noires" style="background-image: url('https://www.shutterstock.com/image-photo/sunflower-seed-isolated-on-white-600nw-2458579765.jpg')">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
@@ -332,7 +394,7 @@
                             Graines noires naturelles et savoureuses, riches en nutriments essentiels.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">1 DH</span>
+                            <span class="text-2xl font-bold text-warm-brown">2,5 DH</span>
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
@@ -340,7 +402,7 @@
                     </div>
                 </div>
 
-                <!-- Product 2: Cacao normal - 2 DH -->
+                <!-- Product 2: Cacao normal - 2,5 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center product-image-carousel" data-product="cacao-normal" style="background-image: url('https://i.ytimg.com/vi/d7qetuMtgAc/maxresdefault.jpg')">
                     </div>
@@ -350,7 +412,7 @@
                             Cacao de qualité supérieure, naturel et riche en antioxydants.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">2 DH</span>
+                            <span class="text-2xl font-bold text-warm-brown">2,5 DH</span>
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
@@ -358,14 +420,14 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Cacao fumé - 2 DH -->
+                <!-- Product 3: Cacao croquant - 2 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center product-image-carousel" data-product="cacao-fume" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfcq8vM9bF_LmLGLermWnYww1mVfVg7k1xIw&s')">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_cacao_fume">Cacao fumé</h3>
+                        <h3 class="text-xl font-bold text-warm-brown mb-3" data-translate="product_cacao_fume">Cacao croquant</h3>
                         <p class="text-gray-600 mb-4" data-translate="product_cacao_fume_desc">
-                            Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.
+                            Fèves de cacao croquantes, parfaites pour une collation délicieuse et croquante.
                         </p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-warm-brown">2 DH</span>
@@ -376,7 +438,7 @@
                     </div>
                 </div>
 
-                <!-- Product 4: Pois chiches - 2 DH -->
+                <!-- Product 4: Pois chiches - 2,5 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center product-image-carousel" data-product="pois-chiches" style="background-image: url('https://www.goji.ma/cdn/shop/products/pois-chiche-vrac.png?v=1717869605')">
                     </div>
@@ -386,7 +448,7 @@
                             Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">2 DH</span>
+                            <span class="text-2xl font-bold text-warm-brown">2,5 DH</span>
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
@@ -412,7 +474,7 @@
                     </div>
                 </div>
 
-                <!-- Product 6: Amandes - 5 DH -->
+                <!-- Product 6: Amandes - 6 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center product-image-carousel" data-product="amandes" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L7oGhxWbpwalFyid9U_mWWzpKGIRotWrNg&s')">
                     </div>
@@ -422,7 +484,7 @@
                             Amandes premium du Maroc, riches en protéines et vitamines E. Parfaites pour une collation saine.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">5 DH</span>
+                            <span class="text-2xl font-bold text-warm-brown">6 DH</span>
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
@@ -430,7 +492,7 @@
                     </div>
                 </div>
 
-                <!-- Product 7: Pistaches - 6 DH -->
+                <!-- Product 7: Pistaches - 7 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center product-image-carousel" data-product="pistaches" style="background-image: url('https://observatoire-des-aliments.fr/wp-content/uploads/2021/11/pistaches-696x393.jpg')">
                     </div>
@@ -440,7 +502,7 @@
                             Pistaches grillées naturellement, croquantes et savoureuses. Un délice pour l'apéritif.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">6 DH</span>
+                            <span class="text-2xl font-bold text-warm-brown">7 DH</span>
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
@@ -448,7 +510,7 @@
                     </div>
                 </div>
 
-                <!-- Product 8: Noix de cajou - 6 DH -->
+                <!-- Product 8: Noix de cajou - 7 DH -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="h-48 bg-cover bg-center product-image-carousel" data-product="noix-cajou" style="background-image: url('https://images.prismic.io/la-fourche/a2e39df0-fe56-4854-81c0-d98cb2622740_noix+de+cajou+.jpg?auto=compress,format')">
                     </div>
@@ -458,7 +520,7 @@
                             Noix de cajou grillées à sec, sans huile ajoutée. Croquantes et délicieuses.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-warm-brown">6 DH</span>
+                            <span class="text-2xl font-bold text-warm-brown">7 DH</span>
                             <a href="commander.html" class="inline-block bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition-colors" data-translate="order_btn">
                                 Commander
                             </a>
@@ -469,202 +531,6 @@
         </div>
     </section>
 
-    <!-- Packs Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-warm-brown mb-6">
-                    Packs Recommandés
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Économisez avec nos packs de produits sélectionnés
-                </p>
-            </div>
-            
-            <div class="relative">
-                <div class="overflow-x-auto scrollbar-hide">
-                    <div class="flex space-x-6 pb-4" style="width: max-content;">
-                        <!-- Pack 1: Pack Sport -->
-                        <div class="bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-dumbbell text-3xl mb-2"></i>
-                                <h4 class="text-lg font-bold">Pack Sport</h4>
-                                <p class="text-sm opacity-90">Énergie pour les sportifs</p>
-                            </div>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>100g Amandes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>100g Dattes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>100g Raisins</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold mb-2">
-                                    <span>300 DH</span>
-                                    <span class="text-sm opacity-75 line-through ml-2">360 DH</span>
-                                </div>
-                                <button onclick="addPackToCart('sport')" class="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                    <i class="fas fa-plus mr-1"></i>
-                                    Ajouter Pack
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Pack 2: Pack Famille -->
-                        <div class="bg-gradient-to-br from-green-600 to-green-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-users text-3xl mb-2"></i>
-                                <h4 class="text-lg font-bold">Pack Famille</h4>
-                                <p class="text-sm opacity-90">Idéal pour toute la famille</p>
-                            </div>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>150g Amandes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>150g Noix</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>100g Dattes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>100g Cajous</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold mb-2">
-                                    <span>500 DH</span>
-                                    <span class="text-sm opacity-75 line-through ml-2">600 DH</span>
-                                </div>
-                                <button onclick="addPackToCart('famille')" class="bg-white text-green-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                    <i class="fas fa-plus mr-1"></i>
-                                    Ajouter Pack
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Pack 3: Pack Collèges -->
-                        <div class="bg-gradient-to-br from-purple-600 to-purple-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-graduation-cap text-3xl mb-2"></i>
-                                <h4 class="text-lg font-bold">Pack Collèges</h4>
-                                <p class="text-sm opacity-90">Étudiants et collèges</p>
-                            </div>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>200g Amandes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>200g Dattes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>200g Raisins</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold mb-2">
-                                    <span>400 DH</span>
-                                    <span class="text-sm opacity-75 line-through ml-2">480 DH</span>
-                                </div>
-                                <button onclick="addPackToCart('colleges')" class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                    <i class="fas fa-plus mr-1"></i>
-                                    Ajouter Pack
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Pack 4: Pack Découverte -->
-                        <div class="bg-gradient-to-br from-orange-600 to-orange-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-gift text-3xl mb-2"></i>
-                                <h4 class="text-lg font-bold">Pack Découverte</h4>
-                                <p class="text-sm opacity-90">Parfait pour commencer</p>
-                            </div>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>50g Amandes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>50g Noix</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>50g Dattes</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold mb-2">
-                                    <span>150 DH</span>
-                                    <span class="text-sm opacity-75 line-through ml-2">180 DH</span>
-                                </div>
-                                <button onclick="addPackToCart('decouverte')" class="bg-white text-orange-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                    <i class="fas fa-plus mr-1"></i>
-                                    Ajouter Pack
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Pack 5: Pack Premium -->
-                        <div class="bg-gradient-to-br from-yellow-600 to-yellow-400 rounded-xl p-6 text-white pack-card" style="min-width: 280px; flex-shrink: 0;">
-                            <div class="text-center mb-4">
-                                <i class="fas fa-crown text-3xl mb-2"></i>
-                                <h4 class="text-lg font-bold">Pack Premium</h4>
-                                <p class="text-sm opacity-90">Notre sélection d'exception</p>
-                            </div>
-                            <div class="space-y-2 mb-4">
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>300g Amandes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>300g Noix</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>300g Dattes</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>300g Cajous</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i class="fas fa-check mr-2"></i>
-                                    <span>300g Raisins</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-2xl font-bold mb-2">
-                                    <span>1,500 DH</span>
-                                    <span class="text-sm opacity-75 line-through ml-2">1,800 DH</span>
-                                </div>
-                                <button onclick="addPackToCart('premium')" class="bg-white text-yellow-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                    <i class="fas fa-plus mr-1"></i>
-                                    Ajouter Pack
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Benefits Section -->
     <section class="py-20 bg-beige">
@@ -691,8 +557,8 @@
                     <div class="bg-earth-green text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-dumbbell text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-warm-brown mb-4">Riche en Protéines</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold text-warm-brown mb-4" data-translate="benefits_protein">Riche en Protéines</h3>
+                    <p class="text-gray-600" data-translate="benefits_protein_desc">
                         Source naturelle de protéines végétales, 
                         parfaites pour les sportifs et végétariens.
                     </p>
@@ -702,8 +568,8 @@
                     <div class="bg-light-gold text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-shield-alt text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-warm-brown mb-4">Sans Additifs</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold text-warm-brown mb-4" data-translate="benefits_no_additives">Sans Additifs</h3>
+                    <p class="text-gray-600" data-translate="benefits_no_additives_desc">
                         Produits naturels sans colorants, 
                         arômes artificiels ou conservateurs.
                     </p>
@@ -713,8 +579,8 @@
                     <div class="bg-warm-brown text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-heart text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-warm-brown mb-4">Bon pour la Santé</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold text-warm-brown mb-4" data-translate="benefits_health">Bon pour la Santé</h3>
+                    <p class="text-gray-600" data-translate="benefits_health_desc">
                         Riche en vitamines, minéraux et antioxydants 
                         pour une alimentation équilibrée.
                     </p>
@@ -831,8 +697,8 @@
                     </button>
                     <div class="faq-content hidden px-6 pb-6">
                         <p class="text-gray-600" data-translate="faq_a4">
-                            Nous acceptons le paiement à la livraison (contre remboursement), le virement bancaire, 
-                            et les paiements via CMI. Vous pouvez choisir votre mode de paiement préféré lors de la commande.
+                            Nous acceptons le paiement à la livraison (contre remboursement) et le virement bancaire. 
+                            Vous pouvez choisir votre mode de paiement préféré lors de la commande.
                         </p>
                     </div>
                 </div>
@@ -902,10 +768,10 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 mr-3">
+                        <img src="beldi-nuts-logo.png" alt="BeldiNuts Logo" class="h-8 w-8 me-4">
                         <h3 class="text-2xl font-bold text-light-gold">BeldiNuts</h3>
                     </div>
-                    <p class="text-gray-300 mb-4">
+                    <p class="text-gray-300 mb-4" data-translate="footer_description">
                         Votre partenaire pour une alimentation saine et naturelle. 
                         Des produits d'exception directement du Maroc.
                     </p>
@@ -917,43 +783,43 @@
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Produits</h4>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer_products">Produits</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Amandes</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Noix</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Dattes</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Fruits Secs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_amandes">Amandes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_noix">Noix</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_dattes">Dattes</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_fruits_secs">Fruits Secs</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Informations</h4>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer_info">Informations</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">À propos</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Livraison</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">Retours</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="nav_about">À propos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_delivery">Livraison</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="footer_returns">Retours</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-light-gold transition-colors" data-translate="nav_faq">FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <h4 class="text-lg font-semibold mb-4" data-translate="footer_contact">Contact</h4>
                     <div class="space-y-2">
                         <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-light-gold mr-2 mt-1"></i>
+                            <i class="fas fa-map-marker-alt text-light-gold me-2 mt-1"></i>
                             <span class="text-gray-300">Dar bouaza nouacer, Casablanca, Maroc</span>
                         </div>
                         <div class="flex flex-col space-y-1">
                             <div class="flex items-center">
-                                <i class="fas fa-phone text-light-gold mr-2"></i>
+                                <i class="fas fa-phone text-light-gold me-2"></i>
                                 <a href="tel:+212615919437" class="text-gray-300 hover:text-light-gold transition-colors">+212 615919437</a>
                             </div>
-                            <div class="flex items-center ml-7">
+                            <div class="flex items-center ms-7">
                                 <a href="tel:+212694147354" class="text-gray-300 hover:text-light-gold transition-colors">+212 694-147354</a>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-envelope text-light-gold mr-2"></i>
+                            <i class="fas fa-envelope text-light-gold me-2"></i>
                             <a href="mailto:beldinuts@gmail.com" class="text-gray-300 hover:text-light-gold transition-colors">beldinuts@gmail.com</a>
                         </div>
                     </div>
@@ -962,9 +828,9 @@
             
             <div class="border-t border-gray-700 mt-12 pt-8 text-center">
                 <p class="text-gray-300">
-                    © 2024 BeldiNuts. Tous droits réservés. | 
-                    <a href="#" class="hover:text-light-gold transition-colors">Mentions légales</a> | 
-                    <a href="#" class="hover:text-light-gold transition-colors">Politique de confidentialité</a>
+                    <span data-translate="footer_copyright">© 2024 BeldiNuts. Tous droits réservés.</span> | 
+                    <a href="#" class="hover:text-light-gold transition-colors" data-translate="footer_legal">Mentions légales</a> | 
+                    <a href="#" class="hover:text-light-gold transition-colors" data-translate="footer_privacy">Politique de confidentialité</a>
                 </p>
             </div>
         </div>
@@ -972,7 +838,7 @@
 
     <script>
         // Langue actuelle
-        let currentLanguage = 'fr';
+        let currentLanguage = 'ar';
         
         // Dictionnaire de traductions pour la page principale
         const translations = {
@@ -1025,6 +891,12 @@
                 footer_legal: "Mentions légales",
                 footer_privacy: "Politique de confidentialité",
                 footer_copyright: "© 2024 Beldinuts. Tous droits réservés.",
+                footer_amandes: "Amandes",
+                footer_noix: "Noix",
+                footer_dattes: "Dattes",
+                footer_fruits_secs: "Fruits Secs",
+                footer_delivery: "Livraison",
+                footer_returns: "Retours",
                 faq_title: "Questions Fréquentes",
                 faq_subtitle: "Trouvez les réponses aux questions les plus courantes",
                 faq_q1: "Quels sont les délais de livraison ?",
@@ -1034,7 +906,7 @@
                 faq_q3: "Vos produits sont-ils vraiment 100% naturels ?",
                 faq_a3: "Absolument ! Tous nos produits sont 100% naturels, sans conservateurs, sans additifs chimiques, et sans colorants artificiels. Ils sont séchés naturellement et conditionnés dans des emballages hermétiques.",
                 faq_q4: "Quels sont les modes de paiement acceptés ?",
-                faq_a4: "Nous acceptons le paiement à la livraison (contre remboursement), le virement bancaire, et les paiements via CMI. Vous pouvez choisir votre mode de paiement préféré lors de la commande.",
+                faq_a4: "Nous acceptons le paiement à la livraison (contre remboursement) et le virement bancaire. Vous pouvez choisir votre mode de paiement préféré lors de la commande.",
                 faq_q5: "Comment conserver vos produits ?",
                 faq_a5: "Conservez nos produits dans un endroit frais et sec, à l'abri de la lumière directe. Une fois ouverts, gardez-les dans leur emballage hermétique ou dans un récipient fermé. Ils se conservent plusieurs mois dans de bonnes conditions.",
                 faq_q6: "Proposez-vous des remises pour les commandes en gros ?",
@@ -1046,8 +918,8 @@
                 product_graines_noires_desc: "Graines noires naturelles et savoureuses, riches en nutriments essentiels.",
                 product_cacao_normal: "Cacao normal",
                 product_cacao_normal_desc: "Cacao de qualité supérieure, naturel et riche en antioxydants.",
-                product_cacao_fume: "Cacao fumé",
-                product_cacao_fume_desc: "Cacao avec une saveur fumée unique, parfait pour les amateurs de goûts intenses.",
+                product_cacao_fume: "Cacao croquant",
+                product_cacao_fume_desc: "Fèves de cacao croquantes, parfaites pour une collation délicieuse et croquante.",
                 product_pois_chiches: "Pois chiches",
                 product_pois_chiches_desc: "Pois chiches secs, riches en protéines végétales et fibres. Parfaits pour vos recettes.",
                 product_graines_blanches: "Graines blanches",
@@ -1108,6 +980,12 @@
                 footer_legal: "الشروط القانونية",
                 footer_privacy: "سياسة الخصوصية",
                 footer_copyright: "© 2024 بيلدي نتس. جميع الحقوق محفوظة.",
+                footer_amandes: "لوز",
+                footer_noix: "جوز",
+                footer_dattes: "تمر",
+                footer_fruits_secs: "فواكه مجففة",
+                footer_delivery: "التوصيل",
+                footer_returns: "المرتجعات",
                 faq_title: "الأسئلة الشائعة",
                 faq_subtitle: "اعثر على إجابات للأسئلة الأكثر شيوعاً",
                 faq_q1: "ما هي أوقات التسليم؟",
@@ -1117,7 +995,7 @@
                 faq_q3: "هل منتجاتكم طبيعية 100% حقاً؟",
                 faq_a3: "بالطبع! جميع منتجاتنا طبيعية 100%، بدون مواد حافظة، بدون إضافات كيميائية، وبدون ألوان اصطناعية. يتم تجفيفها طبيعياً وتعبئتها في عبوات محكمة الإغلاق.",
                 faq_q4: "ما هي طرق الدفع المقبولة؟",
-                faq_a4: "نحن نقبل الدفع عند التسليم (الدفع نقداً)، التحويل البنكي، والدفع عبر CMI. يمكنك اختيار طريقة الدفع المفضلة لديك عند الطلب.",
+                faq_a4: "نحن نقبل الدفع عند التسليم (الدفع نقداً) والتحويل البنكي. يمكنك اختيار طريقة الدفع المفضلة لديك عند الطلب.",
                 faq_q5: "كيف أحفظ منتجاتكم؟",
                 faq_a5: "احفظ منتجاتنا في مكان بارد وجاف، بعيداً عن الضوء المباشر. بمجرد فتحها، احتفظ بها في عبوتها المحكمة أو في وعاء مغلق. تحتفظ بجودتها لعدة أشهر في الظروف المناسبة.",
                 faq_q6: "هل تقدمون خصومات للطلبات بالجملة؟",
@@ -1129,8 +1007,8 @@
                 product_graines_noires_desc: "بذور سوداء طبيعية ولذيذة، غنية بالعناصر الغذائية الأساسية.",
                 product_cacao_normal: "كاكاو عادي",
                 product_cacao_normal_desc: "كاكاو عالي الجودة، طبيعي وغني بمضادات الأكسدة.",
-                product_cacao_fume: "كاكاو مدخن",
-                product_cacao_fume_desc: "كاكاو بنكهة مدخنة فريدة، مثالي لعشاق الأذواق القوية.",
+                product_cacao_fume: "كاوكاو مقرمش",
+                product_cacao_fume_desc: "فاصوليا كاكاو مقرمشة، مثالية لوجبة خفيفة لذيذة ومقرمشة.",
                 product_pois_chiches: "حمص",
                 product_pois_chiches_desc: "حمص مجفف، غني بالبروتينات النباتية والألياف. مثالي لوصفاتك.",
                 product_graines_blanches: "بذور بيضاء",
@@ -1191,6 +1069,12 @@
                 footer_legal: "Legal Notice",
                 footer_privacy: "Privacy Policy",
                 footer_copyright: "© 2024 Beldinuts. All rights reserved.",
+                footer_amandes: "Almonds",
+                footer_noix: "Walnuts",
+                footer_dattes: "Dates",
+                footer_fruits_secs: "Dried Fruits",
+                footer_delivery: "Delivery",
+                footer_returns: "Returns",
                 faq_title: "Frequently Asked Questions",
                 faq_subtitle: "Find answers to the most common questions",
                 faq_q1: "What are the delivery times?",
@@ -1200,7 +1084,7 @@
                 faq_q3: "Are your products really 100% natural?",
                 faq_a3: "Absolutely! All our products are 100% natural, without preservatives, without chemical additives, and without artificial colors. They are naturally dried and packaged in airtight containers.",
                 faq_q4: "What payment methods are accepted?",
-                faq_a4: "We accept cash on delivery, bank transfer, and payments via CMI. You can choose your preferred payment method when ordering.",
+                faq_a4: "We accept cash on delivery and bank transfer. You can choose your preferred payment method when ordering.",
                 faq_q5: "How do I store your products?",
                 faq_a5: "Store our products in a cool, dry place, away from direct light. Once opened, keep them in their airtight packaging or in a closed container. They keep for several months under good conditions.",
                 faq_q6: "Do you offer discounts for bulk orders?",
@@ -1212,8 +1096,8 @@
                 product_graines_noires_desc: "Natural and flavorful black seeds, rich in essential nutrients.",
                 product_cacao_normal: "Normal cocoa",
                 product_cacao_normal_desc: "Premium quality cocoa, natural and rich in antioxidants.",
-                product_cacao_fume: "Smoked cocoa",
-                product_cacao_fume_desc: "Cocoa with a unique smoky flavor, perfect for those who love intense tastes.",
+                product_cacao_fume: "Crunchy cocoa",
+                product_cacao_fume_desc: "Crunchy cocoa beans, perfect for a delicious and crunchy snack.",
                 product_pois_chiches: "Chickpeas",
                 product_pois_chiches_desc: "Dried chickpeas, rich in plant proteins and fiber. Perfect for your recipes.",
                 product_graines_blanches: "White seeds",
@@ -1229,11 +1113,29 @@
 
         // Fonction pour changer la langue
         function changeLanguage(language) {
+            if (!language || !translations || !translations[language]) {
+                console.warn('Language not found:', language);
+                language = 'ar'; // Fallback to Arabic
+            }
+            
             currentLanguage = language;
             document.documentElement.lang = language;
             
+            // Appliquer la direction RTL pour l'arabe
+            if (language === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+            
             // Sauvegarder la langue dans localStorage
             localStorage.setItem('selectedLanguage', language);
+            
+            // Mettre à jour les sélecteurs de langue
+            const desktopLangSelect = document.getElementById('language-select');
+            const mobileLangSelect = document.getElementById('language-select-mobile');
+            if (desktopLangSelect) desktopLangSelect.value = language;
+            if (mobileLangSelect) mobileLangSelect.value = language;
             
             // Mettre à jour tous les éléments avec data-translate
             document.querySelectorAll('[data-translate]').forEach(element => {
@@ -1245,10 +1147,35 @@
             
             // Mettre à jour les placeholders
             const emailInput = document.querySelector('input[type="email"]');
-            if (emailInput && translations[language].newsletter_placeholder) {
+            if (emailInput && translations[language] && translations[language].newsletter_placeholder) {
                 emailInput.placeholder = translations[language].newsletter_placeholder;
             }
         }
+        
+        // Appliquer la langue par défaut dès que possible
+        (function() {
+            function initLanguage() {
+                let savedLanguage = localStorage.getItem('selectedLanguage');
+                // Si aucune langue n'est sauvegardée ou si la langue sauvegardée n'existe pas, utiliser l'arabe par défaut
+                if (!savedLanguage || !translations || !translations[savedLanguage]) {
+                    savedLanguage = 'ar';
+                    localStorage.setItem('selectedLanguage', 'ar');
+                }
+                
+                // Appliquer la langue
+                if (typeof changeLanguage === 'function') {
+                    changeLanguage(savedLanguage);
+                }
+            }
+            
+            // Si le DOM est déjà chargé, appliquer immédiatement
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setTimeout(initLanguage, 0);
+            } else {
+                // Sinon, attendre DOMContentLoaded
+                document.addEventListener('DOMContentLoaded', initLanguage);
+            }
+        })();
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1502,7 +1429,7 @@
             const products = {
                 'graines-noires': { name: 'Graines noires', price: 1 },
                 'cacao-normal': { name: 'Cacao normal', price: 2 },
-                'cacao-fume': { name: 'Cacao fumé', price: 2 },
+                'cacao-fume': { name: 'Cacao croquant', price: 2 },
                 'pois-chiches': { name: 'Pois chiches', price: 2 },
                 'graines-blanches': { name: 'Graines blanches', price: 2 },
                 'amandes': { name: 'Amandes', price: 5 },
@@ -1692,32 +1619,16 @@
             initProductImageCarousel();
             
             // Charger la langue sauvegardée
-            const savedLanguage = localStorage.getItem('selectedLanguage');
-            if (savedLanguage && translations[savedLanguage]) {
-                currentLanguage = savedLanguage;
-                document.documentElement.lang = savedLanguage;
-                
-                // Mettre à jour les sélecteurs de langue
-                const desktopLangSelect = document.getElementById('language-select');
-                const mobileLangSelect = document.getElementById('language-select-mobile');
-                
-                if (desktopLangSelect) desktopLangSelect.value = savedLanguage;
-                if (mobileLangSelect) mobileLangSelect.value = savedLanguage;
-                
-                // Appliquer les traductions
-                document.querySelectorAll('[data-translate]').forEach(element => {
-                    const key = element.getAttribute('data-translate');
-                    if (translations[savedLanguage] && translations[savedLanguage][key]) {
-                        element.textContent = translations[savedLanguage][key];
-                    }
-                });
-                
-                // Mettre à jour les placeholders
-                const emailInput = document.querySelector('input[type="email"]');
-                if (emailInput && translations[savedLanguage].newsletter_placeholder) {
-                    emailInput.placeholder = translations[savedLanguage].newsletter_placeholder;
-                }
+            let savedLanguage = localStorage.getItem('selectedLanguage');
+            
+            // Si aucune langue n'est sauvegardée ou si la langue sauvegardée n'existe pas, utiliser l'arabe par défaut
+            if (!savedLanguage || !translations || !translations[savedLanguage]) {
+                savedLanguage = 'ar';
+                localStorage.setItem('selectedLanguage', 'ar');
             }
+            
+            // Appliquer la langue via la fonction changeLanguage pour s'assurer que tout est mis à jour (y compris RTL)
+            changeLanguage(savedLanguage);
         });
     </script>
 
