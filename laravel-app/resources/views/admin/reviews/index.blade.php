@@ -7,6 +7,28 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-warm-brown mb-8">{{ __('admin.reviews') }}</h1>
         
+        <!-- Search Form -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <form method="GET" action="{{ route('admin.reviews', app()->getLocale()) }}" class="flex items-center gap-4">
+                <div class="flex-1">
+                    <input type="text" 
+                           name="search" 
+                           value="{{ request('search') }}" 
+                           placeholder="{{ __('admin.search_placeholder_reviews') }}" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-light-gold focus:border-light-gold">
+                </div>
+                <button type="submit" class="bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-md transition-colors">
+                    <i class="fas fa-search mr-2"></i>{{ __('admin.search') }}
+                </button>
+                @if(request('search'))
+                    <a href="{{ route('admin.reviews', app()->getLocale()) }}" 
+                       class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-md transition-colors">
+                        {{ __('admin.clear') }}
+                    </a>
+                @endif
+            </form>
+        </div>
+        
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">

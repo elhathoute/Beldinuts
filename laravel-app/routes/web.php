@@ -22,6 +22,8 @@ Route::group([
     Route::get('/commander', [OrderController::class, 'create'])->name('order.create');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('/order/{order}/invoice', [OrderController::class, 'invoice'])->name('order.invoice');
+    Route::post('/order/{order}/generate-invoice', [OrderController::class, 'generateInvoiceFromView'])->name('order.generateInvoice');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders/search', [OrderController::class, 'searchByPhone'])->name('orders.search');
     
@@ -29,9 +31,14 @@ Route::group([
     Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::resource('products', AdminController::class);
+        Route::post('/products/{product}/photos', [AdminController::class, 'storePhoto'])->name('products.photos.store');
+        Route::delete('/products/{product}/photos/{photo}', [AdminController::class, 'deletePhoto'])->name('products.photos.destroy');
+        Route::put('/products/{product}/photos/{photo}/order', [AdminController::class, 'updatePhotoOrder'])->name('products.photos.order');
         Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
         Route::put('/orders/{order}/status', [AdminController::class, 'updateOrderStatus'])->name('orders.updateStatus');
         Route::get('/reviews', [AdminController::class, 'reviews'])->name('reviews');
+        Route::put('/notifications/{notification}/read', [AdminController::class, 'markNotificationAsRead'])->name('notifications.read');
+        Route::put('/notifications/read-all', [AdminController::class, 'markAllNotificationsAsRead'])->name('notifications.readAll');
     });
     
     // Authentication routes

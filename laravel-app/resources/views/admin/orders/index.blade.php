@@ -12,6 +12,28 @@
                 {{ session('success') }}
             </div>
         @endif
+
+        <!-- Search Form -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <form method="GET" action="{{ route('admin.orders', app()->getLocale()) }}" class="flex items-center gap-4">
+                <div class="flex-1">
+                    <input type="text" 
+                           name="search" 
+                           value="{{ request('search') }}" 
+                           placeholder="{{ __('admin.search_placeholder_orders') }}" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-light-gold focus:border-light-gold">
+                </div>
+                <button type="submit" class="bg-light-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-md transition-colors">
+                    <i class="fas fa-search mr-2"></i>{{ __('admin.search') }}
+                </button>
+                @if(request('search'))
+                    <a href="{{ route('admin.orders', app()->getLocale()) }}" 
+                       class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-md transition-colors">
+                        {{ __('admin.clear') }}
+                    </a>
+                @endif
+            </form>
+        </div>
         
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <table class="min-w-full divide-y divide-gray-200">
@@ -31,7 +53,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $order->user->name ?? 'Guest' }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ number_format($order->total, 2) }} DH</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <form method="POST" action="{{ route('admin.orders.updateStatus', [app()->getLocale(), $order]) }}" class="inline">
+                            <form method="POST" action="{{ route('admin.orders.updateStatus', $order) }}" class="inline">
                                 @csrf
                                 @method('PUT')
                                 <select name="status" onchange="this.form.submit()" 

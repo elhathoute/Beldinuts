@@ -109,7 +109,7 @@
                             <span class="currency-symbol">DH</span>
                             <span class="price-unit">/{{ $product->unit == 'piece' ? __('messages.per_piece') : 'g' }}</span>
                         </span>
-                        <span class="text-sm text-gray-500">{{ __('messages.stock') }}: {{ $product->stock }}g</span>
+                        <span class="text-sm text-gray-500">{{ __('messages.stock') }}: {{ $product->stock }}</span>
                     </div>
                     
                     <!-- Suggested Quantities -->

@@ -15,6 +15,15 @@
                 
                 @auth
                     @if(auth()->user()->isAdmin())
+                        <!-- Notifications Icon -->
+                        <a href="{{ route('admin.dashboard', app()->getLocale()) }}" class="relative text-warm-brown hover:text-light-gold transition-colors inline-flex items-center">
+                            <i class="fas fa-bell text-xl"></i>
+                            @if(isset($unreadNotificationsCount) && $unreadNotificationsCount > 0)
+                                <span class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform translate-x-1/2 -translate-y-1/2 min-w-[20px] px-1">
+                                    {{ $unreadNotificationsCount > 99 ? '99+' : $unreadNotificationsCount }}
+                                </span>
+                            @endif
+                        </a>
                         <a href="{{ route('admin.dashboard', app()->getLocale()) }}" class="text-warm-brown hover:text-light-gold transition-colors">
                             <i class="fas fa-tachometer-alt mr-1"></i>{{ __('admin.dashboard') }}
                         </a>

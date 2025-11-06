@@ -12,20 +12,14 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
-        'price_per_gram',
-        'retail_price',
-        'wholesale_price',
-        'weight_per_piece',
-        'unit',
+        'price_per_gram_retail',
+        'price_per_gram_wholesale',
         'stock',
-        'image',
     ];
 
     protected $casts = [
-        'price_per_gram' => 'decimal:2',
-        'retail_price' => 'decimal:2',
-        'wholesale_price' => 'decimal:2',
-        'weight_per_piece' => 'integer',
+        'price_per_gram_retail' => 'decimal:2',
+        'price_per_gram_wholesale' => 'decimal:2',
         'stock' => 'integer',
     ];
 
@@ -43,5 +37,13 @@ class Product extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Get product photos
+     */
+    public function photos()
+    {
+        return $this->hasMany(ProductPhoto::class)->orderBy('order');
     }
 }

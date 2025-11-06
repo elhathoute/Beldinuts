@@ -5,7 +5,27 @@
 @section('content')
 <div class="min-h-screen bg-gray-50 py-8 mt-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-warm-brown mb-8">{{ __('messages.order') }} #{{ $order->id }}</h1>
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-warm-brown">{{ __('messages.order') }} #{{ $order->id }}</h1>
+            @if($order->invoice_path)
+                <!-- View Invoice Button (Eye Icon) -->
+                <a href="{{ route('order.invoice', $order) }}" 
+                   target="_blank"
+                   class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-full transition-colors inline-flex items-center"
+                   title="{{ __('messages.view_invoice') }}">
+                    <i class="fas fa-eye mr-2"></i>{{ __('messages.view_invoice') }}
+                </a>
+            @elseif($order->status === 'shipped' || $order->status === 'delivered')
+                <!-- Generate Invoice Button -->
+                <form method="POST" action="{{ route('order.generateInvoice', $order) }}" class="inline">
+                    @csrf
+                    <button type="submit" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition-colors inline-flex items-center">
+                        <i class="fas fa-file-pdf mr-2"></i>{{ __('messages.generate_invoice') }}
+                    </button>
+                </form>
+            @endif
+        </div>
         
         <div class="bg-white rounded-lg shadow p-6 mb-6">
             <div class="grid md:grid-cols-2 gap-6">
@@ -37,6 +57,12 @@
         @if(session('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
                 {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                {{ session('error') }}
             </div>
         @endif
 

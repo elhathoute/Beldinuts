@@ -57,6 +57,74 @@
                 </div>
             </div>
         </div>
+
+        <!-- Notifications Section -->
+        @if($stats['unread_notifications'] > 0 || $stats['recent_notifications']->count() > 0)
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-warm-brown">
+                    {{ __('admin.notifications') }}
+                    @if($stats['unread_notifications'] > 0)
+                        <span class="ml-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            {{ $stats['unread_notifications'] }}
+                        </span>
+                    @endif
+                </h2>
+                @if($stats['unread_notifications'] > 0)
+                    <button onclick="markAllAsRead()" class="text-sm text-light-gold hover:text-yellow-600">
+                        {{ __('admin.mark_all_as_read') }}
+                    </button>
+                @endif
+            </div>
+            <div class="divide-y divide-gray-200 max-h-96 overflow-y-auto">
+                @forelse($stats['recent_notifications'] as $notification)
+                <div class="px-6 py-4 hover:bg-gray-50 transition-colors {{ !$notification->is_read ? 'bg-blue-50' : '' }}" 
+                     id="notification-{{ $notification->id }}">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center">
+                                <h3 class="text-sm font-medium text-gray-900 {{ !$notification->is_read ? 'font-bold' : '' }}">
+                                    {{ $notification->title }}
+                                    @if(!$notification->is_read)
+                                        <span class="ml-2 w-2 h-2 bg-blue-500 rounded-full inline-block"></span>
+                                    @endif
+                                </h3>
+                            </div>
+                            <p class="mt-1 text-sm text-gray-600">{{ $notification->message }}</p>
+                            <div class="mt-2 flex items-center text-xs text-gray-500">
+                                <span>{{ $notification->created_at->diffForHumans() }}</span>
+                                @if($notification->product)
+                                    <span class="ml-3">
+                                        <a href="{{ route('admin.products.edit', $notification->product) }}" class="text-light-gold hover:text-yellow-600">
+                                            {{ __('admin.view_product') }}
+                                        </a>
+                                    </span>
+                                @endif
+                                @if($notification->order)
+                                    <span class="ml-3">
+                                        <a href="{{ route('admin.orders', app()->getLocale()) }}" class="text-light-gold hover:text-yellow-600">
+                                            {{ __('admin.view_order') }} #{{ $notification->order->id }}
+                                        </a>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        @if(!$notification->is_read)
+                            <button onclick="markAsRead({{ $notification->id }})" 
+                                    class="ml-4 text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        @endif
+                    </div>
+                </div>
+                @empty
+                <div class="px-6 py-4 text-center text-gray-500">
+                    {{ __('admin.no_notifications') }}
+                </div>
+                @endforelse
+            </div>
+        </div>
+        @endif
         
         <!-- Quick Actions -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -138,5 +206,58 @@
         </div>
     </div>
 </div>
+
+<script>
+function markAsRead(notificationId) {
+    fetch('{{ route("admin.notifications.read", ":id") }}'.replace(':id', notificationId), {
+        method: 'PUT',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const notification = document.getElementById('notification-' + notificationId);
+            if (notification) {
+                notification.classList.remove('bg-blue-50');
+                const badge = notification.querySelector('.bg-blue-500');
+                const checkButton = notification.querySelector('button');
+                if (badge) badge.remove();
+                if (checkButton) checkButton.remove();
+                const title = notification.querySelector('h3');
+                if (title) title.classList.remove('font-bold');
+            }
+            // Update unread count
+            const unreadBadge = document.querySelector('.bg-red-500');
+            if (unreadBadge) {
+                const count = parseInt(unreadBadge.textContent.trim()) - 1;
+                if (count > 0) {
+                    unreadBadge.textContent = count;
+                } else {
+                    unreadBadge.parentElement.remove();
+                }
+            }
+        }
+    });
+}
+
+function markAllAsRead() {
+    fetch('{{ route("admin.notifications.readAll") }}', {
+        method: 'PUT',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        }
+    });
+}
+</script>
 @endsection
 

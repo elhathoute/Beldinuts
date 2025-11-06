@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class OrderController extends Controller
 {
     public function create()
     {
-        $products = Product::where('stock', '>', 0)->with('reviews.user')->get();
+        $products = Product::where('stock', '>', 0)->with('reviews.user', 'photos')->get();
         return view('order.create', compact('products'));
     }
 
@@ -170,6 +175,18 @@ class OrderController extends Controller
         // Load order items for notification
         $order->load('items.product');
 
+        // Create notification for new order
+        Notification::create([
+            'type' => 'new_order',
+            'title' => __('admin.notification_new_order_title'),
+            'message' => __('admin.notification_new_order_message', [
+                'order_id' => $order->id,
+                'total' => number_format($order->total, 2),
+                'customer' => $order->user->name ?? $order->phone
+            ]),
+            'order_id' => $order->id,
+        ]);
+
         // Generate WhatsApp notification URL
         $whatsappUrl = $this->sendWhatsAppNotification($order);
 
@@ -181,8 +198,110 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $order->load('items.product');
+        $order->load('items.product', 'user');
         return view('order.show', compact('order'));
+    }
+
+    /**
+     * Generate and save PDF invoice for order
+     */
+    public function generateInvoice(Order $order)
+    {
+        $order->load('items.product', 'user');
+        
+        // Configure DomPDF options
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $options->set('defaultFont', 'DejaVu Sans');
+        
+        $dompdf = new Dompdf($options);
+        
+        // Get the logo path
+        $logoPath = public_path('beldi-nuts-logo.png');
+        $logoBase64 = null;
+        if (file_exists($logoPath)) {
+            $logoData = file_get_contents($logoPath);
+            $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
+        }
+        
+        // Generate HTML for invoice
+        $html = View::make('order.invoice', [
+            'order' => $order,
+            'logo' => $logoBase64,
+        ])->render();
+        
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        
+        // Save PDF to storage
+        $invoicePath = 'invoices/invoice-' . $order->id . '-' . time() . '.pdf';
+        Storage::disk('public')->put($invoicePath, $dompdf->output());
+        
+        // Update order with invoice path
+        $order->update(['invoice_path' => $invoicePath]);
+        
+        return $invoicePath;
+    }
+
+    /**
+     * Generate invoice from view (POST request)
+     */
+    public function generateInvoiceFromView(Order $order)
+    {
+        try {
+            $this->generateInvoice($order);
+            return redirect()->back()->with('success', __('messages.invoice_generated_successfully'));
+        } catch (\Exception $e) {
+            \Log::error('Failed to generate invoice from view', [
+                'order_id' => $order->id,
+                'error' => $e->getMessage()
+            ]);
+            return redirect()->back()->with('error', __('messages.invoice_generation_failed'));
+        }
+    }
+
+    /**
+     * Download PDF invoice for order
+     */
+    public function invoice(Order $order)
+    {
+        $order->load('items.product', 'user');
+        
+        // If invoice already exists, use it
+        if ($order->invoice_path && Storage::disk('public')->exists($order->invoice_path)) {
+            return Storage::disk('public')->download($order->invoice_path, 'invoice-' . $order->id . '.pdf');
+        }
+        
+        // Otherwise generate new invoice
+        // Configure DomPDF options
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $options->set('defaultFont', 'DejaVu Sans');
+        
+        $dompdf = new Dompdf($options);
+        
+        // Get the logo path
+        $logoPath = public_path('beldi-nuts-logo.png');
+        $logoBase64 = null;
+        if (file_exists($logoPath)) {
+            $logoData = file_get_contents($logoPath);
+            $logoBase64 = 'data:image/png;base64,' . base64_encode($logoData);
+        }
+        
+        // Generate HTML for invoice
+        $html = View::make('order.invoice', [
+            'order' => $order,
+            'logo' => $logoBase64,
+        ])->render();
+        
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        
+        return $dompdf->stream('invoice-' . $order->id . '.pdf', ['Attachment' => true]);
     }
 
     public function index(Request $request)

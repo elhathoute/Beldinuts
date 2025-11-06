@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::where('stock', '>', 0)->take(8)->get();
+        $products = Product::where('stock', '>', 0)->with('photos')->take(8)->get();
         return view('home', compact('products'));
     }
 }

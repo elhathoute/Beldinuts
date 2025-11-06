@@ -16,6 +16,7 @@ class Order extends Model
         'tracking',
         'phone',
         'address',
+        'invoice_path',
     ];
 
     protected $casts = [
